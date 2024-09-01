@@ -52,9 +52,9 @@ const HomePage = () => {
                     </div>
 
                     <p className={styles.description}>
-                        Hello! I'm Henry.<br/>
+                        Hello! I&apos;m Henry.<br/>
                         <br/>
-                        Passionate about creating impactful projects, I've dedicated myself to software development.
+                        Passionate about creating impactful projects, I&apos;ve dedicated myself to software development.
                         As a software engineer and full-stack developer, I specialize in React.js, Next.js, Express.js,
                         Quart.py. My goal is to consistently produce high-quality work that benefits the community.<br/>
                     </p>
