@@ -29,9 +29,9 @@ const HomePage = () => {
                     <h5>Software Engineer</h5>
 
                     <div className={styles.social}>
-                        <Link href="https://linkedin.com/in/hungkahing">LinkedIn</Link>
+                        <Link href="https://linkedin.com/in/hungkahing" target={"_blank"}>LinkedIn</Link>
                         &nbsp;|&nbsp;
-                        <Link href="https://github.com/Henryyy-Hung">GitHub</Link>
+                        <Link href="https://github.com/Henryyy-Hung" target={"_blank"}>GitHub</Link>
                     </div>
 
                 </div>

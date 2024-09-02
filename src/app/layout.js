@@ -41,19 +41,20 @@ const RootLayout = ({ children }) => {
             <body className={satoshiVariable.className}>
 
                 <header className={styles.header}>
-                    <div className={styles.logo}>
-                        {/*<Image src="/assets/images/logo.svg" alt="logo" width={33} height={24}/>*/}
+
+                    <Link className={styles.logo} href={'/'} scroll={false}>
                         <h1>{metadata.title}</h1>
-                    </div>
+                    </Link>
+
                     <nav className={styles.nav}>
                         {
                             navItems.map((item, index) => (
                                 <span key={index}>
-                                    <Link href={item.url} key={index}>
+                                    <Link href={item.url} key={index} scroll={false}>
                                         {item.title}
                                     </Link>
                                     {
-                                        index < navItems.length - 1 && <>&nbsp;&nbsp;</>
+                                        index < navItems.length - 1 && <>&nbsp;&nbsp;|&nbsp;&nbsp;</>
                                     }
                                 </span>
                             ))
@@ -77,9 +78,9 @@ const RootLayout = ({ children }) => {
                         </div>
                         <div>
                             <h5>Social</h5>
-                            <Link href="https://linkedin.com/in/hungkahing">LinkedIn</Link>
+                            <Link href="https://linkedin.com/in/hungkahing" target={"_blank"}>LinkedIn</Link>
                             &nbsp;|&nbsp;
-                            <Link href="https://github.com/Henryyy-Hung">GitHub</Link>
+                            <Link href="https://github.com/Henryyy-Hung" target={"_blank"}>GitHub</Link>
                         </div>
                     </section>
 
