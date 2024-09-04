@@ -1,14 +1,12 @@
-"use client";
-
 import styles from "./page.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import henry from "@/assets/images/henry.jpeg";
-import { useRouter } from 'next/navigation'
+import { getDictionary } from './dictionaries';
 
-const HomePage = () => {
+const HomePage = async ({ params: { lang } }) => {
 
-    const router = useRouter();
+    const dict = await getDictionary(lang) // en
 
     return (
         <div className={styles.container}>
@@ -16,6 +14,8 @@ const HomePage = () => {
             <div className={styles.card}>
 
                 <div className={styles.left}>
+
+                    {dict.home.title}
 
                     <Image className={styles.avatar} src={henry} alt={"Avatar"} width={176} height={176} />
                     <h4 className={styles.name}>
@@ -43,12 +43,13 @@ const HomePage = () => {
                     <h4>Here is who I am & what I do</h4>
 
                     <div className={styles.about}>
-                        <button onClick={() => router.push('/resume')}>
+                        <Link href="/resume">
                             Resume
-                        </button>
-                        <button onClick={() => router.push('/projects')}>
+                        </Link>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <Link href="/projects">
                             Projects
-                        </button>
+                        </Link>
                     </div>
 
                     <p className={styles.description}>
