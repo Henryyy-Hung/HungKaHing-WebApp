@@ -2,11 +2,12 @@ import styles from "./page.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import henry from "@/assets/images/henry.jpeg";
-import { getDictionary } from './dictionaries';
+import { useTranslation } from '@/i18n'
 
 const HomePage = async ({ params: { lang } }) => {
 
-    const dict = await getDictionary(lang) // en
+    const { t } = await useTranslation(lang)
+
 
     return (
         <div className={styles.container}>
@@ -15,9 +16,7 @@ const HomePage = async ({ params: { lang } }) => {
 
                 <div className={styles.left}>
 
-                    {dict.home.title}
-
-                    <Image className={styles.avatar} src={henry} alt={"Avatar"} width={176} height={176} />
+                    <Image className={styles.avatar} src={henry} alt={"Avatar"} width={176} height={176}/>
                     <h4 className={styles.name}>
                         Hung Ka Hing
                         <br/>
@@ -55,7 +54,8 @@ const HomePage = async ({ params: { lang } }) => {
                     <p className={styles.description}>
                         Hello! I&apos;m Henry.<br/>
                         <br/>
-                        Passionate about creating impactful projects, I&apos;ve dedicated myself to software development.
+                        Passionate about creating impactful projects, I&apos;ve dedicated myself to software
+                        development.
                         As a software engineer and full-stack developer, I specialize in React.js, Next.js, Express.js,
                         Quart.py. My goal is to consistently produce high-quality work that benefits the community.<br/>
                     </p>
@@ -63,6 +63,8 @@ const HomePage = async ({ params: { lang } }) => {
                 </div>
 
             </div>
+
+            <p>{t("home.title")}</p>
 
         </div>
     );

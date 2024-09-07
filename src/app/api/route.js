@@ -1,6 +1,6 @@
 export const dynamic = 'force-static'
 
-export async function GET() {
+export const GET = async (request) => {
     const res = await fetch('https://api.vercel.app/blog')
     const data = await res.json()
 
