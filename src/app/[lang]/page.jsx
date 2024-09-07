@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import henry from "@/assets/images/henry.jpeg";
 import { useTranslation } from '@/i18n'
+import TestComponent from "@/components/client/TestComponent";
 
 const HomePage = async ({ params: { lang } }) => {
 
@@ -12,11 +13,13 @@ const HomePage = async ({ params: { lang } }) => {
     return (
         <div className={styles.container}>
 
+            {t('home.title')}
+
             <div className={styles.card}>
 
                 <div className={styles.left}>
 
-                    <Image className={styles.avatar} src={henry} alt={"Avatar"} width={176} height={176}/>
+                    <Image className={styles.avatar} src={henry} alt={"Avatar"} width={176} height={176} />
                     <h4 className={styles.name}>
                         Hung Ka Hing
                         <br/>
@@ -54,18 +57,15 @@ const HomePage = async ({ params: { lang } }) => {
                     <p className={styles.description}>
                         Hello! I&apos;m Henry.<br/>
                         <br/>
-                        Passionate about creating impactful projects, I&apos;ve dedicated myself to software
-                        development.
+                        Passionate about creating impactful projects, I&apos;ve dedicated myself to software development.
                         As a software engineer and full-stack developer, I specialize in React.js, Next.js, Express.js,
                         Quart.py. My goal is to consistently produce high-quality work that benefits the community.<br/>
                     </p>
 
                 </div>
-
             </div>
-
-            <p>{t("home.title")}</p>
-
+            <TestComponent />
+            <TestComponent />
         </div>
     );
 }

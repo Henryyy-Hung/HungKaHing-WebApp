@@ -8,6 +8,6 @@
     "desc": "This is a demo of Next.js i18n"
   },
   "test": {
-    "sample": "This is a sample text"
+    "sample": "This is a english example"
   }
 }

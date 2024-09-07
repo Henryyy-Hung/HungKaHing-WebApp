@@ -1,4 +1,4 @@
-const cookieName = "i18n-language";
+const cookieName = "i18n";
 
 const languages  = [
     'en',

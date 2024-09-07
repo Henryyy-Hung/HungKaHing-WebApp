@@ -29,27 +29,6 @@ i18next
         console.error('i18n initialization failed', error);
     });
 
-
-function useLanguageChange(lng, i18n, cookies, setCookie) {
-    // 当前语言状态管理
-    const [activeLng, setActiveLng] = useState(i18n.resolvedLanguage)
-
-    useEffect(() => {
-        if (activeLng === i18n.resolvedLanguage) return
-        setActiveLng(i18n.resolvedLanguage)
-    }, [activeLng, i18n.resolvedLanguage])
-
-    useEffect(() => {
-        if (!lng || i18n.resolvedLanguage === lng) return
-        i18n.changeLanguage(lng)
-    }, [lng, i18n])
-
-    useEffect(() => {
-        if (cookies.i18next === lng) return
-        setCookie(cookieName, lng, { path: '/' })
-    }, [lng, cookies.i18next])
-}
-
 export function useTranslation(language, namespace, options) {
 
     const [cookies, setCookie] = useCookies([cookieName]);
@@ -65,6 +44,8 @@ export function useTranslation(language, namespace, options) {
         useEffect(() => {
             if (currentLanguage === i18n.resolvedLanguage) return;
             setCurrentLanguage(i18n.resolvedLanguage);
+            console.log("currentLanguage", i18n.resolvedLanguage)
+
         }, [currentLanguage, i18n.resolvedLanguage]);
         // eslint-disable-next-line
         useEffect(() => {
@@ -75,7 +56,7 @@ export function useTranslation(language, namespace, options) {
         useEffect(() => {
             if (cookies[cookieName] === language) return;
             setCookie(cookieName, language, { path: '/' });
-        }, [language, cookies, setCookie]);
+        }, [language, cookies.i18n]);
     }
     return translationResult;
 }

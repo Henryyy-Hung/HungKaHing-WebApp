@@ -2,7 +2,7 @@ import "../globals.css";
 import styles from "./layout.module.css";
 import localFont from 'next/font/local';
 import { dir } from 'i18next'
-import {languages, languageNames} from "@/i18n/configs";
+import {languages} from "@/i18n/configs";
 import TopNavigationBar from "@/components/server/TopNavigationBar";
 import Footer from "@/components/server/Footer";
 
