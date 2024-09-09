@@ -9,7 +9,7 @@ import {getMessages, getTranslations, unstable_setRequestLocale} from 'next-intl
 import {getLangDir} from 'rtl-detect';
 
 const satoshiVariable = localFont({ src: '../../assets/fonts/Satoshi/Satoshi-Variable.woff2' });
-const fangzheng = localFont({ src: '../../assets/fonts/Fangzheng/FangzhengPingxianLantingSong_GBK.ttf' });
+const fangzheng = localFont({ src: '../../assets/fonts/FangZheng/FangzhengPingxianLantingSong_GBK.ttf' });
 
 const generateMetadata = async ({params: {locale}}) => {
 
