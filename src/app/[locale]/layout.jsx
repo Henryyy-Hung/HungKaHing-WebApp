@@ -2,14 +2,14 @@ import "../globals.css";
 import styles from "./layout.module.css";
 import localFont from 'next/font/local';
 import {supportedLocales} from "@/i18n/configs";
-import TopNavigationBar from "@/components/server/TopNavigationBar";
-import Footer from "@/components/server/Footer";
+import TopNavigationBar from "@/components/shared/TopNavigationBar";
+import Footer from "@/components/shared/Footer";
 import {NextIntlClientProvider} from 'next-intl';
 import {getMessages, getTranslations, unstable_setRequestLocale} from 'next-intl/server';
 import {getLangDir} from 'rtl-detect';
 
 const satoshiVariable = localFont({ src: '../../assets/fonts/Satoshi/Satoshi-Variable.woff2' });
-const fangzheng = localFont({ src: '../../assets/fonts/Fangzheng/方正屏显兰亭宋_GBK.ttf' });
+const fangzheng = localFont({ src: '../../assets/fonts/Fangzheng/FangzhengPingxianLantingSong_GBK.ttf' });
 
 const generateMetadata = async ({params: {locale}}) => {
 

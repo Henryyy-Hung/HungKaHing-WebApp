@@ -1,6 +1,6 @@
 import styles from "./index.module.css";
 import {Link} from "@/i18n/routing"
-import LanguageSwitcher from "@/components/server/LanguageSwitcher";
+import LanguageSwitcher from "@/components/client/LanguageSwitcher";
 import React from "react";
 import {useTranslations} from "next-intl";
 import {unstable_setRequestLocale} from "next-intl/server";
