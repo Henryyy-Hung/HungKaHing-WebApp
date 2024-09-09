@@ -1,46 +1,55 @@
 import styles from "./index.module.css";
-import Link from "next/link";
+import {Link} from "@/i18n/routing"
 import LanguageSwitcher from "@/components/server/LanguageSwitcher";
-import {metadata} from "@/app/[lang]/layout";
 import React from "react";
+import {useTranslations} from "next-intl";
+import {unstable_setRequestLocale} from "next-intl/server";
 
-const TopNavigationBar = async ({ lang }) => {
+const TopNavigationBar = ({ locale }) => {
+
+    unstable_setRequestLocale(locale);
+
+    const t = useTranslations('common');
 
     const navItems = [
         {
-            title: "Home",
+            id: "home",
             url: "/"
         },
         {
-            title: "Resume",
+            id: "resume",
             url: "/resume"
         },
         {
-            title: "Projects",
+            id: "projects",
             url: "/projects"
         },
         {
-            title: "Blog",
+            id: "blog",
             url: "/blogs"
         },
         {
-            title: "Contact",
+            id: "contact",
             url: "/contact"
         }
     ];
 
+    navItems.forEach(item => {
+        item.title = t(`header.nav.${item.id}`);
+    });
+
     return (
         <div className={styles.container}>
 
-            <Link className={styles.logo} href={`/${lang}`} scroll={false}>
-                <h1>{metadata.title}</h1>
+            <Link className={styles.logo} locale={locale} href={`/`}>
+                <h1>{t('header.title')}</h1>
             </Link>
 
             <nav className={styles.nav}>
                 {
                     navItems.map((item, index) => (
                         <React.Fragment key={index}>
-                            <Link href={`/${lang}${item.url}`} key={index} scroll={false}>
+                            <Link href={item.url} locale={locale}>
                                 {item.title}
                             </Link>
                             {
@@ -49,9 +58,8 @@ const TopNavigationBar = async ({ lang }) => {
                         </React.Fragment>
                     ))
                 }
-                <LanguageSwitcher currentLanguage={lang}/>
+                <LanguageSwitcher currentLanguage={locale}/>
             </nav>
-
         </div>
     )
 }

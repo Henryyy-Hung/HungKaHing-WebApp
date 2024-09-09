@@ -3,11 +3,12 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 1.5rem;
+    height: 3rem;
+    width: 100%;
+    padding: 0 1.5rem;
     box-shadow: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.25);
     background-color: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(0.25rem);
-    width: 100%;
 }
 
 .container > .logo {
@@ -19,7 +20,6 @@
 
 .container > .logo > h1 {
     font-size: 1.5rem;
-    font-weight: bold;
 }
 
 .nav {

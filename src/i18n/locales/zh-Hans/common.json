@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "title": "嘉庆的个人网站"
+  },
+  "header": {
+    "title": "嘉庆的个人网站",
+    "nav": {
+      "home": "主页",
+      "resume": "简历",
+      "projects": "项目",
+      "blog": "博客",
+      "contact": "联系"
+    }
+  },
+  "footer": {
+    "contacts": {
+      "email": {
+        "title": "电子邮件",
+        "value": "henry.k.h.hung@gmail.com"
+      },
+      "location": {
+        "title": "地址",
+        "value": "香港 / 上海"
+      }
+    },
+    "social": {
+      "title": "社交媒体",
+      "linkedin": {
+        "title": "领英",
+        "url": "https://linkedin.com/in/hungkahing"
+      },
+      "github": {
+        "title": "GitHub",
+        "url": "https://github.com/Henryyy-Hung"
+      }
+    },
+    "copyRight": "© 2024 - 版权所有"
+  }
+}

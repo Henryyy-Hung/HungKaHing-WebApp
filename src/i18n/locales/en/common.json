@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "title": "Henry's Space"
+  },
+  "header": {
+    "title": "Henry's Space",
+    "nav": {
+      "home": "Home",
+      "resume": "Resume",
+      "projects": "Projects",
+      "blog": "Blog",
+      "contact": "Contact"
+    }
+  },
+  "footer": {
+    "contacts": {
+      "email": {
+        "title": "Email",
+        "value": "henry.k.h.hung@gmail.com"
+      },
+      "location": {
+        "title": "Location",
+        "value": "Hong Kong / Shanghai"
+      }
+    },
+    "social": {
+      "title": "Social",
+      "linkedin": {
+        "title": "LinkedIn",
+        "url": "https://linkedin.com/in/hungkahing"
+      },
+      "github": {
+        "title": "GitHub",
+        "url": "https://github.com/Henryyy-Hung"
+      }
+    },
+    "copyRight": "© 2024 by Henry Hung - All Rights Reserved"
+  }
+}

@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 3rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: stretch;
+    padding: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(0.25rem);
+    border-radius: 1rem;
+    box-shadow: 0.25rem 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    width: 100%;
+    text-decoration: none;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.card:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.card:active {
+    background-color: rgba(255, 255, 255, 1);
+}

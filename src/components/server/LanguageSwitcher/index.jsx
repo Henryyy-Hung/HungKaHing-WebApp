@@ -1,21 +1,31 @@
-import styles from "./index.module.css";
-import {languages, languageNames} from "@/i18n/configs";
-import Link from "next/link";
+"use client";
 
-const LanguageSwitcher = ({ currentLanguage }) => {
+import styles from "./index.module.css";
+import {supportedLocales, localeNames} from "@/i18n/configs";
+import {usePathname} from "@/i18n/routing";
+import { useLocale } from "next-intl";
+import {Link} from '@/i18n/routing'
+
+const LanguageSwitcher = () => {
+
+    const pathname = usePathname();
+    const currentLanguage = useLocale();
 
     return (
-        <div className={styles.container}>
-            <div className={styles.button} tabIndex="0">
-                {languageNames[currentLanguage]}
+        <div className={styles.container} tabIndex="0">
+            <button className={styles.button}>
+                {localeNames[currentLanguage]}
                 <span className={styles.arrow}></span>
-                <ul className={styles.dropdown}>
+            </button>
+            <div className={styles.overlay} tabIndex="1"></div>
+            <div className={styles.dropdown}>
+                <ul className={styles.menu}>
                     {
-                        languages.map((lang, index) => (
-                            (languageNames[lang]) &&
-                            <li key={index} className={`${styles.dropdownOption} ${currentLanguage === lang ? styles.active : ''}`}>
-                                <Link href={`/${lang}`}>
-                                    {languageNames[lang]}
+                        supportedLocales.map((lang, index) => (
+                            (localeNames[lang]) &&
+                            <li key={index} className={`${styles.option} ${currentLanguage === lang ? styles.active : ''}`}>
+                                <Link href={pathname} locale={lang} scroll={false}>
+                                    {localeNames[lang]}
                                 </Link>
                             </li>
                         ))

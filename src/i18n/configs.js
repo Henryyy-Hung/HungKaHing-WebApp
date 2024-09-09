@@ -1,21 +1,21 @@
 const cookieName = "i18n";
 
-const languages  = [
-    'en',
+const supportedLocales  = [
     'zh-Hans',
     'zh-Hant',
-    'zh',
-    'zh-CN',
-    'zh-SG',
-    'zh-MY',
-    'zh-TW',
-    'zh-HK',
-    'zh-MO',
+    // 'zh',
+    // 'zh-CN',
+    // 'zh-SG',
+    // 'zh-MY',
+    // 'zh-TW',
+    // 'zh-HK',
+    // 'zh-MO',
+    'en',
 ]
 
-const fallbackLanguage = languages[0];
+const fallbackLocale = supportedLocales[0];
 
-const languageMapping = {
+const localeMapping = {
     'zh': 'zh-Hans',
     'zh-CN': 'zh-Hans',
     'zh-SG': 'zh-Hans',
@@ -25,48 +25,45 @@ const languageMapping = {
     'zh-MO': 'zh-Hant',
 };
 
-const languageNames = {
+const localeNames = {
     'en': 'English',
     'zh-Hans': '简体中文',
     'zh-Hant': '繁體中文',
-    // 'zh': '中文',
-    // 'zh-CN': '中文（中国）',
-    // 'zh-SG': '中文（新加坡）',
-    // 'zh-MY': '中文（马来西亚）',
-    // 'zh-TW': '中文（台湾）',
-    // 'zh-HK': '中文（香港）',
-    // 'zh-MO': '中文（澳门）',
+    'zh': '中文',
+    'zh-CN': '中文(中国)',
+    'zh-SG': '中文(新加坡)',
+    'zh-MY': '中文(马来西亚)',
+    'zh-TW': '中文(台湾)',
+    'zh-HK': '中文(香港)',
+    'zh-MO': '中文(澳门)',
 };
 
 const namespaces = [
-    'translation',
+    'common',
+    'home'
 ];
 
 const fallbackNamespace = namespaces[0];
 
-const getI18nOptions = (language=fallbackLanguage, namespace=fallbackNamespace) => {
-    return {
-        supportedLngs: languages,
-        fallbackLng: fallbackLanguage,
-        lng: language,
-        fallbackNS: fallbackNamespace,
-        defaultNS: namespace,
-        ns: namespaces,
-    }
+const getI18nResource = async (language, namespace) => {
+    return (await (import(`@/i18n/locales/${localeMapping[language] || language}/${namespace}.json`))).default
 }
 
-const getI18nResource = async (language, namespace) => {
-    return (await (import(`@/i18n/locales/${languageMapping[language] || language}/${namespace}.json`))).default
+const getMergedI18nResource = async (language) => {
+    const mergedResources = {};
+    for (const namespace of namespaces) {
+        mergedResources[namespace] = await getI18nResource(language, namespace)
+    }
+    return mergedResources;
 }
 
 export {
     cookieName,
-    languages,
-    fallbackLanguage,
-    languageMapping,
+    supportedLocales,
+    fallbackLocale,
+    localeMapping,
     namespaces,
     fallbackNamespace,
-    getI18nOptions,
-    getI18nResource,
-    languageNames
+    localeNames,
+    getMergedI18nResource
 }
