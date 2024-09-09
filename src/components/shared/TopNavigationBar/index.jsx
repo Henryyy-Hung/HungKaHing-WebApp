@@ -41,7 +41,7 @@ const TopNavigationBar = ({ locale }) => {
     return (
         <div className={styles.container}>
 
-            <Link className={styles.logo} locale={locale} href={`/`}>
+            <Link className={styles.logo} locale={locale} href={`/`} prefetch={true}>
                 <h1>{t('header.title')}</h1>
             </Link>
 
@@ -49,7 +49,7 @@ const TopNavigationBar = ({ locale }) => {
                 {
                     navItems.map((item, index) => (
                         <React.Fragment key={index}>
-                            <Link href={item.url} locale={locale}>
+                            <Link href={item.url} locale={locale} prefetch={true}>
                                 {item.title}
                             </Link>
                             {
