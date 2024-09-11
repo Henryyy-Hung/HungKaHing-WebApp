@@ -1,13 +1,12 @@
+"use client"
+
 import styles from "./index.module.css";
 import {Link} from "@/i18n/routing"
 import LanguageSwitcher from "@/components/client/LanguageSwitcher";
 import React from "react";
 import {useTranslations} from "next-intl";
-import {unstable_setRequestLocale} from "next-intl/server";
 
 const TopNavigationBar = ({ locale }) => {
-
-    unstable_setRequestLocale(locale);
 
     const t = useTranslations('common');
 
@@ -38,10 +37,16 @@ const TopNavigationBar = ({ locale }) => {
         item.title = t(`header.nav.${item.id}`);
     });
 
+    const onLinkClick = (e) => {
+        if (window !== void 0){
+            window.scrollTo(0, 0);
+        }
+    }
+
     return (
         <div className={styles.container}>
 
-            <Link className={styles.logo} locale={locale} href={`/`} prefetch={true}>
+            <Link className={styles.logo} href={`/`} locale={locale} onClick={onLinkClick}>
                 <h1>{t('header.title')}</h1>
             </Link>
 
@@ -49,7 +54,7 @@ const TopNavigationBar = ({ locale }) => {
                 {
                     navItems.map((item, index) => (
                         <React.Fragment key={index}>
-                            <Link href={item.url} locale={locale} prefetch={true}>
+                            <Link className={styles.link} href={item.url} locale={locale} onClick={onLinkClick}>
                                 {item.title}
                             </Link>
                             {

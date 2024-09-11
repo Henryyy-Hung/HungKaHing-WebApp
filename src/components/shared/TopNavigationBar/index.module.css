@@ -28,7 +28,7 @@
     align-items: center;
 }
 
-.nav > a {
+.nav > .link {
     text-decoration: none;
     padding: 0;
 }

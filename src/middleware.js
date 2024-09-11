@@ -12,8 +12,7 @@ export const middleware = (request) => {
 }
 
 export const config = {
-    // Match only internationalized pathnames
     matcher: [
-        '/((?!api|_next/static|_next/image|_vercel|assets|favicon.ico|sw.js|site.webmanifest|.swa).*)'
+        '/((?!api|_next/static|_next/image|_vercel|assets|favicon.ico|sw.js|sitemap|site.webmanifest|.swa).*)',
     ]
 };

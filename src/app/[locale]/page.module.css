@@ -10,7 +10,7 @@
 .card {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: stretch;
     justify-content: stretch;
     border-radius: 1.5rem;
     box-shadow: 0.25rem 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.25);
@@ -26,7 +26,6 @@
     justify-content: flex-start;
     padding: 1.5rem;
     backdrop-filter: blur(0.25rem);
-    height: 100%;
 }
 
 .card > .left {

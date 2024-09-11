@@ -11,6 +11,10 @@ const LanguageSwitcher = () => {
     const pathname = usePathname();
     const currentLanguage = useLocale();
 
+    const onLanguageChange = (e, lang) => {
+        e.target.blur();
+    }
+
     return (
         <div className={styles.container} tabIndex="0">
             <button className={styles.button}>
@@ -24,7 +28,7 @@ const LanguageSwitcher = () => {
                         supportedLocales.map((lang, index) => (
                             (localeNames[lang]) &&
                             <li key={index} className={`${styles.option} ${currentLanguage === lang ? styles.active : ''}`}>
-                                <Link href={pathname} locale={lang} scroll={false}>
+                                <Link href={pathname} locale={lang} scroll={false} onClick={(e) => onLanguageChange(e, lang)}>
                                     {localeNames[lang]}
                                 </Link>
                             </li>
