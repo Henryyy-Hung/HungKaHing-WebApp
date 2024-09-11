@@ -1,5 +1,7 @@
 import style from './page.module.css';
 
+export const dynamic = 'force-dynamic';
+
 const ProjectsPage = () => {
     return (
         <div className={style.container}>

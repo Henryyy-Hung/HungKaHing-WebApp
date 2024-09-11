@@ -1,16 +1,14 @@
-import {supportedLocales, fallbackLocale} from "@/i18n/configs";
+import {fallbackLocale, supportedLocales} from "@/i18n/configs";
 
 const host = 'https://example.com';
 
 export default function sitemap() {
-    const result =  [
+    return [
         getEntry('/'),
         getEntry('/blogs'),
         getEntry('/resume'),
         getEntry('/project')
     ];
-    console.log(JSON.stringify(result, null, 4));
-    return result;
 }
 
 function getEntry(pathname) {

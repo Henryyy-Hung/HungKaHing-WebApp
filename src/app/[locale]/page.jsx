@@ -4,6 +4,8 @@ import henry from "@/assets/images/henry.jpeg";
 import {Link} from '@/i18n/routing';
 import {unstable_setRequestLocale} from "next-intl/server";
 
+export const dynamic = 'force-dynamic';
+
 const HomePage = ({ params: { locale } }) => {
 
     unstable_setRequestLocale(locale);
@@ -41,11 +43,11 @@ const HomePage = ({ params: { locale } }) => {
                     <h4>Here is who I am & what I do</h4>
 
                     <div className={styles.about}>
-                        <Link href={"/resume"} locale={locale}>
+                        <Link href={"/resume"} locale={locale} prefetch={false}>
                             Resume
                         </Link>
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        <Link href={"/projects"} locale={locale}>
+                        <Link href={"/projects"} locale={locale} prefetch={false}>
                             Projects
                         </Link>
                     </div>

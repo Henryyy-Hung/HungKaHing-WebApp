@@ -8,6 +8,7 @@ import {supportedLocales} from "@/i18n/configs";
 import TopNavigationBar from "@/components/shared/TopNavigationBar";
 import Footer from "@/components/shared/Footer";
 import {Suspense} from "react";
+import {globby} from "globby";
 
 const satoshiVariable = localFont({ src: '../../assets/fonts/Satoshi/Satoshi-Variable.woff2' });
 
@@ -31,7 +32,8 @@ const Layout = async ({ children, params: {locale} }) => {
 
     return (
         <html lang={locale} dir={direction}>
-            <body className={satoshiVariable.className}>
+            <body className={satoshiVariable.className} id="root">
+                <script>0</script>
                 <NextIntlClientProvider messages={messages}>
                     <header className={styles.header}>
                         <TopNavigationBar locale={locale}/>
