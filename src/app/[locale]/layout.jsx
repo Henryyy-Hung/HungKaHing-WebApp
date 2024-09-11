@@ -7,8 +7,12 @@ import {getLangDir} from 'rtl-detect';
 import {supportedLocales} from "@/i18n/configs";
 import TopNavigationBar from "@/components/shared/TopNavigationBar";
 import Footer from "@/components/shared/Footer";
-import {Suspense} from "react";
-import {globby} from "globby";
+
+import style0 from './page.module.css'
+import style1 from './resume/page.module.css';
+import style2 from './projects/page.module.css';
+import style3 from './blogs/page.module.css';
+import style4 from './contact/page.module.css';
 
 const satoshiVariable = localFont({ src: '../../assets/fonts/Satoshi/Satoshi-Variable.woff2' });
 

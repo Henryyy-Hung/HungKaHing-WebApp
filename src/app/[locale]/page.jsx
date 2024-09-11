@@ -4,8 +4,6 @@ import henry from "@/assets/images/henry.jpeg";
 import {Link} from '@/i18n/routing';
 import {unstable_setRequestLocale} from "next-intl/server";
 
-export const dynamic = 'force-dynamic';
-
 const HomePage = ({ params: { locale } }) => {
 
     unstable_setRequestLocale(locale);

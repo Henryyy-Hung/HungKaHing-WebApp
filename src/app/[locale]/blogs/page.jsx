@@ -2,7 +2,7 @@ import style from './page.module.css';
 import {globby} from "globby";
 import {Link} from "@/i18n/routing";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = 'force-static';
 
 const BlogsPage = async ({ params: { locale } }) => {
 

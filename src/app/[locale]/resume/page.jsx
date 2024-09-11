@@ -1,8 +1,6 @@
 import style from './page.module.css';
 import Link from "next/link";
 
-export const dynamic = 'force-dynamic';
-
 const ResumePage = () => {
 
     const resume = {
