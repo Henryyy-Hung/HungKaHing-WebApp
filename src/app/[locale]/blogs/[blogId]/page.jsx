@@ -24,9 +24,13 @@ const BlogPage = async ({params: {locale, blogId} }) => {
         if (!supportedLocale) supportedLocale = blogLocales.find(blogLocale => locale.startsWith(blogLocale));
         if (!supportedLocale) supportedLocale = blogLocales[0];
 
-        const Content = (await import(`@/blogs/${blogId}/${supportedLocale}.mdx`)).default;
+
+        const Content = (await import(`src/blogs/${blogId}/${supportedLocale}.mdx`)).default;
+        const metadata = (await import(`src/blogs/${blogId}/${supportedLocale}.mdx`)).metadata;
+
         return (
             <div className={styles.container}>
+                <h1>{metadata.title}</h1>
                 <Content />
             </div>
         );

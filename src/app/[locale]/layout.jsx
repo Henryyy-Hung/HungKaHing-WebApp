@@ -7,12 +7,7 @@ import {getLangDir} from 'rtl-detect';
 import {supportedLocales} from "@/i18n/configs";
 import TopNavigationBar from "@/components/shared/TopNavigationBar";
 import Footer from "@/components/shared/Footer";
-
-import style0 from './page.module.css'
-import style1 from './resume/page.module.css';
-import style2 from './projects/page.module.css';
-import style3 from './blogs/page.module.css';
-import style4 from './contact/page.module.css';
+import {globby} from "globby";
 
 const satoshiVariable = localFont({ src: '../../assets/fonts/Satoshi/Satoshi-Variable.woff2' });
 
@@ -28,16 +23,30 @@ const generateMetadata = async ({params: {locale}}) => {
     };
 }
 
+const loadAllCss = async () => {
+    // 获取所有的 CSS 模块路径
+    const paths = await globby('src/app/**/*.module.css');
+    // 动态加载所有的 CSS 模块
+    for (let path of paths) {
+        let subPath = path.slice(8);
+        let style = (await import(`src/app/${subPath}`));
+    }
+};
+
 const Layout = async ({ children, params: {locale} }) => {
 
+    // 确保在服务端渲染时，locale 与请求的 locale 一致
     unstable_setRequestLocale(locale);
+    // 获取当前 locale 的翻译资源
     const messages = await getMessages();
+    // 获取当前 locale 的文本方向
     const direction = getLangDir(locale);
+    // 加载所有的 CSS 模块
+    await loadAllCss();
 
     return (
         <html lang={locale} dir={direction}>
-            <body className={satoshiVariable.className} id="root">
-                <script>0</script>
+            <body className={satoshiVariable.className}>
                 <NextIntlClientProvider messages={messages}>
                     <header className={styles.header}>
                         <TopNavigationBar locale={locale}/>
