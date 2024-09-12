@@ -1,17 +1,10 @@
 import style from './page.module.css';
-import {globby} from "globby";
 import {Link} from "@/i18n/routing";
-import getMetadataOfAllBlogs from "@/utils/BlogUtil";
-
-export const dynamic = 'force-static';
+import {getLocalizedBlogList} from "@/utils/BlogUtil";
 
 const BlogsPage = async ({ params: { locale } }) => {
 
-    const blogPaths = await globby(`src/blogs/*/*.mdx`);
-    let blogIds = blogPaths.map(blogPath => blogPath.split('/')[2]);
-    blogIds = [...new Set(blogIds)];
-
-    const metadataList = await getMetadataOfAllBlogs();
+    const metadataList = await getLocalizedBlogList(locale);
 
     return (
         <div className={style.container}>
