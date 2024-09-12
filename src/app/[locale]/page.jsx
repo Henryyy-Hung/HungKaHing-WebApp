@@ -15,7 +15,14 @@ const HomePage = ({ params: { locale } }) => {
 
                 <div className={styles.left}>
 
-                    <Image className={styles.avatar} src={henry} alt={"Avatar"} width={176} height={176} />
+                    <Image
+                        className={styles.avatar}
+                        src={henry}
+                        alt={"Avatar"}
+                        width={176}
+                        height={176}
+                        placeholder={"blur"}
+                    />
                     <h4 className={styles.name}>
                         Hung Ka Hing
                         <br/>

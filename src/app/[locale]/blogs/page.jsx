@@ -11,11 +11,8 @@ const BlogsPage = async ({ params: { locale } }) => {
             {
                 metadataList.map((metadata, index) => (
                     <Link href={`/blogs/${metadata.id}`} key={index} className={style.card} locale={locale} prefetch={false}>
-                        <p>
-                            {metadata.title}
-                            <br/>
-                            {metadata.description}
-                        </p>
+                        <h3>{metadata.title}</h3>
+                        <p>{metadata.description}</p>
                     </Link>
                 ))
             }

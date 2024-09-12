@@ -1,19 +1,11 @@
 import {notFound} from "next/navigation";
 import styles from "./page.module.css"
 import {globby} from 'globby';
-import fs from 'fs';
-import path from 'path';
-import {getBlogContent} from "@/utils/BlogUtil";
-
-const getContent = async (blogId, locale) => {
-    const filePath = path.join(process.cwd(), `src/blogs/${blogId}/${locale}.mdx`);
-    return fs.readFileSync(filePath, 'utf8');
-};
+import {getBlogList, getBlogContent} from "@/utils/BlogUtil";
 
 const generateStaticParams = async () => {
-    const blogPaths = await globby(`src/blogs/*/*.mdx`);
-    const blogIds = blogPaths.map(blogPath => blogPath.split('/')[2]);
-    return blogIds.map(blogId => ({blogId})) || [];
+    const blogList = await getBlogList();
+    return blogList.map(blog => ({blogId: blog.id})) || [];
 }
 
 const BlogPage = async ({params: {locale, blogId} }) => {
@@ -30,13 +22,8 @@ const BlogPage = async ({params: {locale, blogId} }) => {
     }
 }
 
-const dynamicParams = false
-
 export default BlogPage;
 
-export {
-    generateStaticParams,
-    // dynamicParams
-};
+export {generateStaticParams};
 
 
