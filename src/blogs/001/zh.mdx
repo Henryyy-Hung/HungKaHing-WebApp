@@ -4,7 +4,70 @@ export const metadata = {
 };
 
 
-# 中文测试
+# Next.js 中 CSS 模块 FOUC 问题的解决方案
 
-## 图片
+## 概述
+
+在 Next.js 中使用 CSS 模块时，可能会遇到一种称为 FOUC（Flash of Unstyled Content）的问题。
+这种问题会导致页面在加载时短暂地显示未经样式处理的内容，然后再应用样式这篇文章将介绍如何解决这个问题。
+
+## 问题
+
+直到 Next.js 14.2.6，在使用APP ROUTER的时候，`<Link>`组件的预加载 (prefetch) 都不包括css模块，只会预加载链接页面中的html和js内容。
+这导致了在使用`<Link>`组件跳转页面时，html内容会先被浏览器渲染到 dom tree 中，然后再向服务器请求css文件。
+请求css的过程中，页面会出现一段时间的未经样式处理的内容，这就是FOUC问题。
+这个问题从2018年就已经有人在Next.js的GitHub上提出了，但官方的态度非常敷衍，有不下3个类似的 Issue 在未被解决的情况下关闭了。
+在失望的同时，我只能尝试自己解决这个问题。
+
+## 解决方案
+
+经过三天时间的尝试，我终于找到了一个最佳解决方案，这个解决方案是基于 import() 动态导入的。
+
+大致上，我们需要在`RootLayout`组件中，动态的导入一次所有的css模块。这样所有的css模块都会被存入同一个css文件内。
+进而在首屏加载时，就把所有的css文件都加载进来，从根源上避免了FOUC问题。
+
+1. 安装globby库
+
+```bash
+npm i globby
+```
+
+2. 修改根目录下的`jsconfig.json`文件，确保 `src/../../` 是可以正确的指向项目根目录的 src 文件夹
+```json
+{
+    "compilerOptions": {
+        "baseUrl": "./",
+        "include": ["./"]
+    }
+}
+```
+
+2. 在root layout中插入这个方法。该方法使用了globby去获取所有 .module.css 文件的路径，然后在root layout对他们进行import，
+使root css文件包含了所有的css。注意，这里假设你的components文件夹是放在/app下的。同时，之所以要用将路径前缀放在字符串中，
+是因为Import好像必须要至少前两段路径是静态的，不然就会报错。
+
+```javascript
+const loadAllCss = async () => {
+    const paths = await globby('src/app/**/*.module.css');
+    for (let path of paths) {
+        let subPath = path.replace('src/app/', '');
+        let style = (await import(`src/app/${subPath}`));
+    }
+};
+
+const Layout = async ({ children }) => {
+
+    await loadAllCss();
+
+    return (
+        <html>
+            <body>
+                {children}
+            </body>
+        </html>
+    );
+};
+
+export default Layout;
+```
 
