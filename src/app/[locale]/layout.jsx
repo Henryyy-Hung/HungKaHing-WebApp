@@ -23,7 +23,7 @@ const generateMetadata = async ({params: {locale}}) => {
     };
 }
 
-const loadAllCss = async () => {
+const loadAllCssUnderAppDirectory = async () => {
     const pathPrefix = 'src/app/';
     const pathSuffix = '.module.css';
     // 获取所有的 CSS 模块路径
@@ -34,6 +34,23 @@ const loadAllCss = async () => {
         (await import(`src/app/${truncatedPath}.module.css`)).default;
     }
 };
+
+const loadAllCssUnderComponentsDirectory = async () => {
+    const pathPrefix = 'src/components/';
+    const pathSuffix = '.module.css';
+    // 获取所有的 CSS 模块路径
+    const paths = await globby(`${pathPrefix}**/*${pathSuffix}`);
+    // 动态加载所有的 CSS 模块
+    for (let path of paths) {
+        const truncatedPath = path.slice(pathPrefix.length, -pathSuffix.length);
+        (await import(`src/components/${truncatedPath}.module.css`)).default;
+    }
+}
+
+const loadAllCss = async () => {
+    await loadAllCssUnderAppDirectory();
+    await loadAllCssUnderComponentsDirectory();
+}
 
 const Layout = async ({ children, params: {locale} }) => {
 

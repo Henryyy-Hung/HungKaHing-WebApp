@@ -40,10 +40,6 @@
     box-shadow: 0 0 0.25rem 0 rgba(0, 0, 0, 0.25);
 }
 
-.avatar::placeholder {
-    filter: blur(12px);
-}
-
 .name {
     text-align: center;
 }

@@ -21,7 +21,6 @@ const HomePage = ({ params: { locale } }) => {
                         alt={"Avatar"}
                         width={176}
                         height={176}
-                        placeholder={"blur"}
                     />
                     <h4 className={styles.name}>
                         Hung Ka Hing

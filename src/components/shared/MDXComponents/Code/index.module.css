@@ -1,0 +1,82 @@
+
+.inlineCode {
+    display: inline;
+    padding: 0.1rem 0.25rem;
+    margin: 0 0.25rem;
+    border-radius: 0.25rem;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.blockCode {
+    display: block;
+    width: 100%;
+    margin: 1rem 0;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.blockCode * {
+    font-family: Consolas, monospace !important;
+    font-weight: 500 !important;
+    color: unset;
+}
+
+.blockCode > .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color-700);
+    color: var(--primary-color-50);
+}
+
+.blockCode > .header > .language {
+}
+
+.blockCode > .header > .copyButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.25rem;
+    height: 1.5rem;
+    padding: 0;
+    color: var(--primary-color-300);
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+}
+
+.blockCode > .header > .copyButton:hover {
+    color: var(--primary-color-50);
+}
+
+.blockCode > .preformattedText {
+    width: 100%;
+    margin: 0;
+    padding: 1rem;
+    border-radius: 0;
+    background-color: var(--primary-color-800);
+    white-space: pre;
+    text-align: left;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    tab-size: 4;
+    hyphens: none;
+    overflow: auto;
+}
+
+.blockCode > .preformattedText > code {
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    background-color: transparent !important;
+}
+
+.linenumber.react-syntax-highlighter-line-number {
+    padding: 0 1rem 0 0 !important;
+    border-radius: 0 !important;
+    min-width: 1rem !important;
+}

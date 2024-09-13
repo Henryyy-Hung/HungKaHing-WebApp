@@ -2,6 +2,27 @@
     --foreground-rgb: 0, 0, 0;
     --background-start-rgb: 214, 219, 220;
     --background-end-rgb: 255, 255, 255;
+
+    --grey50: #fafafa;
+    --grey100: #f5f5f5;
+    --grey200: #eeeeee;
+    --grey300: #e0e0e0;
+    --grey400: #bdbdbd;
+    --grey500: #9e9e9e;
+    --grey600: #757575;
+    --grey700: #616161;
+    --grey800: #424242;
+    --grey900: #212121;
+    --primary-color-50: var(--grey50);
+    --primary-color-100: var(--grey100);
+    --primary-color-200: var(--grey200);
+    --primary-color-300: var(--grey300);
+    --primary-color-400: var(--grey400);
+    --primary-color-500: var(--grey500);
+    --primary-color-600: var(--grey600);
+    --primary-color-700: var(--grey700);
+    --primary-color-800: var(--grey800);
+    --primary-color-900: var(--grey900);
 }
 
 @media (prefers-color-scheme: dark) {
