@@ -7,7 +7,7 @@
 }
 
 ul.list {
-    margin: 0 0 0 1rem;
+    margin: 0;
     padding: 0;
     list-style-type: none; /* Remove bullets */
 }
@@ -19,12 +19,43 @@ ul.list {
 .listItem > a {
     display: block;
     text-decoration: none;
-    height: 2rem;
+    height: 3rem;
+    line-height: 3rem;
+    padding-left: 0.5rem;
     font-weight: 600;
     font-size: 1.15rem;
     max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    --padding-left: 0.5rem;
+}
 
+.listItem > a.h1 {
+    padding-left: calc(0rem + var(--padding-left));
+}
+
+.listItem > a.h2 {
+    padding-left: calc(1rem + var(--padding-left));
+}
+
+.listItem > a.h3 {
+    padding-left: calc(2rem + var(--padding-left));
+}
+
+.listItem > a.h4 {
+    padding-left: calc(3rem + var(--padding-left));
+}
+
+.listItem > a.h5 {
+    padding-left: calc(4rem + var(--padding-left));
+}
+
+.listItem > a.h6 {
+    padding-left: calc(5rem + var(--padding-left));
+}
+
+.listItem > a:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
 }

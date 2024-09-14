@@ -4,6 +4,8 @@ import styles from './index.module.css'
 
 const TableOfContent = ({toc}) => {
 
+    console.log(JSON.stringify(toc, null, 2));
+
     const TocItem = ({ item }) => {
 
         const onHrefClicked = (e) => {
@@ -18,9 +20,10 @@ const TableOfContent = ({toc}) => {
             }
         }
 
+
         return (
             <li className={styles.listItem}>
-                <a href={`#${item.id}`} onClick={onHrefClicked}>
+                <a href={`#${item.id}`} onClick={onHrefClicked} className={styles[`h${item.depth}`]}>
                     {item.value}
                 </a>
                 {Array.isArray(item.items) && item.items.length > 0 && (
