@@ -1,0 +1,30 @@
+.container {
+    padding: 0;
+}
+
+.container > ul.list {
+    margin: 0;
+}
+
+ul.list {
+    margin: 0 0 0 1rem;
+    padding: 0;
+    list-style-type: none; /* Remove bullets */
+}
+
+.listItem {
+    display: block;
+}
+
+.listItem > a {
+    display: block;
+    text-decoration: none;
+    height: 2rem;
+    font-weight: 600;
+    font-size: 1.15rem;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+}

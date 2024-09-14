@@ -25,7 +25,7 @@ const TopNavigationBar = ({ locale }) => {
         },
         {
             id: "blog",
-            url: "/blogs"
+            url: "/blog"
         },
         {
             id: "contact",

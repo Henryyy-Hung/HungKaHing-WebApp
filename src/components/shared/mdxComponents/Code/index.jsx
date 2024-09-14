@@ -6,7 +6,6 @@ import { coldarkDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const Code = ({ className, children, isBlock=false, ...props }) => {
 
-    // if this is a inline code
     if (! isBlock) {
         return (
             <code {...props} className={styles.inlineCode}>
@@ -25,8 +24,6 @@ const Code = ({ className, children, isBlock=false, ...props }) => {
 
     const match = /language-(\w+)/.exec(className || '');
 
-
-
     return (
         <div className={styles.blockCode} aria-hidden={false}>
             <div className={styles.header}>
@@ -38,12 +35,12 @@ const Code = ({ className, children, isBlock=false, ...props }) => {
                 </div>
             </div>
             <SyntaxHighlighter
+                {...props}
                 style={coldarkDark}
                 PreTag={(props) => <pre {...props} className={styles.preformattedText} style={null} aria-hidden={false} />}
                 language={match ? match[1] : null}
                 showLineNumbers={false}
                 wrapLines={false}
-                {...props}
             >
                 {String(children).replace(/\n$/, '')}
             </SyntaxHighlighter>

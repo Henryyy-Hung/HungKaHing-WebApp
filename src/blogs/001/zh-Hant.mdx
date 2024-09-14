@@ -1,0 +1,85 @@
+export const metadata = {
+    title: "Next.js 中 CSS 模塊 FOUC 問題的解決方案",
+    description: "在 Next.js 中使用 CSS 模塊時，可能會遇到一種稱為 FOUC（Flash of Unstyled Content）的問題。這種問題會導致頁面在加載時短暫地顯示未經樣式處理的內容，然後再應用樣式這篇文章將介紹如何解決這個問題。",
+    publishDate: "2022-10-14",
+    lastEditDate: "2022-10-14",
+    tags: ["Next.js", "CSS", "FOUC"],
+};
+
+
+# Next.js 中 CSS 模塊 FOUC 問題的解決方案
+
+## 概述
+
+在 Next.js 中使用 CSS 模塊時，可能會遇到一種稱為 FOUC（Flash of Unstyled Content）的問題。
+這種問題會導致頁面在加載時短暫地顯示未經樣式處理的內容，然後再應用樣式這篇文章將介紹如何解決這個問題。
+
+## 問題
+
+直到 Next.js 14.2.6，在使用APP ROUTER的時候，`<Link>`組件的預加載 (prefetch) 都不包括css模塊，只會預加載鏈接頁面中的html和js內容。
+這導致了在使用`<Link>`組件跳轉頁面時，html內容會先被瀏覽器渲染到 dom tree 中，然後再向服務器請求css文件。
+請求css的過程中，頁面會出現一段時間的未經樣式處理的內容，這就是FOUC問題。
+這個問題從2018年就已經有人在Next.js的GitHub上提出了，但官方的態度非常敷衍，有不下3個類似的 Issue 在未被解決的情況下關閉了。
+在失望的同時，我只能嘗試自己解決這個問題。
+
+## 解決方案
+
+經過三天時間的嘗試，我終於找到了一個最佳解決方案，這個解決方案是基於 import() 動態導入的。
+
+大致上，我們需要在`RootLayout`組件中，動態的導入一次所有的css模塊。這樣所有的css模塊都會被存入同一個css文件內。
+進而在首屏加載時，就把所有的css文件都加載進來，從根源上避免了FOUC問題。
+
+1. 安裝globby庫
+     ```bash
+     npm i globby
+    ```
+
+2. 修改根目錄下的`jsconfig.json`文件，確保 `src/../../` 是可以正確的指向項目根目錄的 src 文件夾
+     ```json
+     {
+         "compilerOptions": {
+             "baseUrl": "./",
+             "include": ["./"]
+         }
+     }
+    ```
+
+3. 在root layout中插入這個`loadAllCssUnderAppDirectory()`方法。
+該方法使用了globby去獲取所有`src/app/`下所有`.module.css`的路徑，然後在root layout中進行import.
+這樣就使root css文件包含了所有的`src/app/`下的css，從而在首屏加載時fetch所有的css文件，避免了FOUC問題。
+\
+\
+之所以使用模版字符串，是因為next.js的webpack需要路徑是靜態的，並且至少前兩段路徑是靜態的，不然就會報錯。如果你的`.module.css`文件還分布在其他地方，如`src/components/`，你也可以自行添加一個`loadAllCssUnderComponentsDirectory()`方法。
+     ```javascript
+     const loadAllCssUnderAppDirectory = async () => {
+         const pathPrefix = 'src/app/';
+         const pathSuffix = '.module.css';
+         // 獲取所有的 CSS 模塊路徑
+         const paths = await globby(`${pathPrefix}**/*${pathSuffix}`);
+         // 動態加載所有的 CSS 模塊
+         for (let path of paths) {
+             const truncatedPath = path.slice(pathPrefix.length, -pathSuffix.length);
+             (await import(`src/app/${truncatedPath}.module.css`)).default;
+         }
+     };
+
+     const Layout = async ({ children }) => {
+
+         await loadAllCssUnderAppDirectory();
+
+         return (
+             <html>
+                 <body>
+                     {children}
+                 </body>
+             </html>
+         );
+     };
+
+     export default Layout;
+    ```
+
+***
+
+本作品採用[知識共享署名-非商業性使用-相同方式共享 4.0 國際許可協議](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)
+進行許可。不允許內容農場類網站、CSDN 用戶和微信公眾號轉載。

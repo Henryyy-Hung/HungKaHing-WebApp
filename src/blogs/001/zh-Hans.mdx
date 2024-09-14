@@ -1,6 +1,9 @@
 export const metadata = {
     title: "Next.js 中 CSS 模块 FOUC 问题的解决方案",
     description: "在 Next.js 中使用 CSS 模块时，可能会遇到一种称为 FOUC（Flash of Unstyled Content）的问题。这种问题会导致页面在加载时短暂地显示未经样式处理的内容，然后再应用样式这篇文章将介绍如何解决这个问题。",
+    publishDate: "2022-10-14",
+    lastEditDate: "2022-10-14",
+    tags: ["Next.js", "CSS", "FOUC"],
 };
 
 
@@ -27,19 +30,19 @@ export const metadata = {
 进而在首屏加载时，就把所有的css文件都加载进来，从根源上避免了FOUC问题。
 
 1. 安装globby库
-```bash
-npm i globby
-```
+    ```bash
+    npm i globby
+    ```
 
 2. 修改根目录下的`jsconfig.json`文件，确保 `src/../../` 是可以正确的指向项目根目录的 src 文件夹
-```json
-{
-    "compilerOptions": {
-        "baseUrl": "./",
-        "include": ["./"]
+    ```json
+    {
+        "compilerOptions": {
+            "baseUrl": "./",
+            "include": ["./"]
+        }
     }
-}
-```
+    ```
 
 3. 在root layout中插入这个`loadAllCssUnderAppDirectory()`方法。
 该方法使用了globby去获取所有`src/app/`下所有`.module.css`的路径，然后在root layout中进行import.
@@ -47,34 +50,34 @@ npm i globby
 \
 \
 之所以使用模版字符串，是因为next.js的webpack需要路径是静态的，并且至少前两段路径是静态的，不然就会报错。如果你的`.module.css`文件还分布在其他地方，如`src/components/`，你也可以自行添加一个`loadAllCssUnderComponentsDirectory()`方法。
-```javascript
-const loadAllCssUnderAppDirectory = async () => {
-    const pathPrefix = 'src/app/';
-    const pathSuffix = '.module.css';
-    // 获取所有的 CSS 模块路径
-    const paths = await globby(`${pathPrefix}**/*${pathSuffix}`);
-    // 动态加载所有的 CSS 模块
-    for (let path of paths) {
-        const truncatedPath = path.slice(pathPrefix.length, -pathSuffix.length);
-        (await import(`src/app/${truncatedPath}.module.css`)).default;
-    }
-};
+    ```javascript
+    const loadAllCssUnderAppDirectory = async () => {
+        const pathPrefix = 'src/app/';
+        const pathSuffix = '.module.css';
+        // 获取所有的 CSS 模块路径
+        const paths = await globby(`${pathPrefix}**/*${pathSuffix}`);
+        // 动态加载所有的 CSS 模块
+        for (let path of paths) {
+            const truncatedPath = path.slice(pathPrefix.length, -pathSuffix.length);
+            (await import(`src/app/${truncatedPath}.module.css`)).default;
+        }
+    };
 
-const Layout = async ({ children }) => {
+    const Layout = async ({ children }) => {
 
-    await loadAllCssUnderAppDirectory();
+        await loadAllCssUnderAppDirectory();
 
-    return (
-        <html>
-            <body>
-                {children}
-            </body>
-        </html>
-    );
-};
+        return (
+            <html>
+                <body>
+                    {children}
+                </body>
+            </html>
+        );
+    };
 
-export default Layout;
-```
+    export default Layout;
+    ```
 
 ***
 

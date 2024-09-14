@@ -94,3 +94,12 @@ h5 {
 h6 {
     font-size: 1rem;
 }
+
+/* styles/globals.css or styles/module.css */
+/* Assuming your nav bar height is 60px, adjust as needed */
+/*:target::before {*/
+/*    content: "";*/
+/*    display: block;*/
+/*    height: 3rem; !* Height of the nav bar *!*/
+/*    margin-top: -3rem; !* Negative margin equivalent to the height of the nav bar *!*/
+/*}*/

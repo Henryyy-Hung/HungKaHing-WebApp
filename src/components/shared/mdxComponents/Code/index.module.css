@@ -1,7 +1,8 @@
 
 .inlineCode {
     display: inline;
-    padding: 0.1rem 0.25rem;
+    font-family: Consolas, monospace !important;
+    padding: 0 0.25rem;
     margin: 0 0.25rem;
     border-radius: 0.25rem;
     background-color: rgba(255, 255, 255, 0.5);
@@ -73,10 +74,4 @@
     padding: 0 !important;
     border-radius: 0 !important;
     background-color: transparent !important;
-}
-
-.linenumber.react-syntax-highlighter-line-number {
-    padding: 0 1rem 0 0 !important;
-    border-radius: 0 !important;
-    min-width: 1rem !important;
 }

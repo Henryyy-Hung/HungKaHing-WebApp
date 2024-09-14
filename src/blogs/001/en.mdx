@@ -1,56 +1,76 @@
 export const metadata = {
-    title: "My first MDX blog post",
-    description: "This is a short description of my first MDX blog post.",
+    title: "Solution to CSS Module FOUC Issue in Next.js",
+    description: "When using CSS modules in Next.js, you might encounter an issue called FOUC (Flash of Unstyled Content). This issue causes the page to briefly display unstyled content before applying styles. This article will discuss how to solve this issue.",
+    publishDate: "2022-10-14",
+    lastEditDate: "2022-10-14",
+    tags: ["Next.js", "CSS", "FOUC"],
 };
 
-# HKU-COMP3329-ArtiHeart (人偶之心)
+# Solution to CSS Module FOUC Issue in Next.js
 
 ## Overview
-Arti-Heart is an educational 3D game developed for the COMP3329 course at the University of Hong Kong. Players take on the role of a wizard collecting emotions to imbue a crafted automaton with human-like qualities. The game features a home scene and four mini-games, each focused on different emotions.
 
-## Features
-- AI-driven dialogue
-- Unified UI
-- Rich gameplay mechanics
-- Exploration and puzzle-solving
-- Emotional narrative integration
+When using CSS modules in Next.js, you might encounter an issue called FOUC (Flash of Unstyled Content). This issue causes the page to briefly display unstyled content before applying styles. This article will discuss how to solve this issue.
 
+## Problem
 
-## Installation
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/your-github/arti-heart.git
+Until Next.js 14.2.6, when using the APP ROUTER, the prefetching of the `<Link>` component does not include CSS modules, prefetching only the HTML and JS content of the linked page. This causes the HTML content to be rendered into the DOM tree by the browser first when navigating with the `<Link>` component, and then it requests the CSS file from the server. During the request for the CSS, the page will display unstyled content, which is the FOUC issue. This problem was reported on Next.js' GitHub as early as 2018, but the official response was very dismissive, with at least three similar issues being closed without resolution. Disappointed by this, I attempted to solve this issue myself.
+
+## Solution
+
+After three days of trials, I finally found an optimal solution based on dynamic import().
+
+In general, we need to dynamically import all the CSS modules once in the `RootLayout` component. This ensures that all CSS modules are stored in the same CSS file. Consequently, when the initial screen loads, all CSS files are loaded in, effectively preventing the FOUC issue.
+
+1. Install the globby library:
+     ```bash
+     npm i globby
     ```
-2. Open the project in Unity (version 2022.3 LTS recommended).
-3. Build and run the project from the Unity editor.
 
-## Usage
-- Use `WASD` to navigate.
-- Use the mouse to control the camera.
-- Press `F` for fixed chat with NPCs.
-- Press `G` for free chat with NPCs.
-- Enter mini-games by interacting with clouds or specific objects.
+2. Modify the `jsconfig.json` file in the root directory to ensure `src/../../` correctly points to the `src` folder in the project root directory:
+     ```json
+     {
+         "compilerOptions": {
+             "baseUrl": "./",
+             "include": ["./"]
+         }
+     }
+    ```
 
-## Mini-Games
-1. **Joy**: Navigate a maze, collect keys, and solve a puzzle.
-2. **Fear**: Overcome obstacles in a desert parkour setting.
-3. **Anger**: Engage in strategic shooting challenges.
-4. **Sadness**: Match colors in a 3D puzzle setup.
+3. Insert the `loadAllCssUnderAppDirectory()` method into the root layout.
+This method uses globby to get all paths to `.module.css` files under `src/app/`, and then imports them in the root layout.
+This makes the root CSS file include all CSS from `src/app/`, fetching all CSS files upon the initial screen load and thereby avoiding the FOUC issue.
+Using template strings is necessary because Next.js' webpack requires paths to be static, with at least the first two segments being static, or it will throw an error. If you have `.module.css` files in other places such as `src/components/`, you can additionally create a `loadAllCssUnderComponentsDirectory()` method.
 
-## Built With
-- Unity 2022.3 LTS
-- C# for gameplay scripting
-- AI dialogues powered by ChatGPT
+     ```javascript
+     const loadAllCssUnderAppDirectory = async () => {
+         const pathPrefix = 'src/app/';
+         const pathSuffix = '.module.css';
+         // Get all CSS module paths
+         const paths = await globby(`${pathPrefix}**/*${pathSuffix}`);
+         // Dynamically load all CSS modules
+         for (let path of paths) {
+             const truncatedPath = path.slice(pathPrefix.length, -pathSuffix.length);
+             (await import(`src/app/${truncatedPath}.module.css`)).default;
+         }
+     };
 
-## Authors
-- [Lyu Tinghua](https://github.com/AryaLyu)
-- [Hung Ka Hing](https://github.com/henryyy-hung)
-- [Hu Yixin](https://github.com/chron1kle)
-- [Zhang Wenkai](https://github.com/wk-zhang)
-- [Zhao Feihan](https://github.com/christofyzhao)
+     const Layout = async ({ children }) => {
 
-## Acknowledgments
-- Inspiration from "It Takes Two" by Hazelight Studios
-- Maze Generation tutorial from [YouTube Tutorial](https://www.youtube.com/watch?v=_aeYq5BmDMg)
+         await loadAllCssUnderAppDirectory();
 
-This project aims to offer an engaging and educational experience, exploring emotions and human connections through interactive gameplay.
+         return (
+             <html>
+                 <body>
+                     {children}
+                 </body>
+             </html>
+         );
+     };
+
+     export default Layout;
+    ```
+
+***
+
+This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en). Content farm websites, CSDN users, and WeChat public accounts are not permitted to republish.
