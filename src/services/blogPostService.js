@@ -83,7 +83,9 @@ const BlogPostService = {
     },
 
     getTableOfContents: async ({postId, locale}) => {
+        // Get the content of the blog post
         const mdxContent = await BlogPostService.getText({postId, locale});
+        // Create a processor
         const processor = unified()
             .use(remarkParse)
             .use(remarkMdx)
@@ -107,12 +109,10 @@ const BlogPostService = {
                 });
             }
         });
-
         // Extract headings from the tree and create nested structure
         const nestHeadings = (headings) => {
             const nested = [];
             const stack = [{ items: nested }];
-
             headings.forEach((heading) => {
                 while (stack.length > heading.depth) {
                     stack.pop();
@@ -124,14 +124,9 @@ const BlogPostService = {
                 stack[stack.length - 1].items.push(item);
                 stack.push(item);
             });
-
             return nested;
         };
-        const nestedHeadings = nestHeadings(headings);
-
-        console.log(JSON.stringify(nestedHeadings, null, 2));
-
-        return nestedHeadings;
+        return nestHeadings(headings);
     }
 
 }

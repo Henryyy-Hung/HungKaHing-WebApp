@@ -24,7 +24,6 @@
     align-items: center;
     justify-content: flex-start;
     padding: 1.5rem;
-    backdrop-filter: blur(0.25rem);
 }
 
 .card > .left {

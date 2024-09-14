@@ -14,12 +14,11 @@ const TableOfContent = ({toc}) => {
             const element = document.getElementById(id);
             if (element) {
                 window.scrollTo({
-                    top: element.offsetTop + 48,
+                    top: element.offsetTop - 48,
                     behavior: 'smooth',
                 });
             }
         }
-
 
         return (
             <li className={styles.listItem}>

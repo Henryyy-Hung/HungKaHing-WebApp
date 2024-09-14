@@ -21,6 +21,8 @@ const BlogPage = async ({params: {locale, postId} }) => {
                     <BlogComponent />
                 </div>
                 <div className={styles.tocContainer}>
+                    <h4>目录</h4>
+                    <hr />
                     <TableOfContent toc={toc} />
                 </div>
             </div>
