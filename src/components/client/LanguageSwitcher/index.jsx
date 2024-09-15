@@ -5,6 +5,7 @@ import {supportedLocales, localeNames} from "@/i18n/configs";
 import {usePathname} from "@/i18n/routing";
 import { useLocale } from "next-intl";
 import {Link} from '@/i18n/routing'
+import IconEarth from "@/assets/vectors/IconEarth";
 
 const LanguageSwitcher = () => {
 
@@ -17,10 +18,11 @@ const LanguageSwitcher = () => {
 
     return (
         <div className={styles.container} tabIndex="0">
-            <button className={styles.button}>
-                {localeNames[currentLanguage]}
+            <div className={styles.selector}>
+                <IconEarth className={styles.icon} />
+                <span className={styles.label}>{localeNames[currentLanguage]}</span>
                 <span className={styles.arrow}></span>
-            </button>
+            </div>
             <div className={styles.overlay} tabIndex="1"></div>
             <div className={styles.dropdown}>
                 <ul className={styles.menu}>

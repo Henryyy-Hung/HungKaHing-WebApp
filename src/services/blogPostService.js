@@ -28,6 +28,20 @@ const BlogPostService = {
         return await globby(`${BlogPostService.pathPrefix}**/*${BlogPostService.pathSuffix}`);
     },
 
+    getAllPathsByPostId: async ({postId}) => {
+        return await globby(`${BlogPostService.pathPrefix}${postId}/*${BlogPostService.pathSuffix}`);
+    },
+
+    getSupportedLocalesByPostId: async ({postId}) => {
+        const paths = await BlogPostService.getAllPathsByPostId({postId});
+        const locales = [];
+        for (let path of paths) {
+            const {locale} = await BlogPostService.getIdAndLocaleByPath({path});
+            locales.push(locale);
+        }
+        return locales;
+    },
+
     getAllPathsByLocale: async ({locale}) => {
         return await globby(`${BlogPostService.pathPrefix}**/${locale}*${BlogPostService.pathSuffix}`);
     },
@@ -112,23 +126,25 @@ const BlogPostService = {
         // Extract headings from the tree and create nested structure
         const nestHeadings = (headings) => {
             const nested = [];
-            const stack = [{ items: nested }];
+            const stack = [{ items: nested, depth: 1 }];
+
             headings.forEach((heading) => {
-                while (stack.length > heading.depth) {
+                while (stack.length > 1 && stack[stack.length - 1].depth >= heading.depth) {
                     stack.pop();
                 }
-                const item = {
+                const currentLayer = stack[stack.length - 1].items;
+                const newItem = {
                     ...heading,
                     items: [],
                 };
-                stack[stack.length - 1].items.push(item);
-                stack.push(item);
+                currentLayer.push(newItem);
+                stack.push({ ...newItem, depth: heading.depth });
             });
+
             return nested;
         };
         return nestHeadings(headings);
     }
-
 }
 
 export default BlogPostService;
