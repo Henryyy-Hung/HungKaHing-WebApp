@@ -1,6 +1,10 @@
 import style from './page.module.css';
+import {unstable_setRequestLocale} from "next-intl/server";
 
-const ProjectsPage = () => {
+const ProjectsPage = ({ params: { locale } }) => {
+
+    unstable_setRequestLocale(locale);
+
     return (
         <div className={style.container}>
             <div className={style.card}>

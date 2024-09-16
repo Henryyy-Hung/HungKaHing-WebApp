@@ -2,7 +2,7 @@
 
 import styles from "./index.module.css";
 import {Link} from "@/i18n/routing"
-import LanguageSwitcher from "@/components/client/LanguageSwitcher";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import React from "react";
 import {useTranslations} from "next-intl";
 

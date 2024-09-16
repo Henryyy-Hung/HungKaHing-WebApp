@@ -12,10 +12,14 @@ const Footer = ({locale}) => {
 
     return (
         <div className={styles.container}>
-            <section className={styles.contact}>
+            <address className={styles.contact}>
                 <div>
                     <h5>{t('contacts.email.title')}</h5>
                     <Link href={`mailto:${t('contacts.email.value')}`}>{t('contacts.email.value')}</Link>
+                </div>
+                <div>
+                    <h5>Wechat</h5>
+                    <Link href={`https://u.wechat.com/IHdbwyYRKwK7PWF4b1ztqik?s=0')}`}>HenryyyHung</Link>
                 </div>
                 <div>
                     <h5>{t('contacts.location.title')}</h5>
@@ -27,7 +31,7 @@ const Footer = ({locale}) => {
                     &nbsp;|&nbsp;
                     <Link href={t('social.github.url')} target={"_blank"}>{t('social.github.title')}</Link>
                 </div>
-            </section>
+            </address>
             <section className={styles.copyright}>
                 <p>{t('copyRight')}</p>
             </section>

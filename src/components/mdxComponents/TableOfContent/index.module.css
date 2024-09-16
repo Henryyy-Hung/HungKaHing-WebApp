@@ -1,5 +1,6 @@
 .container {
     padding: 0;
+    min-height: 20rem;
 }
 
 .container > ul.list {
@@ -23,7 +24,6 @@ ul.list {
     line-height: 3rem;
     padding-left: 0.5rem;
     font-weight: 600;
-    font-size: 1.15rem;
     max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;

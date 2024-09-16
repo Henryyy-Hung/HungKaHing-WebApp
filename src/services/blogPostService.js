@@ -144,6 +144,22 @@ const BlogPostService = {
             return nested;
         };
         return nestHeadings(headings);
+    },
+
+    getReadingTime: async ({ postId, locale, wordsPerMinute = 200, charsPerMinute = 600 }) => {
+        const content = await BlogPostService.getText({ postId, locale });
+        if (!content) return null;
+
+        let readingTime;
+        const isChinese = /[\u4E00-\u9FFF]/.test(content); // 简单判断是否包含中文字符
+        if (isChinese) {
+            const charCount = content.length;
+            readingTime = Math.ceil(charCount / charsPerMinute);
+        } else {
+            const wordCount = content.split(/\s+/).length;
+            readingTime = Math.ceil(wordCount / wordsPerMinute);
+        }
+        return readingTime;
     }
 }
 

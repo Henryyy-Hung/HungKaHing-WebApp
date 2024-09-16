@@ -30,7 +30,13 @@ const LanguageSwitcher = () => {
                         supportedLocales.map((lang, index) => (
                             (localeNames[lang]) &&
                             <li key={index} className={`${styles.option} ${currentLanguage === lang ? styles.active : ''}`}>
-                                <Link href={pathname} locale={lang} scroll={false} onClick={(e) => onLanguageChange(e, lang)}>
+                                <Link
+                                    href={pathname}
+                                    locale={lang}
+                                    scroll={false}
+                                    prefetch={false}
+                                    onClick={(e) => onLanguageChange(e, lang)}
+                                >
                                     {localeNames[lang]}
                                 </Link>
                             </li>

@@ -1,7 +1,18 @@
 import style from './page.module.css';
 import Link from "next/link";
+import {unstable_setRequestLocale} from "next-intl/server";
 
-const ResumePage = () => {
+export const generateMetadata = async ({params: {locale}}) => {
+    return {
+        title: {
+            absolute: 'Resume',
+        },
+    };
+}
+
+const ResumePage = ({ params: { locale } }) => {
+
+    unstable_setRequestLocale(locale);
 
     const resume = {
         basicInfo: {
@@ -68,7 +79,6 @@ const ResumePage = () => {
                     "Provided weekly tutorials for the compulsory university course ENGG1330 Computer Programming I.",
                     "Prepared comprehensive teaching materials for the course, including knowledge summaries, sample codes, and algorithm strategies.",
                     "Engaged proactively with students, fostering critical thinking through active discussions and resolving queries to help students develop programming skills."
-
                 ]
             }
         ],

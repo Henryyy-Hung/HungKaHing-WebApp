@@ -1,0 +1,46 @@
+.container {
+    display: block;
+    margin: 1rem 0;
+}
+
+.container > .tags {
+    color: grey;
+}
+
+.container > .tags > .tag {
+    display: inline-block;
+    margin: 0 0.5rem 0 0;
+    padding: 0 0.5rem;
+    border-radius: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.info > .left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.info > .left > .avatar {
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25);
+}
+
+.info > .right {
+    display: block;
+}
+

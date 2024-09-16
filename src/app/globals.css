@@ -51,7 +51,7 @@ body {
 body {
     font-size: 16px;
     font-weight: 500;
-    line-height: 1.5;
+    line-height: 1.4;
     color: black;
     background: linear-gradient(to bottom right, #7DB0D2, #F2DEF4);
 }
@@ -72,27 +72,27 @@ html[lang^="zh"] h6 {
 }
 
 h1 {
-    font-size: 2.25rem;
-}
-
-h2 {
     font-size: 2rem;
 }
 
-h3 {
-    font-size: 1.75rem;
-}
-
-h4 {
+h2 {
     font-size: 1.5rem;
 }
 
-h5 {
+h3 {
     font-size: 1.25rem;
 }
 
-h6 {
+h4 {
     font-size: 1rem;
+}
+
+h5 {
+    font-size: 0.875rem;
+}
+
+h6 {
+    font-size: 0.85rem;
 }
 
 /* styles/globals.css or styles/module.css */

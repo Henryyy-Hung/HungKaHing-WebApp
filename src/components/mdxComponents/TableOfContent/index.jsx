@@ -4,8 +4,6 @@ import styles from './index.module.css'
 
 const TableOfContent = ({toc}) => {
 
-    console.log(JSON.stringify(toc, null, 2));
-
     const TocItem = ({ item }) => {
 
         const onHrefClicked = (e) => {

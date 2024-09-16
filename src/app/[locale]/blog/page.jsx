@@ -1,8 +1,11 @@
 import style from './page.module.css';
 import {Link} from "@/i18n/routing";
 import BlogPostService from "@/services/blogPostService";
+import {unstable_setRequestLocale} from "next-intl/server";
 
 const BlogsPage = async ({ params: { locale } }) => {
+
+    unstable_setRequestLocale(locale);
 
     const metadataList = await BlogPostService.getAllLocalizedMetadata({ locale });
 

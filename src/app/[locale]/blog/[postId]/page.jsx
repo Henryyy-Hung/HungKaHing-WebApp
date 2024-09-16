@@ -1,8 +1,11 @@
 import {notFound} from "next/navigation";
 import styles from "./page.module.css"
 import BlogPostService from "@/services/blogPostService";
-import TableOfContent from "@/components/shared/mdxComponents/TableOfContent";
+import TableOfContent from "@/components/mdxComponents/TableOfContent";
 import {Link} from "@/i18n/routing";
+import Breadcrumb from "src/components/Breadcrumb";
+import BlogHeader from "@/components/BlogHeader";
+import BlogFooter from "@/components/BlogFooter";
 
 const generateStaticParams = async ({ params: { locale } }) => {
     const posts = await BlogPostService.getAllLocalizedMetadata({ locale });
@@ -14,25 +17,39 @@ const BlogPage = async ({params: {locale, postId} }) => {
     const BlogComponent = await BlogPostService.getComponent({postId, locale});
 
     if (BlogComponent) {
-        const toc = await BlogPostService.getTableOfContents({locale, postId});
 
+        const toc = await BlogPostService.getTableOfContents({locale, postId});
         const metadata = await BlogPostService.getMetadata({postId, locale})
+        const readingTime = await BlogPostService.getReadingTime({postId, locale});
+
         return (
             <div className={styles.container}>
-                <div className={styles.blogContainer}>
+
+                <article className={styles.blogContainer}>
+
+                    <Breadcrumb />
+
+                    <BlogHeader
+                        title={metadata.title || 'Blog Post'}
+                        author={'Henry Hung'}
+                        tags={metadata.tags || []}
+                        publishDate={metadata.publishDate || String(new Date())}
+                        lastEditDate={metadata.lastEditDate || String(new Date())}
+                        readingTime={readingTime || 0}
+                    />
+
                     <BlogComponent />
-                    <hr />
-                    本作品采用
-                    <a href={"https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"}>
-                        知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议
-                    </a>
-                    进行许可。不允许内容农场类网站、CSDN 用户和微信公众号转载。
-                </div>
-                <div className={styles.tocContainer}>
-                    <h4>目录</h4>
+
+                    <BlogFooter />
+
+                </article>
+
+                <aside className={styles.tocContainer}>
+                    <h3>目录</h3>
                     <hr />
                     <TableOfContent toc={toc} />
-                </div>
+                </aside>
+
             </div>
         );
     }

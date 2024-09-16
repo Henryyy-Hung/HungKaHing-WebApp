@@ -5,7 +5,10 @@ table.container {
     min-width: 0;
     max-width: 100%;
     margin: 1rem 0;
-    --border: 1px solid var(--primary-color-500);
+    --border-color: rgba(0, 0, 0, 0.75);
+    --table-header-color: rgba(0, 0, 0, 0.25);
+    --table-row-color: rgba(0, 0, 0, 0);
+    --border: 1px solid var(--border-color);
     --border-radius: 0.5rem;
 }
 
@@ -25,13 +28,13 @@ table.container tr td:first-child {
 }
 
 table.container tr th {
-    background: var(--primary-color-200);
+    background: var(--table-header-color);
     border-top: var(--border);
     text-align: center;
 }
 
 table.container tr td {
-    background: var(--primary-color-50);
+    background: var(--table-row-color);
 }
 
 /* top-left border-radius */

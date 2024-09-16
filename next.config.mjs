@@ -21,6 +21,12 @@ const nextConfig = {
     pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
     // output: "export",
     // images: { unoptimized: true },
+    experimental: {
+        staleTimes: {
+            dynamic: 300,
+            static: 3600,
+        },
+    },
 };
 
 export default withNextIntl(withMDX(nextConfig));

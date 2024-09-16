@@ -1,6 +1,9 @@
 import style from './page.module.css';
+import {unstable_setRequestLocale} from "next-intl/server";
 
-const ContactPage = () => {
+const ContactPage = ({ params: { locale } }) => {
+
+    unstable_setRequestLocale(locale);
 
     return (
         <div className={style.container}>
