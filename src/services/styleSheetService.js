@@ -1,6 +1,7 @@
 import {globby} from "globby";
 
 const StyleSheetService = {
+
     loadAllCssUnderAppDirectory: async () => {
         const pathPrefix = 'src/app/';
         const pathSuffix = '.module.css';

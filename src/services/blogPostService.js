@@ -12,13 +12,13 @@ const BlogPostService = {
     pathPrefix: 'src/blogs/',
     pathSuffix: '.mdx',
 
-    validatePath: async ({postId, locale}) => {
+    isPostExist: async ({postId, locale}) => {
         const path = `${BlogPostService.pathPrefix}${postId}/${locale}${BlogPostService.pathSuffix}`;
         return (await globby(path)).length > 0;
     },
 
     getModule: async ({postId, locale}) => {
-        if (! (await BlogPostService.validatePath({postId, locale}))) {
+        if (! (await BlogPostService.isPostExist({postId, locale}))) {
             return null;
         }
         return await import(`src/blogs/${postId}/${locale}.mdx`);
@@ -68,7 +68,7 @@ const BlogPostService = {
     },
 
     getText: async ({postId, locale}) => {
-        if (! (await BlogPostService.validatePath({postId, locale}))) {
+        if (! (await BlogPostService.isPostExist({postId, locale}))) {
             return null;
         }
         return await fs.readFile(`${BlogPostService.pathPrefix}${postId}/${locale}${BlogPostService.pathSuffix}`, 'utf-8');

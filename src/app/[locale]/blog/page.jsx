@@ -3,7 +3,13 @@ import {Link} from "@/i18n/routing";
 import BlogPostService from "@/services/blogPostService";
 import {unstable_setRequestLocale} from "next-intl/server";
 
-const BlogsPage = async ({ params: { locale } }) => {
+export const generateMetadata = async ({params: {locale}}) => {
+    return {
+        title: 'Blog',
+    };
+}
+
+const BlogPage = async ({ params: { locale } }) => {
 
     unstable_setRequestLocale(locale);
 
@@ -23,4 +29,4 @@ const BlogsPage = async ({ params: { locale } }) => {
     );
 }
 
-export default BlogsPage;
+export default BlogPage;

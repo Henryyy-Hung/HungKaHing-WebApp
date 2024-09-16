@@ -1,6 +1,12 @@
 import style from './page.module.css';
 import {unstable_setRequestLocale} from "next-intl/server";
 
+export const generateMetadata = async ({params: {locale}}) => {
+    return {
+        title: 'Projects',
+    };
+}
+
 const ProjectsPage = ({ params: { locale } }) => {
 
     unstable_setRequestLocale(locale);

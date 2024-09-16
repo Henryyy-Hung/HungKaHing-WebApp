@@ -7,12 +7,18 @@ import Breadcrumb from "src/components/Breadcrumb";
 import BlogHeader from "@/components/BlogHeader";
 import BlogFooter from "@/components/BlogFooter";
 
+export const generateMetadata = async ({params: {locale}}) => {
+    return {
+        title: 'Blog Post',
+    };
+}
+
 const generateStaticParams = async ({ params: { locale } }) => {
     const posts = await BlogPostService.getAllLocalizedMetadata({ locale });
     return posts.map(post => ({postId: post.id})) || [];
 }
 
-const BlogPage = async ({params: {locale, postId} }) => {
+const BlogPostPage = async ({params: {locale, postId} }) => {
 
     const BlogComponent = await BlogPostService.getComponent({postId, locale});
 
@@ -24,11 +30,8 @@ const BlogPage = async ({params: {locale, postId} }) => {
 
         return (
             <div className={styles.container}>
-
                 <article className={styles.blogContainer}>
-
                     <Breadcrumb />
-
                     <BlogHeader
                         title={metadata.title || 'Blog Post'}
                         author={'Henry Hung'}
@@ -37,23 +40,26 @@ const BlogPage = async ({params: {locale, postId} }) => {
                         lastEditDate={metadata.lastEditDate || String(new Date())}
                         readingTime={readingTime || 0}
                     />
-
                     <BlogComponent />
-
                     <BlogFooter />
-
                 </article>
-
-                <aside className={styles.tocContainer}>
-                    <h3>目录</h3>
-                    <hr />
-                    <TableOfContent toc={toc} />
+                <aside className={styles.aside}>
+                    <div className={styles.toc}>
+                        <h3>目录</h3>
+                        <hr/>
+                        <TableOfContent toc={toc}/>
+                    </div>
+                    <div className={styles.relatedPosts}>
+                        <h3>相关文章</h3>
+                        <hr/>
+                        <Link href={`/blog`} locale={locale}>
+                            <h4>更多文章</h4>
+                        </Link>
+                    </div>
                 </aside>
-
             </div>
         );
-    }
-    else {
+    } else {
         const supportedLocales = await BlogPostService.getSupportedLocalesByPostId({postId});
         if (supportedLocales.length > 0) {
             return (
@@ -79,7 +85,7 @@ const BlogPage = async ({params: {locale, postId} }) => {
     }
 }
 
-export default BlogPage;
+export default BlogPostPage;
 
 export {generateStaticParams};
 

@@ -4,9 +4,7 @@ import {unstable_setRequestLocale} from "next-intl/server";
 
 export const generateMetadata = async ({params: {locale}}) => {
     return {
-        title: {
-            absolute: 'Resume',
-        },
+        title: 'Resume',
     };
 }
 

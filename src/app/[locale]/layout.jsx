@@ -17,18 +17,30 @@ const generateStaticParams = async () => {
 }
 
 const generateMetadata = async ({params: {locale}}) => {
+
     const t = await getTranslations({locale, namespace: 'common.metadata'});
+
     return {
         title: {
-            template: `%s | ${t('title')}`,
-            default: t('title'),
+            template: `%s | Henry Hung`,
+            default: 'Henry Hung',
         },
         description: "Henry's Personal Website",
         applicationName: 'Henry Hung',
         generator: 'Next.js',
         referrer: 'origin-when-cross-origin',
-        keywords: ['Hung Ka Hing', 'Henry Hung', 'Personal Website'],
-        authors: [{ name: 'Henry Hung', url: 'https://hungkahing.com' }],
+        keywords: [
+            'Hung Ka Hing',
+            'Henry Hung',
+            'Personal Website',
+            '洪嘉庆'
+        ],
+        authors: [
+            {
+                name: 'Henry Hung',
+                url: 'https://hungkahing.com'
+            }
+        ],
         creator: 'Henry Hung',
         publisher: 'Henry Hung',
         formatDetection: { email: false,  address: false, telephone: false, },
@@ -36,6 +48,28 @@ const generateMetadata = async ({params: {locale}}) => {
         alternates: {
             canonical: '/',
             languages: Object.fromEntries(supportedLocales.map(locale => [locale, `/${locale}`])),
+        },
+        icons: {
+            shortcut: ['/assets/favicon.ico'],
+            icon: [
+                {
+                    type: "image/png",
+                    sizes: "16x16",
+                    url: '/assets/favicon-16x16.png'
+                },
+                {
+                    type: "image/png",
+                    sizes: "32x32",
+                    url: '/assets/favicon-32x32.png'
+                },
+            ],
+            apple: [
+                {
+                    url: '/assets/apple-touch-icon.png',
+                    sizes: '180x180',
+                    type: 'image/png'
+                },
+            ],
         },
     };
 }
