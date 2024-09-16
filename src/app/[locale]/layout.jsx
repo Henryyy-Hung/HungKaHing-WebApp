@@ -16,17 +16,24 @@ const generateStaticParams = async () => {
     return supportedLocales.map(locale => ({locale}));
 }
 
+const generateViewport = async ({params: {locale}}) => {
+    return {
+        themeColor: '#ffffff',
+    }
+}
+
 const generateMetadata = async ({params: {locale}}) => {
 
     const t = await getTranslations({locale, namespace: 'common.metadata'});
 
     return {
+        applicationName: 'Henry Hung',
         title: {
             template: `%s | Henry Hung`,
             default: 'Henry Hung',
         },
         description: "Henry's Personal Website",
-        applicationName: 'Henry Hung',
+        category: 'technology',
         generator: 'Next.js',
         referrer: 'origin-when-cross-origin',
         keywords: [
@@ -70,6 +77,41 @@ const generateMetadata = async ({params: {locale}}) => {
                     type: 'image/png'
                 },
             ],
+            other: {
+                rel: 'apple-touch-icon-precomposed',
+                url: '/assets/apple-touch-icon.png',
+                sizes: '180x180',
+                type: 'image/png',
+            },
+        },
+        openGraph: {
+            title: 'Henry',
+            description: 'Henry\'s Personal Website (openGraph)',
+            type: 'website',
+            publishedTime: new Date().toISOString(),
+            authors: ['Henry Hung'],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: 'Next.js',
+            description: 'The React Framework for the Web',
+            siteId: '1467726470533754880',
+            creator: '@khhung',
+            creatorId: '1467726470533754880',
+            images: ['https://nextjs.org/og.png'], // Must be an absolute URL
+        },
+        robots: {
+            index: true,
+            follow: true,
+            nocache: false,
+            googleBot: {
+                index: true,
+                follow: true,
+                noimageindex: false,
+                'max-video-preview': -1,
+                'max-image-preview': 'large',
+                'max-snippet': -1,
+            },
         },
     };
 }
@@ -105,6 +147,7 @@ const Layout = async ({ children, params: {locale} }) => {
 };
 
 export {
+    generateViewport,
     generateMetadata,
     generateStaticParams,
 };

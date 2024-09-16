@@ -31,6 +31,6 @@ export const config = {
          * - _vercel (Vercel deployment files)
          * - .swa (Azure Static Web Apps)
          */
-        '/((?!api|_next/static|_next/image|favicon.ico|sw.js|assets|robots.txt|sitemap|manifest|_vercel|.swa).*)',
+        '/((?!api|_next/static|_next/image|favicon.ico|sw.js|assets|robots.txt|sitemap.xml|manifest.webmanifest|_vercel|.swa).*)',
     ]
 };
