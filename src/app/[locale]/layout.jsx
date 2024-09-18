@@ -5,16 +5,11 @@ import {NextIntlClientProvider} from 'next-intl';
 import {getMessages, getTranslations, unstable_setRequestLocale} from 'next-intl/server';
 import {getLangDir} from 'rtl-detect';
 import {supportedLocales} from "@/i18n/configs";
+import StyleSheetService from "@/services/styleSheetService";
 import TopNavigationBar from "src/components/TopNavigationBar";
 import Footer from "src/components/Footer";
-import {globby} from "globby";
-import StyleSheetService from "@/services/styleSheetService";
 
 const satoshiVariable = localFont({ src: '../../assets/fonts/Satoshi/Satoshi-Variable.woff2' });
-
-const generateStaticParams = async () => {
-    return supportedLocales.map(locale => ({locale}));
-}
 
 const generateViewport = async ({params: {locale}}) => {
     return {
@@ -93,8 +88,8 @@ const generateMetadata = async ({params: {locale}}) => {
         },
         twitter: {
             card: 'summary_large_image',
-            title: 'Next.js',
-            description: 'The React Framework for the Web',
+            title: 'Henry',
+            description: 'Henry\'s Personal Website (openGraph)',
             siteId: '1467726470533754880',
             creator: '@khhung',
             creatorId: '1467726470533754880',
@@ -116,20 +111,24 @@ const generateMetadata = async ({params: {locale}}) => {
     };
 }
 
+const generateStaticParams = async () => {
+    return supportedLocales.map(locale => ({locale}));
+}
+
 const Layout = async ({ children, params: {locale} }) => {
 
+    // 加载所有的 CSS 模块
+    await StyleSheetService.loadAllCss();
     // 确保在服务端渲染时，locale 与请求的 locale 一致
     unstable_setRequestLocale(locale);
     // 获取当前 locale 的翻译资源
     const messages = await getMessages();
     // 获取当前 locale 的文本方向
     const direction = getLangDir(locale);
-    // 加载所有的 CSS 模块
-    await StyleSheetService.loadAllCss();
 
     return (
         <html lang={locale} dir={direction}>
-            <body className={satoshiVariable.className}>
+            <body className={`${satoshiVariable.className} ${styles.container}`}>
                 <NextIntlClientProvider messages={messages}>
                     <header className={styles.header}>
                         <TopNavigationBar locale={locale}/>

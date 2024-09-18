@@ -1,5 +1,10 @@
 .container {
     height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
 }
 
 .card {
@@ -8,11 +13,11 @@
     align-items: flex-start;
     justify-content: stretch;
     padding: 3rem;
+    margin: 0;
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 1rem;
     box-shadow: 0.25rem 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.25);
     overflow: hidden;
-    margin: 4rem auto;
     width: 60rem;
     max-width: 80%;
 }

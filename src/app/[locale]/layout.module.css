@@ -1,27 +1,47 @@
+.container {
+    --height-header: 3rem;
+    --max-width-global: 80rem;
+    --v-padding-global: 3rem;
+    --h-padding-global: 3rem;
+    --box-shadow-card: 0.25rem 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.25);
+}
+
 .header {
+    position: sticky;
     display: flex;
     flex-direction: row;
-    justify-content: stretch;
+    justify-content: center;
     align-items: center;
-    position: sticky;
     width: 100%;
+    height: var(--height-header);
     top: 0;
     left: 0;
-    z-index: 1;
+    padding: 0 1.5rem;
+    box-shadow: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.25);
+    background-color: var(--primary-color-50);
+    z-index: 10;
 }
 
 .main {
     display: block;
-    min-height: calc(100vh - 3rem);
+    --min-height-main: calc(100vh - var(--height-header) - 2 * var(--v-padding-global));
+    min-height: var(--min-height-main);
+    height: auto;
+    width: 100%;
+    padding: var(--v-padding-global) max( calc(50% - var(--max-width-global) / 2 - var(--h-padding-global)), var(--h-padding-global));
+    background-color: var(--primary-color-200);
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.2) 1px, rgba(0, 0, 0, 0) 1px);
+    background-size: 20px 20px;
+}
+
+.main > * {
+    min-height: var(--min-height-main);
     height: auto;
     width: 100%;
 }
 
-.main > * {
-    min-height: calc(100vh - 3rem);
-    width: 100%;
-}
-
 .footer {
-
+    background-color: var(--primary-color-50);
+    width: 100%;
+    padding: var(--v-padding-global) max( calc(50% - var(--max-width-global) / 2 - var(--h-padding-global)), var(--h-padding-global));
 }

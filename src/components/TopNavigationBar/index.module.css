@@ -3,11 +3,9 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 3rem;
+    gap: 1.5rem;
     width: 100%;
-    padding: 0 1.5rem;
-    box-shadow: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.25);
-    background-color: rgba(255, 255, 255, 0.9);
+    min-height: 100%;
 }
 
 .container > .logo {
@@ -15,19 +13,40 @@
     flex-direction: row;
     align-items: center;
     text-decoration: none;
+    margin-right: auto;
 }
 
 .container > .logo > h1 {
     font-size: 1.5rem;
+    white-space: nowrap;
 }
 
 .nav {
     display: flex;
     flex-direction: row;
     align-items: center;
+    white-space: nowrap;
 }
 
 .nav > .link {
+    white-space: nowrap;
     text-decoration: none;
-    padding: 0;
+    padding: 0.25rem 1rem;
+    border-radius: 0.5rem;
+    color: var(--primary-color-700);
+    transition: all 0.1s ease-in-out;
+}
+
+.nav > .link:hover {
+    color: var(--primary-color-900);
+    background-color: var(--primary-color-300);
+}
+
+.nav > .link.active {
+    color: var(--primary-color-900);
+    background-color: var(--primary-color-300);
+}
+
+.nav > .link:not(:last-child) {
+    margin-right: 0.5rem;
 }

@@ -13,6 +13,7 @@
     --grey700: #616161;
     --grey800: #424242;
     --grey900: #212121;
+
     --primary-color-50: var(--grey50);
     --primary-color-100: var(--grey100);
     --primary-color-200: var(--grey200);
@@ -46,6 +47,7 @@ body {
     padding: 0;
     outline: none;
     border: none;
+    overflow-x: clip;
 }
 
 body {
@@ -94,12 +96,3 @@ h5 {
 h6 {
     font-size: 0.85rem;
 }
-
-/* styles/globals.css or styles/module.css */
-/* Assuming your nav bar height is 60px, adjust as needed */
-/*:target::before {*/
-/*    content: "";*/
-/*    display: block;*/
-/*    height: 3rem; !* Height of the nav bar *!*/
-/*    margin-top: -3rem; !* Negative margin equivalent to the height of the nav bar *!*/
-/*}*/

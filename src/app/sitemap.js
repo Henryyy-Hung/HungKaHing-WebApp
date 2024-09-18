@@ -6,7 +6,7 @@ export default function sitemap() {
     return [
         getEntry('/'),
         getEntry('/blogs'),
-        getEntry('/resume'),
+        getEntry('/about'),
         getEntry('/project')
     ];
 }

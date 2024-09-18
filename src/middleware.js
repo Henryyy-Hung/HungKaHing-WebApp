@@ -3,7 +3,7 @@ import {routing} from '@/i18n/routing';
 
 const handleI18nRouting = createMiddleware(routing);
 
-export const middleware = (request) => {
+export const middleware = async (request) => {
     const url = new URL(request.url);
     const origin = url.origin;
     const pathname = url.pathname;
@@ -12,6 +12,8 @@ export const middleware = (request) => {
     requestHeaders.set('x-origin', origin);
     requestHeaders.set('x-pathname', pathname);
     const response = handleI18nRouting(request);
+    // pause for 1s to simulate a slow network
+    // await new Promise(resolve => setTimeout(resolve, 3000));
     return response;
 }
 

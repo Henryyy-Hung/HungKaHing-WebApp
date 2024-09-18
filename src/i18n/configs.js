@@ -1,6 +1,7 @@
 const cookieName = "i18n";
 
 const supportedLocales  = [
+    'en',
     'zh-Hans',
     'zh-Hant',
     // 'zh',
@@ -10,7 +11,6 @@ const supportedLocales  = [
     // 'zh-TW',
     // 'zh-HK',
     // 'zh-MO',
-    'en',
 ]
 
 const fallbackLocale = supportedLocales[0];

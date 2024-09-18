@@ -1,5 +1,7 @@
 import style from './page.module.css';
 import {unstable_setRequestLocale} from "next-intl/server";
+import PageTitleCard from "@/components/PageTitleCard";
+import terminal from "@/assets/images/terminal.png";
 
 export const generateMetadata = async ({params: {locale}}) => {
     return {
@@ -13,9 +15,12 @@ const ProjectsPage = ({ params: { locale } }) => {
 
     return (
         <div className={style.container}>
-            <div className={style.card}>
-                <h5>Project Page in progress</h5>
-            </div>
+            <PageTitleCard
+                locale={locale}
+                image={terminal}
+                title={'Projects'}
+                description={'Some of my memorable projects.'}
+            />
         </div>
     );
 }

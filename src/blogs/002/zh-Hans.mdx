@@ -10,7 +10,8 @@ export const metadata = {
 
 在 Markdown 中，我们可以使用代码块（block code）和行内代码（inline code）来展示代码。
 然而，MDX 官方并没有提供直接的方法来区分这两种代码，一旦我们尝试将所有`<code>`渲染为代码块，就可能会出现一些问题。
-编译器会指出，不应该在`<p>`标签内包含块级标签，这是因为 MDX 不像 React-Markdown 一样对 `<code>` 提供 inline 参数，所以如果我们通过该参数来区分代码块和行内代码，行内代码就会被渲染为代码块。
+编译器会指出，不应该在`<p>`标签内包含块级标签，这是因为 MDX 不像 React-Markdown 一样对 `<code>` 提供 inline 参数，
+所以如果我们通过该参数来区分代码块和行内代码，行内代码就会被渲染为代码块。
 在查阅了 github 相关的 issue 后，我发现目前并没有一个完美的解决方案，因此我决定自己动手解决这个问题。
 
 ## 解决方案
@@ -63,7 +64,7 @@ export const metadata = {
                     </div>
                 </div>
                 <SyntaxHighlighter
-                    style={coldarkDark}
+                    styles={coldarkDark}
                     language={match ? match[1] : null}
                     showLineNumbers={false}
                     wrapLines={false}

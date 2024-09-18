@@ -4,7 +4,9 @@ import IconTubeSpinner from "@/assets/vectors/IconTubeSpinner";
 const Loading = () => {
     return (
         <div className={styles.container}>
-            <IconTubeSpinner />
+            <div className={styles.card}>
+                <IconTubeSpinner />
+            </div>
         </div>
     );
 }

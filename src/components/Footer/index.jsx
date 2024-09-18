@@ -1,12 +1,9 @@
 import styles from "./index.module.css";
 import Link from "next/link";
 import React from "react";
-import {unstable_setRequestLocale} from "next-intl/server";
 import {useTranslations} from "next-intl";
 
 const Footer = ({locale}) => {
-
-    unstable_setRequestLocale(locale);
 
     const t = useTranslations('common.footer');
 
@@ -14,26 +11,41 @@ const Footer = ({locale}) => {
         <div className={styles.container}>
             <address className={styles.contact}>
                 <div>
-                    <h5>{t('contacts.email.title')}</h5>
-                    <Link href={`mailto:${t('contacts.email.value')}`}>{t('contacts.email.value')}</Link>
+                    <h3>{"Email"}</h3>
+                    <Link href={`mailto:${"henry.k.h.hung@gmail.com"}`}>
+                        {"henry.k.h.hung@gmail.com"}
+                    </Link>
                 </div>
                 <div>
-                    <h5>Wechat</h5>
-                    <Link href={`https://u.wechat.com/IHdbwyYRKwK7PWF4b1ztqik?s=0')}`}>HenryyyHung</Link>
+                    <h3>{"Location"}</h3>
+                    <span>
+                        {"Hong Kong / Shanghai"}
+                    </span>
                 </div>
                 <div>
-                    <h5>{t('contacts.location.title')}</h5>
-                    <span>{t('contacts.location.value')}</span>
-                </div>
-                <div>
-                    <h5>{t('social.title')}</h5>
-                    <Link href={t('social.linkedin.url')} target={"_blank"}>{t('social.linkedin.title')}</Link>
+                    <h3>{"Social"}</h3>
+                    <Link href={"https://linkedin.com/in/hungkahing"} target={"_blank"}>
+                        {"LinkedIn"}
+                    </Link>
                     &nbsp;|&nbsp;
-                    <Link href={t('social.github.url')} target={"_blank"}>{t('social.github.title')}</Link>
+                    <Link href={"https://github.com/Henryyy-Hung"} target={"_blank"}>
+                        {"GitHub"}
+                    </Link>
                 </div>
             </address>
+
+            <div className={styles.links}>
+                <Link href={'/sitemap.xml'}>Sitemap</Link>
+                •
+                <Link href={'/copyright'}>Copyright</Link>
+                •
+                <Link href={'/disclaimer'}>Disclaimer</Link>
+            </div>
+
             <section className={styles.copyright}>
-                <p>{t('copyRight')}</p>
+                <p>
+                    {"Copyright © 2024 Hung Ka Hing. All Rights Reserved."}
+                </p>
             </section>
         </div>
     )

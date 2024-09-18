@@ -1,11 +1,12 @@
 {
   "metadata": {
-    "title": "Henry's Space"
+    "title": "Hung Ka Hing"
   },
   "header": {
     "title": "Henry's Space",
     "nav": {
       "home": "Home",
+      "about": "About",
       "resume": "Resume",
       "projects": "Projects",
       "blog": "Blog",

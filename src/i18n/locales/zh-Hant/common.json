@@ -6,6 +6,7 @@
     "title": "嘉慶的個人網站",
     "nav": {
       "home": "主頁",
+      "about": "關於",
       "resume": "簡曆",
       "projects": "項目",
       "blog": "博客",
@@ -19,7 +20,7 @@
         "value": "henry.k.h.hung@gmail.com"
       },
       "location": {
-        "title": "地址",
+        "title": "常住地",
         "value": "香港 / 上海"
       }
     },

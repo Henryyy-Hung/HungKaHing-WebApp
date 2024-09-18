@@ -5,10 +5,17 @@ import {Link} from "@/i18n/routing"
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import React from "react";
 import {useTranslations} from "next-intl";
+import {usePathname} from "@/i18n/routing";
 
 const TopNavigationBar = ({ locale }) => {
 
     const t = useTranslations('common');
+
+
+    const pathname = usePathname();
+
+    console.log(pathname)
+
 
     const navItems = [
         {
@@ -16,8 +23,8 @@ const TopNavigationBar = ({ locale }) => {
             url: "/"
         },
         {
-            id: "resume",
-            url: "/resume"
+            id: "about",
+            url: "/about"
         },
         {
             id: "projects",
@@ -46,25 +53,28 @@ const TopNavigationBar = ({ locale }) => {
     return (
         <div className={styles.container}>
 
-            <Link className={styles.logo} href={`/`} locale={locale} onClick={onLinkClick}>
+            <Link className={styles.logo} href={`/`} locale={locale} onClick={onLinkClick} prefetch={false}>
                 <h1>{t('header.title')}</h1>
             </Link>
 
             <nav className={styles.nav}>
                 {
                     navItems.map((item, index) => (
-                        <React.Fragment key={index}>
-                            <Link className={styles.link} href={item.url} locale={locale} onClick={onLinkClick}>
-                                {item.title}
-                            </Link>
-                            {
-                                index < navItems.length && <>&nbsp;&nbsp;|&nbsp;&nbsp;</>
-                            }
-                        </React.Fragment>
+                        <Link
+                            key={index}
+                            className={`${styles.link} ${pathname.split('/')[1] === item.url.split('/')[1] ? styles.active : ''}`}
+                            href={item.url}
+                            locale={locale}
+                            onClick={onLinkClick}
+                            prefetch={false}
+                        >
+                            {item.title}
+                        </Link>
                     ))
                 }
-                <LanguageSwitcher currentLanguage={locale}/>
             </nav>
+
+            <LanguageSwitcher currentLanguage={locale}/>
         </div>
     )
 }
