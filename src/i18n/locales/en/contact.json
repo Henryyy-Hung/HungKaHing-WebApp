@@ -1,0 +1,30 @@
+{
+  "title": "Contact",
+  "description": "You can reach me at any time.",
+  "fields": {
+    "email": {
+      "label": "Email",
+      "value": "henry.k.h.hung@gmail.com"
+    },
+    "tel": {
+      "label": "Phone",
+      "value": "+852 6598 XXXX"
+    },
+    "location": {
+      "label": "Location",
+      "value": "Hong Kong / Shanghai, China"
+    },
+    "wechat": {
+      "label": "WeChat",
+      "value": "HenryyyHung"
+    },
+    "linkedin": {
+      "label": "LinkedIn",
+      "value": "https://linkedin.com/in/hungkahing"
+    },
+    "github": {
+      "label": "GitHub",
+      "value": "https://github.com/Henryyy-Hung"
+    }
+  }
+}

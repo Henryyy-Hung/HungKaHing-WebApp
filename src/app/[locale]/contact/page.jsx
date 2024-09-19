@@ -10,6 +10,7 @@ import IconMapPin from "@/assets/vectors/IconMapPin";
 import IconWeChat from "@/assets/vectors/IconWeChat";
 import IconLinkedIn from "@/assets/vectors/IconLinkedIn";
 import IconGithub from "@/assets/vectors/IconGithub";
+import {useTranslations} from "next-intl";
 
 export const generateMetadata = async ({params: {locale}}) => {
     return {
@@ -21,64 +22,66 @@ const ContactPage = ({ params: { locale } }) => {
 
     unstable_setRequestLocale(locale);
 
-    const contactList = [
+    const t = useTranslations('contact');
+
+    let contactList = [
         {
             id: 'email',
-            value: 'henry.k.h.hung@gmail.com',
             icon: IconGmail,
-            props: {
-                href: `mailto:henry.k.h.hung@gmail.com`,
-            }
         },
         {
             id: 'tel',
-            value: '+852 6598 XXXX',
             icon: IconTelephone,
-            props: {
-                href: 'tel:+8526598XXXX',
-            }
         },
         {
             id: 'location',
-            value: 'Hong Kong / Shanghai, China',
             icon: IconMapPin,
-            props: {
-            }
         },
         {
             id: 'wechat',
-            value: 'HenryyyHung',
             icon: IconWeChat,
-            props: {
-            }
         },
         {
             id: 'linkedin',
-            value: 'https://linkedin.com/in/hungkahing',
             icon: IconLinkedIn,
-            props: {
-                href: 'https://linkedin.com/in/hungkahing',
-                target: '_blank'
-            }
         },
         {
             id: 'github',
-            value: 'https://github.com/Henryyy-Hung',
             icon: IconGithub,
-            props: {
-                href: 'https://github.com/Henryyy-Hung',
+        }
+    ]
+
+    contactList.forEach((contact) => {
+        contact.label = t(`fields.${contact.id}.label`);
+        contact.value = t(`fields.${contact.id}.value`);
+        let props = contact.props || {};
+        // if start with 'http', then it's a link
+        if (/^http/.test(contact.value)) {
+            props = {
+                href: contact.value,
                 target: '_blank'
             }
         }
-    ]
+        else if (/@/.test(contact.value)) {
+            props = {
+                href: `mailto:${contact.value}`
+            }
+        }
+        else if (/\+/.test(contact.value)) {
+            props = {
+                href: `tel:${contact.value}`
+            }
+        }
+        contact.props = props;
+    });
 
     return (
         <div className={styles.container}>
             <PageTitleCard
                 locale={locale}
                 image={starryNight}
-                title={'Contact'}
-                description={'You can reach me at any time.'}
+                title={t('title')}
+                description={t('description')}
             />
             <CardGallery>
                 {
@@ -95,7 +98,7 @@ const ContactPage = ({ params: { locale } }) => {
                             >
                                 <Icon className={styles.icon} key={index}/>
                                 <div className={styles.content} key={index}>
-                                    <h2 className={styles.title}>{contact.id}</h2>
+                                    <h2 className={styles.title}>{contact.label}</h2>
                                     <p>{contact.value}</p>
                                 </div>
                             </NavCard>

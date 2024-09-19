@@ -40,7 +40,8 @@ const localeNames = {
 
 const namespaces = [
     'common',
-    'home'
+    'home',
+    'contact'
 ];
 
 const fallbackNamespace = namespaces[0];

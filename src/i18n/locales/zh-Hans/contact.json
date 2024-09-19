@@ -1,0 +1,30 @@
+{
+  "title": "联系",
+  "description": "欢迎随时与我联系。",
+  "fields": {
+    "email": {
+      "label": "电子邮件",
+      "value": "henry.k.h.hung@outlook.com"
+    },
+    "tel": {
+      "label": "电话",
+      "value": "+86 136 5008 XXXX"
+    },
+    "location": {
+      "label": "所在地",
+      "value": "香港 / 上海，中国"
+    },
+    "wechat": {
+      "label": "微信",
+      "value": "HungKaHing"
+    },
+    "linkedin": {
+      "label": "领英",
+      "value": "https://linkedin.com/in/hungkahing"
+    },
+    "github": {
+      "label": "GitHub",
+      "value": "https://github.com/Henryyy-Hung"
+    }
+  }
+}
