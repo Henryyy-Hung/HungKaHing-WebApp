@@ -22,6 +22,7 @@ const AboutPage = ({ params: { locale } }) => {
                 title={'About'}
                 description={'My resume and experiences.'}
             />
+            <h1>In Progress......</h1>
         </div>
     );
 }

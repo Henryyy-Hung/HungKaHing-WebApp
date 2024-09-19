@@ -5,8 +5,8 @@ const SVGComponent = (props) => (
         viewBox="0 0 200 200"
         xmlnsXlink="http://www.w3.org/1999/xlink"
         transform="matrix(-1,0,0,1,0,0)"
-        width={120}
-        height={120}
+        width={32}
+        height={32}
         {...props}
     >
         <radialGradient

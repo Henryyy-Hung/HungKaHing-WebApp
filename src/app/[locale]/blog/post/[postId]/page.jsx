@@ -6,6 +6,7 @@ import {Link} from "@/i18n/routing";
 import Breadcrumb from "@/components/Breadcrumb";
 import BlogHeader from "@/components/BlogHeader";
 import BlogFooter from "@/components/BlogFooter";
+import {unstable_setRequestLocale} from "next-intl/server";
 
 export const generateMetadata = async ({params: {locale}}) => {
     return {
@@ -19,6 +20,8 @@ const generateStaticParams = async ({ params: { locale } }) => {
 }
 
 const BlogPostPage = async ({params: {locale, postId} }) => {
+
+    unstable_setRequestLocale(locale);
 
     const BlogComponent = await BlogPostService.getComponent({postId, locale});
 

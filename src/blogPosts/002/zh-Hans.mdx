@@ -1,0 +1,97 @@
+export const metadata = {
+    title: "MDX 区分 inline 和 block code 的方法",
+    description: "这篇文章讲述了如何在 MDX 中区分行内代码和代码块，进行不同的渲染。",
+    publishDate: "2022-10-14",
+    lastEditDate: "2022-10-14",
+    tags: ["MDX", "Markdown", "Next.js"],
+};
+
+## 概述
+
+在 Markdown 中，我们可以使用代码块（block code）和行内代码（inline code）来展示代码。
+然而，MDX 官方并没有提供直接的方法来区分这两种代码，一旦我们尝试将所有`<code>`渲染为代码块，就可能会出现一些问题。
+编译器会指出，不应该在`<p>`标签内包含块级标签，这是因为 MDX 不像 React-Markdown 一样对 `<code>` 提供 inline 参数，
+所以如果我们通过该参数来区分代码块和行内代码，行内代码就会被渲染为代码块。
+在查阅了 github 相关的 issue 后，我发现目前并没有一个完美的解决方案，因此我决定自己动手解决这个问题。
+
+## 解决方案
+
+我设计出了一个相对完美的解决方案，通过使用自定义元素覆盖 MDX 的 `<pre>` 标签，作为一个中间层，从而向 `<pre>` 标签下的 `<code>` 传递一个额外的属性，以区分行内代码和代码块。
+
+1. 首先，我们需要创建一个自定义组件 `<Pre>`，并对其所有子元素插入额外的 props `isBlock`。
+
+    ```jsx
+    import React from "react";
+
+    const Pre = ({children}) => {
+        return (
+            <pre>
+                {React.Children.map(children, child => {
+                    if (React.isValidElement(child)) {
+                        return React.cloneElement(child, {isBlock: true});
+                    }
+                    return child;
+                })}
+            </pre>
+        )
+    }
+
+    export default Pre;
+    ```
+
+2. 然后，我们定义一个可以接收 `isBlock` 属性的自定义 `<Code>` 组件。
+
+    ```jsx
+    import styles from './index.module.css'
+    import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+    import { coldarkDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
+    const Code = ({ className, children, isBlock=false, ...props }) => {
+
+        if (! isBlock)
+            return <code {...props} className={styles.inlineCode}>{children}</code>
+
+        const match = /language-(\w+)/.exec(className || '');
+
+        return (
+            <div className={styles.blockCode} aria-hidden={false}>
+                <div className={styles.header}>
+                    <span className={styles.language}>
+                        {match ? match[1] : "code"}
+                    </span>
+                    <div className={styles.copyButton}>
+                        Copy Code
+                    </div>
+                </div>
+                <SyntaxHighlighter
+                    styles={coldarkDark}
+                    language={match ? match[1] : null}
+                    showLineNumbers={false}
+                    wrapLines={false}
+                    {...props}
+                >
+                    {String(children).replace(/\n$/, '')}
+                </SyntaxHighlighter>
+            </div>
+        )
+    };
+
+    export default Code;
+    ```
+
+3. 最后，我们在 MDX 文件中使用这两个组件。
+
+    ```jsx
+    import Article from '@/markdown/article.mdx'
+    import Pre from '@/components/Pre'
+    import Code from '@/components/Code'
+
+    const overrideComponents = {
+        pre: Pre,
+        code: Code,
+    }
+
+    export default function Page() {
+      return <Article components={overrideComponents} />
+    }
+    ```

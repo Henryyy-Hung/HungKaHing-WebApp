@@ -15,8 +15,6 @@ const PageTitleCard = ({locale, image, title, description}) => {
                 src={image}
                 alt="page title"
                 placeholder={"blur"}
-                layout={"fill"}
-                objectFit={"cover"}
                 onLoad={(e) => {
                     e.target.classList.add(styles.onload);
                 }}

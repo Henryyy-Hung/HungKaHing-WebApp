@@ -11,11 +11,7 @@ const TopNavigationBar = ({ locale }) => {
 
     const t = useTranslations('common');
 
-
     const pathname = usePathname();
-
-    console.log(pathname)
-
 
     const navItems = [
         {
@@ -66,7 +62,7 @@ const TopNavigationBar = ({ locale }) => {
                             href={item.url}
                             locale={locale}
                             onClick={onLinkClick}
-                            prefetch={false}
+                            prefetch={true}
                         >
                             {item.title}
                         </Link>

@@ -9,7 +9,7 @@ import {visit} from "unist-util-visit";
 
 const BlogPostService = {
 
-    pathPrefix: 'src/blogs/',
+    pathPrefix: 'src/blogPosts/',
     pathSuffix: '.mdx',
 
     isPostExist: async ({postId, locale}) => {
@@ -21,7 +21,7 @@ const BlogPostService = {
         if (! (await BlogPostService.isPostExist({postId, locale}))) {
             return null;
         }
-        return await import(`src/blogs/${postId}/${locale}.mdx`);
+        return await import(`src/blogPosts/${postId}/${locale}.mdx`);
     },
 
     getAllPaths : async () => {

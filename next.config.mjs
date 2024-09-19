@@ -19,14 +19,23 @@ const withMDX = createMDX({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
-    // output: "export",
-    // images: { unoptimized: true },
     experimental: {
         staleTimes: {
             dynamic: 300,
             static: 3600,
         },
     },
+    // output: "export",
+    // images: { unoptimized: true },
+    // redirects: async () => {
+    //     return [
+    //         {
+    //             source: '/',
+    //             destination: '/en',
+    //             permanent: true,
+    //         },
+    //     ]
+    // },
 };
 
 export default withNextIntl(withMDX(nextConfig));

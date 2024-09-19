@@ -21,6 +21,7 @@ const ProjectsPage = ({ params: { locale } }) => {
                 title={'Projects'}
                 description={'Some of my memorable projects.'}
             />
+            <h1>In Progress......</h1>
         </div>
     );
 }

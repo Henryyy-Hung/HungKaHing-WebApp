@@ -5,7 +5,7 @@ const Loading = () => {
     return (
         <div className={styles.container}>
             <div className={styles.card}>
-                <IconTubeSpinner />
+                <IconTubeSpinner className={styles.spinner}/>
             </div>
         </div>
     );

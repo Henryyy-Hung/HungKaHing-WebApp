@@ -49,7 +49,7 @@ const BlogPage = async ({ params: { locale } }) => {
                             locale={locale}
                             prefetch={true}
                         >
-                                <span>{category}</span>
+                                <h2>{category}</h2>
                         </NavCard>
                     ))
                 }
@@ -62,6 +62,7 @@ const BlogPage = async ({ params: { locale } }) => {
                     metadataList.map((metadata, index) => (
                         <NavCard
                             href={`/blog/post/${metadata.id}`}
+                            className={styles.card}
                             key={index}
                             locale={locale}
                             prefetch={true}
