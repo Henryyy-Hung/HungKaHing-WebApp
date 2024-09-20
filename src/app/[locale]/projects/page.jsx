@@ -1,7 +1,7 @@
 import style from './page.module.css';
 import {unstable_setRequestLocale} from "next-intl/server";
 import PageTitleCard from "@/components/PageTitleCard";
-import terminal from "@/assets/images/terminal.png";
+import terminal from "@/assets/images/background/terminal.png";
 
 export const generateMetadata = async ({params: {locale}}) => {
     return {

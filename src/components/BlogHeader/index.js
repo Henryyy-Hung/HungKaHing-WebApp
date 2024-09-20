@@ -1,5 +1,5 @@
 import styles from './index.module.css';
-import avatar from '@/assets/images/avatar.jpg'
+import avatar from '@/assets/images/avatar/cat.jpg'
 import Image from 'next/image'
 
 const BlogHeader = ({title, author, tags, publishDate, lastEditDate, readingTime}) => {

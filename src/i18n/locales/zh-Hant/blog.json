@@ -1,0 +1,18 @@
+{
+  "title": "部落格",
+  "description": "我的一些想法和經歷。",
+
+  "sections": {
+    "categories": "分類",
+    "recent": "最近的文章"
+  },
+
+  "categories": {
+    "frontend": "前端",
+    "backend": "後端",
+    "ai": "人工智能",
+    "productivity": "生產力",
+    "life": "生活",
+    "all": "全部"
+  }
+}

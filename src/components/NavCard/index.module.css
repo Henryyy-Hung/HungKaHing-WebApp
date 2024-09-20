@@ -2,7 +2,7 @@
     display: block;
     width: 100%;
     border-radius: 1rem;
-    padding: 1rem;
+    padding: 1.5rem;
     text-decoration: none;
     box-shadow: var(--box-shadow-card);
     background-color: var(--primary-color-50);

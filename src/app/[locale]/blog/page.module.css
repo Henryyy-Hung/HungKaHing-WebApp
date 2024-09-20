@@ -8,6 +8,30 @@
     padding-bottom: 3rem;
 }
 
+.container .category {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2rem;
+}
+
+.container .category > .icon {
+    margin-left: auto;
+}
+
+.container .category > .icon > path {
+    fill: var(--primary-color-500);
+}
+
+.container .category:hover > .icon > path {
+    fill: var(--primary-color-700);
+}
+
+.container .category:active > .icon > path {
+    fill: var(--primary-color-900);
+}
+
 .container .card {
     display: flex;
     flex-direction: column;

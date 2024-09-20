@@ -1,14 +1,7 @@
+import BlogCategory from "@/constants/blogCategory";
+
 const generateStaticParams = async ({ params: { locale } }) => {
-
-    const categories = [
-        'frontend',
-        'backend',
-        'ai',
-        'productivity',
-        'life',
-        'all'
-    ]
-
+    const categories = Object.values(BlogCategory);
     return categories.map(categoryId => ({categoryId}));
 }
 

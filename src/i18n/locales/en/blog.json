@@ -1,0 +1,19 @@
+{
+  "title": "Blog",
+  "description": "Some of my thoughts and experiences.",
+
+  "sections": {
+    "categories": "Categories",
+    "recent": "Recent Posts"
+  },
+
+  "categories": {
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "ai": "AI",
+    "productivity": "Productivity",
+    "life": "Life",
+    "all": "All"
+  }
+
+}

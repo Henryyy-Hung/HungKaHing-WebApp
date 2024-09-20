@@ -32,6 +32,10 @@ const BlogPostService = {
         return await globby(`${BlogPostService.pathPrefix}${postId}/*${BlogPostService.pathSuffix}`);
     },
 
+    getAllPathsByLocale: async ({locale}) => {
+        return await globby(`${BlogPostService.pathPrefix}**/${locale}${BlogPostService.pathSuffix}`);
+    },
+
     getSupportedLocalesByPostId: async ({postId}) => {
         const paths = await BlogPostService.getAllPathsByPostId({postId});
         const locales = [];
@@ -40,10 +44,6 @@ const BlogPostService = {
             locales.push(locale);
         }
         return locales;
-    },
-
-    getAllPathsByLocale: async ({locale}) => {
-        return await globby(`${BlogPostService.pathPrefix}**/${locale}*${BlogPostService.pathSuffix}`);
     },
 
     getIdAndLocaleByPath: async ({path}) => {

@@ -1,6 +1,6 @@
 import styles from "./page.module.css";
 import Image from "next/image";
-import henry from "@/assets/images/henry.jpeg";
+import henry from "@/assets/images/avatar/henry.jpeg";
 import {Link} from '@/i18n/routing';
 import {unstable_setRequestLocale} from "next-intl/server";
 

@@ -41,6 +41,7 @@ const localeNames = {
 const namespaces = [
     'common',
     'home',
+    'blog',
     'contact'
 ];
 

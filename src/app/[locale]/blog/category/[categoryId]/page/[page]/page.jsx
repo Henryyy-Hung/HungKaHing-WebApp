@@ -10,6 +10,11 @@ const BlogCategoryPage = ({params: {locale, categoryId, page} }) => {
 
     return (
         <div>
+            <div>
+                《 Blog
+            </div>
+
+
             <h1>{`${categoryId} ${page}`}</h1>
         </div>
     );
