@@ -1,15 +1,16 @@
 .container {
-    display: block;
     width: 100%;
     border-radius: 1rem;
     padding: 1.5rem;
     text-decoration: none;
     box-shadow: var(--box-shadow-card);
     background-color: var(--primary-color-50);
+    transition: all 0.1s ease-out;
 }
 
 .container:hover {
     background-color: var(--primary-color-100);
+    transform-origin: center;
 }
 
 .container:active {

@@ -6,6 +6,7 @@ import remarkMdx from "remark-mdx";
 import remarkRehype from "remark-rehype";
 import rehypeSlug from "rehype-slug";
 import {visit} from "unist-util-visit";
+import readingTimeUtil from "@/utils/readingTimeUtil";
 
 const BlogPostService = {
 
@@ -25,7 +26,7 @@ const BlogPostService = {
     },
 
     getAllPaths : async () => {
-        return await globby(`${BlogPostService.pathPrefix}**/*${BlogPostService.pathSuffix}`);
+        return await globby(`${BlogPostService.pathPrefix}*/*${BlogPostService.pathSuffix}`);
     },
 
     getAllPathsByPostId: async ({postId}) => {
@@ -33,7 +34,7 @@ const BlogPostService = {
     },
 
     getAllPathsByLocale: async ({locale}) => {
-        return await globby(`${BlogPostService.pathPrefix}**/${locale}${BlogPostService.pathSuffix}`);
+        return await globby(`${BlogPostService.pathPrefix}*/${locale}${BlogPostService.pathSuffix}`);
     },
 
     getSupportedLocalesByPostId: async ({postId}) => {
@@ -146,20 +147,10 @@ const BlogPostService = {
         return nestHeadings(headings);
     },
 
-    getReadingTime: async ({ postId, locale, wordsPerMinute = 200, charsPerMinute = 600 }) => {
+    getReadingTime: async ({ postId, locale}) => {
         const content = await BlogPostService.getText({ postId, locale });
         if (!content) return null;
-
-        let readingTime;
-        const isChinese = /[\u4E00-\u9FFF]/.test(content); // 简单判断是否包含中文字符
-        if (isChinese) {
-            const charCount = content.length;
-            readingTime = Math.ceil(charCount / charsPerMinute);
-        } else {
-            const wordCount = content.split(/\s+/).length;
-            readingTime = Math.ceil(wordCount / wordsPerMinute);
-        }
-        return readingTime;
+        return readingTimeUtil.calculateReadingTime({textContent: content});
     }
 }
 

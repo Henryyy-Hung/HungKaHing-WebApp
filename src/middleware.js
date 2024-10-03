@@ -12,8 +12,6 @@ export const middleware = async (request) => {
     requestHeaders.set('x-origin', origin);
     requestHeaders.set('x-pathname', pathname);
     const response = handleI18nRouting(request);
-    // pause for 1s to simulate a slow network
-    // await new Promise(resolve => setTimeout(resolve, 3000));
     return response;
 }
 

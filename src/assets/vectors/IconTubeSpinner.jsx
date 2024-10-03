@@ -24,7 +24,7 @@ const SVGComponent = (props) => (
             <stop offset={1} stopColor="#9E9E9E" stopOpacity={0} />
         </radialGradient>
         <circle
-            transform-origin="center"
+            transformOrigin="center"
             fill="none"
             stroke="url(#a5)"
             strokeWidth={17}
@@ -47,7 +47,7 @@ const SVGComponent = (props) => (
             />
         </circle>
         <circle
-            transform-origin="center"
+            transformOrigin="center"
             fill="none"
             opacity={0.2}
             stroke="#9E9E9E"

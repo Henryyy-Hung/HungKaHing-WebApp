@@ -17,10 +17,9 @@
 }
 
 .icon {
-    width: 4rem;
-    height: 4rem;
-    min-width: 4rem;
-    min-height: 4rem;
+    --size: 4rem;
+    width: var(--size);
+    height: var(--size);
 }
 
 .content {

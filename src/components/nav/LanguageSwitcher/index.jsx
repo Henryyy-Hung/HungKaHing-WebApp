@@ -7,7 +7,7 @@ import { useLocale } from "next-intl";
 import {Link} from '@/i18n/routing'
 import IconEarth from "@/assets/vectors/IconEarth";
 
-const LanguageSwitcher = () => {
+const LanguageSwitcher = ({className, ...props}) => {
 
     const pathname = usePathname();
     const currentLanguage = useLocale();
@@ -17,7 +17,11 @@ const LanguageSwitcher = () => {
     }
 
     return (
-        <div className={styles.container} tabIndex="0">
+        <div
+            className={`${styles.container} ${className? className : ''}`}
+            tabIndex="0"
+            {...props}
+        >
             <div className={styles.selector}>
                 <IconEarth className={styles.icon} />
                 <span className={styles.label}>{localeNames[currentLanguage]}</span>

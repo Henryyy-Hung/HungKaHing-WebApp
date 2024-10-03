@@ -2,7 +2,7 @@ import styles from './index.module.css'
 import {useLocale} from "next-intl";
 
 
-const BlogFooter = () => {
+const PostFooter = () => {
 
     const locale = useLocale();
 
@@ -19,4 +19,4 @@ const BlogFooter = () => {
 }
 // 本作品采用 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可。不允许内容农场类网站、CSDN 用户和微信公众号转载。
 
-export default BlogFooter;
+export default PostFooter;

@@ -1,20 +1,18 @@
 import styles from './page.module.css';
 import BlogPostService from "@/services/blogPostService";
 import {getTranslations, unstable_setRequestLocale} from "next-intl/server";
-import PageTitleCard from "@/components/PageTitleCard";
+import PageTitleCard from "src/components/card/PageTitleCard";
 import pinkCloud from "@/assets/images/background/cloud.webp";
-import NavCard from "src/components/NavCard";
-import CardGallery from "@/components/CardGallery";
+import CardGallery from "src/components/layouts/CardGallery";
 import BlogCategory from "@/constants/blogCategory";
-import Image from "next/image";
-
 import IconFrontend from "@/assets/images/icon/front-end.png";
 import IconBackend from "@/assets/images/icon/back-end.png";
 import IconAI from "@/assets/images/icon/chatbot.png";
 import IconProductivity from "@/assets/images/icon/time-analysis.png";
 import IconLife from "@/assets/images/icon/daily-tasks.png";
 import IconAll from "@/assets/images/icon/documents.png";
-import IconMore from "@/assets/vectors/IconMore";
+import CategoryNavCard from "@/app/[locale]/blog/post/components/CategoryNavCard";
+import BlogPostNavCard from "@/app/[locale]/blog/post/components/BlogPostNavCard";
 
 export const generateMetadata = async ({params: {locale}}) => {
     return {
@@ -72,17 +70,13 @@ const BlogPage = async ({ params: { locale } }) => {
             <CardGallery>
                 {
                     blogCategories.map((category, index) => (
-                        <NavCard
+                        <CategoryNavCard
                             key={index}
-                            href={`/blog/category/${category.id}/page/1`}
+                            categoryId={category.id}
+                            imgSrc={category.icon}
+                            title={t(`categories.${category.id}`)}
                             locale={locale}
-                            className={styles.category}
-                            prefetch={true}
-                        >
-                            <Image src={category.icon} alt={category.id} width={48} height={48} unoptimized={true} />
-                            <h2>{t(`categories.${category.id}`)}</h2>
-                            <IconMore className={styles.icon}/>
-                        </NavCard>
+                        />
                     ))
                 }
             </CardGallery>
@@ -92,17 +86,13 @@ const BlogPage = async ({ params: { locale } }) => {
             <CardGallery>
                 {
                     metadataList.map((metadata, index) => (
-                        <NavCard
-                            href={`/blog/post/${metadata.id}`}
-                            className={styles.card}
+                        <BlogPostNavCard
                             key={index}
+                            postId={metadata.id}
+                            title={metadata.title}
+                            description={metadata.description}
                             locale={locale}
-                            prefetch={true}
-                            scroll={true}
-                        >
-                            <h3>{metadata.title}</h3>
-                            <p>{metadata.description}</p>
-                        </NavCard>
+                        />
                     ))
                 }
             </CardGallery>

@@ -2,10 +2,11 @@
 
 import styles from "./index.module.css";
 import {Link} from "@/i18n/routing"
-import LanguageSwitcher from "@/components/LanguageSwitcher";
+import LanguageSwitcher from "src/components/nav/LanguageSwitcher";
 import React from "react";
 import {useTranslations} from "next-intl";
 import {usePathname} from "@/i18n/routing";
+import PathUtil from "@/utils/pathUtil";
 
 const TopNavigationBar = ({ locale }) => {
 
@@ -58,7 +59,7 @@ const TopNavigationBar = ({ locale }) => {
                     navItems.map((item, index) => (
                         <Link
                             key={index}
-                            className={`${styles.link} ${pathname.split('/')[1] === item.url.split('/')[1] ? styles.active : ''}`}
+                            className={`${styles.link} ${PathUtil.startsWith({currentPath: pathname, targetPath: item.url}) ? styles.active : ''}`}
                             href={item.url}
                             locale={locale}
                             onClick={onLinkClick}
@@ -68,9 +69,11 @@ const TopNavigationBar = ({ locale }) => {
                         </Link>
                     ))
                 }
+                <LanguageSwitcher
+                    className={styles.languageSwitcher}
+                />
             </nav>
 
-            <LanguageSwitcher currentLanguage={locale}/>
         </div>
     )
 }

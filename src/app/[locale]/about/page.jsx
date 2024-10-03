@@ -1,7 +1,8 @@
 import style from './page.module.css';
 import {unstable_setRequestLocale} from "next-intl/server";
-import PageTitleCard from "@/components/PageTitleCard";
+import PageTitleCard from "src/components/card/PageTitleCard";
 import forest from "@/assets/images/background/forest.png";
+import {useTranslations} from "next-intl";
 
 export const generateMetadata = async ({params: {locale}}) => {
     return {
@@ -12,6 +13,7 @@ export const generateMetadata = async ({params: {locale}}) => {
 const AboutPage = ({ params: { locale } }) => {
 
     unstable_setRequestLocale(locale);
+    const t = useTranslations('about');
 
     return (
         <div className={style.container}>
@@ -19,8 +21,8 @@ const AboutPage = ({ params: { locale } }) => {
             <PageTitleCard
                 locale={locale}
                 image={forest}
-                title={'About'}
-                description={'My resume and experiences.'}
+                title={t('title')}
+                description={t('description')}
             />
             <h1>In Progress......</h1>
         </div>

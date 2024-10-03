@@ -2,7 +2,7 @@ import styles from './index.module.css';
 import avatar from '@/assets/images/avatar/cat.jpg'
 import Image from 'next/image'
 
-const BlogHeader = ({title, author, tags, publishDate, lastEditDate, readingTime}) => {
+const PostHeader = ({title, author, tags, publishDate, lastEditDate, readingTime}) => {
 
     return (
         <header className={styles.container}>
@@ -39,4 +39,4 @@ const BlogHeader = ({title, author, tags, publishDate, lastEditDate, readingTime
     )
 }
 
-export default BlogHeader
+export default PostHeader

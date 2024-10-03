@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2rem;
+}
+
+.container > .image {
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
+}
+
+.container > .image.loaded {
+    opacity: 1;
+}
+
+.container > .icon {
+    margin-left: auto;
+}
+
+.container > .icon > path {
+    fill: var(--primary-color-500);
+}
+
+.container:hover > .icon > path {
+    fill: var(--primary-color-700);
+}
+
+.container:active > .icon > path {
+    fill: var(--primary-color-900);
+}

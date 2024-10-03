@@ -1,19 +1,24 @@
 import styles from './index.module.css';
-import {Link} from 'src/i18n/routing'
+import {Link} from '@/i18n/routing'
 
-const NavCard = ({children, className, ...props}) => {
-    const {href, ...rest} = props;
+const NavCard = ({children, className, href, prefetch, scroll, ...props}) => {
+
     return (
         (href) ? (
             <Link
                 className={`${className} ${styles.container}`}
                 href={href}
-                {...rest}
+                prefetch={prefetch}
+                scroll={scroll}
+                {...props}
             >
                 {children}
             </Link>
         ) : (
-            <div className={`${className} ${styles.container}`} {...rest}>
+            <div
+                className={`${className} ${styles.container}`}
+                {...props}
+            >
                 {children}
             </div>
         )

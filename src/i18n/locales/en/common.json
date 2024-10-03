@@ -2,6 +2,7 @@
   "metadata": {
     "title": "Hung Ka Hing"
   },
+
   "header": {
     "title": "Henry's Space",
     "nav": {
@@ -13,6 +14,7 @@
       "contact": "Contact"
     }
   },
+
   "footer": {
     "contacts": {
       "email": {
@@ -24,6 +26,7 @@
         "value": "Hong Kong / Shanghai"
       }
     },
+
     "social": {
       "title": "Social",
       "linkedin": {
@@ -37,4 +40,5 @@
     },
     "copyRight": "© 2024 by Henry Hung - All Rights Reserved"
   }
+
 }

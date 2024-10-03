@@ -1,12 +1,13 @@
 import {notFound} from "next/navigation";
 import styles from "./page.module.css"
-import BlogPostService from "@/services/blogPostService";
-import TableOfContent from "@/components/mdxComponents/TableOfContent";
 import {Link} from "@/i18n/routing";
-import Breadcrumb from "@/components/Breadcrumb";
-import BlogHeader from "@/components/BlogHeader";
-import BlogFooter from "@/components/BlogFooter";
 import {unstable_setRequestLocale} from "next-intl/server";
+import BlogPostService from "@/services/blogPostService";
+import TableOfContent from "src/app/[locale]/blog/post/[postId]/components/TableOfContent";
+import Breadcrumb from "src/app/[locale]/blog/post/[postId]/components/Breadcrumb";
+import PostHeader from "src/app/[locale]/blog/post/[postId]/components/PostHeader";
+import PostFooter from "src/app/[locale]/blog/post/[postId]/components/PostFooter";
+import FixedSidebarLayout from "@/components/layouts/FixedSidebarLayout";
 
 export const generateMetadata = async ({params: {locale}}) => {
     return {
@@ -32,10 +33,25 @@ const BlogPostPage = async ({params: {locale, postId} }) => {
         const readingTime = await BlogPostService.getReadingTime({postId, locale});
 
         return (
-            <div className={styles.container}>
-                <article className={styles.blogContainer}>
-                    <Breadcrumb />
-                    <BlogHeader
+            <FixedSidebarLayout
+                sidebarSections={[
+                    <section key={0}>
+                        <h3>目录</h3>
+                        <hr/>
+                        <TableOfContent toc={toc}/>
+                    </section>,
+                    <section key={1}>
+                        <h3>相关文章</h3>
+                        <hr/>
+                        <Link href={`/blog`} locale={locale}>
+                            <h4>更多文章</h4>
+                        </Link>
+                    </section>
+                ]}
+            >
+                <div className={styles.container}>
+                    <Breadcrumb/>
+                    <PostHeader
                         title={metadata.title || 'Blog Post'}
                         author={'Henry Hung'}
                         tags={metadata.tags || []}
@@ -43,39 +59,24 @@ const BlogPostPage = async ({params: {locale, postId} }) => {
                         lastEditDate={metadata.lastEditDate || String(new Date())}
                         readingTime={readingTime || 0}
                     />
-                    <BlogComponent />
-                    <BlogFooter />
-                </article>
-                <aside className={styles.aside}>
-                    <div className={styles.toc}>
-                        <h3>目录</h3>
-                        <hr/>
-                        <TableOfContent toc={toc}/>
+                    <div>
+                        <BlogComponent />
                     </div>
-                    <div className={styles.relatedPosts}>
-                        <h3>相关文章</h3>
-                        <hr/>
-                        <Link href={`/blog`} locale={locale}>
-                            <h4>更多文章</h4>
-                        </Link>
-                    </div>
-                </aside>
-            </div>
+                    <PostFooter />
+                </div>
+            </FixedSidebarLayout>
         );
     } else {
         const supportedLocales = await BlogPostService.getSupportedLocalesByPostId({postId});
         if (supportedLocales.length > 0) {
             return (
                 <div className={styles.container}>
-                    <div className={styles.blogContainer}>
-                        <h1>Current Locale is not supported</h1>
-                        <p>
-                            Please select one of the following locales to view the content.
-                        </p>
+                    <div className={styles.dialogue}>
+                        <h2>Current Locale is not supported, select another one:</h2>
                         {
                             supportedLocales.map((locale, index) => (
                                 <Link key={index} href={`/blog/post/${postId}`} locale={locale} scroll={false}>
-                                    <h3>{locale}</h3>
+                                    {locale}
                                 </Link>
                             ))
                         }

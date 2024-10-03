@@ -1,6 +1,6 @@
-import Code from "@/components/mdxComponents/Code";
-import Pre from "@/components/mdxComponents/Pre";
-import Table from "@/components/mdxComponents/Table";
+import Code from "@/components/mdx/Code";
+import Pre from "@/components/mdx/Pre";
+import Table from "@/components/mdx/Table";
 
 export function useMDXComponents(components) {
     return {

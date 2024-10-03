@@ -50,3 +50,7 @@
 .nav > .link:not(:last-child) {
     margin-right: 0.5rem;
 }
+
+.nav > .languageSwitcher {
+    margin-left: 1rem;
+}

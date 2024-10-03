@@ -1,9 +1,9 @@
 import styles from './page.module.css';
 import {unstable_setRequestLocale} from "next-intl/server";
-import PageTitleCard from "@/components/PageTitleCard";
+import PageTitleCard from "src/components/card/PageTitleCard";
 import starryNight from "@/assets/images/background/night.png";
-import CardGallery from "@/components/CardGallery";
-import NavCard from "@/components/NavCard";
+import CardGallery from "src/components/layouts/CardGallery";
+import NavCard from "src/components/card/NavCard";
 import IconGmail from "@/assets/vectors/IconGmail";
 import IconTelephone from "@/assets/vectors/IconTelephone";
 import IconMapPin from "@/assets/vectors/IconMapPin";
@@ -52,26 +52,36 @@ const ContactPage = ({ params: { locale } }) => {
     ]
 
     contactList.forEach((contact) => {
-        contact.label = t(`fields.${contact.id}.label`);
-        contact.value = t(`fields.${contact.id}.value`);
-        let props = contact.props || {};
-        // if start with 'http', then it's a link
-        if (/^http/.test(contact.value)) {
-            props = {
-                href: contact.value,
-                target: '_blank'
+        const props = contact.props || {};
+        const label = t(`fields.${contact.id}.label`);
+        const value = t(`fields.${contact.id}.value`);
+
+        switch (contact.id) {
+            case 'email': {
+                props['href'] = `mailto:${value}`;
+                break;
             }
-        }
-        else if (/@/.test(contact.value)) {
-            props = {
-                href: `mailto:${contact.value}`
+            case 'tel': {
+                props['href'] = `tel:${value}`;
+                break;
             }
-        }
-        else if (/\+/.test(contact.value)) {
-            props = {
-                href: `tel:${contact.value}`
+            case 'location': {
+                props['href'] = `https://www.google.com/maps/search/?api=1&query=${value}`;
+                props['target'] = '_blank';
+                break;
             }
+            case 'linkedin':  case 'github': {
+                props['href'] = value;
+                props['target'] = '_blank';
+                break;
+            }
+            case 'wechat': {
+                break;
+            }
+
         }
+        contact.label = label;
+        contact.value = value;
         contact.props = props;
     });
 

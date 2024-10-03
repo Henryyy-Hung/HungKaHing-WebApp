@@ -6,8 +6,8 @@ import {getMessages, getTranslations, unstable_setRequestLocale} from 'next-intl
 import {getLangDir} from 'rtl-detect';
 import {supportedLocales} from "@/i18n/configs";
 import StyleSheetService from "@/services/styleSheetService";
-import TopNavigationBar from "src/components/TopNavigationBar";
-import Footer from "src/components/Footer";
+import TopNavigationBar from "src/components/nav/TopNavigationBar";
+import Footer from "src/components/nav/Footer";
 
 const satoshiVariable = localFont({ src: '../../assets/fonts/Satoshi/Satoshi-Variable.woff2' });
 
