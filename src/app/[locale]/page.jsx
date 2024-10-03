@@ -3,10 +3,13 @@ import Image from "next/image";
 import henry from "@/assets/images/avatar/henry.jpeg";
 import {Link} from '@/i18n/routing';
 import {unstable_setRequestLocale} from "next-intl/server";
+import {useTranslations} from "next-intl";
 
 const HomePage = ({ params: { locale } }) => {
 
     unstable_setRequestLocale(locale);
+
+    const t = useTranslations('home');
 
     return (
         <div className={styles.container}>
@@ -22,15 +25,13 @@ const HomePage = ({ params: { locale } }) => {
                         width={176}
                         height={176}
                     />
-                    <h3 className={styles.name}>
-                        {"Hung Ka Hing"}
-                        <br/>
-                        {"Henry"}
-                    </h3>
+                    <h2 className={styles.name}>
+                        {t("labels.name")}
+                    </h2>
 
                     <hr className={styles.hr}/>
 
-                    <h5>{"Software Engineer"}</h5>
+                    <h4>{t("labels.position")}</h4>
 
                     <div className={styles.social}>
                         <Link href="https://linkedin.com/in/hungkahing" target={"_blank"}>
@@ -46,30 +47,22 @@ const HomePage = ({ params: { locale } }) => {
 
                 <div className={styles.right}>
 
-                    <h3>{"Hello"}</h3>
+                    <h3>{t("labels.greeting")}</h3>
 
-                    <h4>{"Here is who I am & what I do"}</h4>
+                    <h4>{t("labels.description")}</h4>
 
                     <div className={styles.about}>
                         <Link href={"/resume"} locale={locale} prefetch={false}>
-                            {"Resume"}
+                            {t("labels.resume")}
                         </Link>
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         <Link href={"/projects"} locale={locale} prefetch={false}>
-                            {"Projects"}
+                            {t("labels.projects")}
                         </Link>
                     </div>
 
                     <p className={styles.description}>
-                        {"Hello! I'm Henry."}
-                    </p>
-
-                    <p className={styles.description}>
-                        {
-                            "Passionate about creating impactful projects, I've dedicated myself to software development.\
-                            As a software engineer and full-stack developer, I specialize in React.js, Next.js, Express.js,\
-                            Quart.py. My goal is to consistently produce high-quality work that benefits the community."
-                        }
+                        {t("labels.introduction")}
                     </p>
 
                 </div>

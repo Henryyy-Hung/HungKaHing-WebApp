@@ -1,3 +1,12 @@
 {
-  "title": "Home"
+  "title": "Home",
+  "labels": {
+    "name": "Hung Ka Hing\nHenry",
+    "position": "Software Engineer",
+    "greeting": "Hello",
+    "description": "Here is who I am & what I do",
+    "resume": "Resume",
+    "projects": "Projects",
+    "introduction": "Hello! I'm Henry.\n\nPassionate about creating impactful projects, I've dedicated myself to software development. As a software engineer and full-stack developer, I specialize in React.js, Next.js, Express.js, Quart.py. My goal is to consistently produce high-quality work that benefits the community."
+  }
 }
