@@ -15,8 +15,9 @@ import CategoryNavCard from "@/app/[locale]/blog/post/components/CategoryNavCard
 import BlogPostNavCard from "@/app/[locale]/blog/post/components/BlogPostNavCard";
 
 export const generateMetadata = async ({params: {locale}}) => {
+    const t = await getTranslations({locale, namespace: 'blog'});
     return {
-        title: 'Blog',
+        title: t('title'),
     };
 }
 

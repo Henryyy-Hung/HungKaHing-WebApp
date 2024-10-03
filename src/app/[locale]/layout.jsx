@@ -20,12 +20,13 @@ const generateViewport = async ({params: {locale}}) => {
 const generateMetadata = async ({params: {locale}}) => {
 
     const t = await getTranslations({locale, namespace: 'common.metadata'});
+    const title = t('title');
 
     return {
-        applicationName: 'Henry Hung',
+        applicationName: title,
         title: {
-            template: `%s | Henry Hung`,
-            default: 'Henry Hung',
+            template: `%s | ${title}`,
+            default: title,
         },
         description: "Henry's Personal Website",
         category: 'technology',
@@ -137,7 +138,7 @@ const Layout = async ({ children, params: {locale} }) => {
                         {children}
                     </main>
                     <footer className={styles.footer}>
-                        <Footer locale={locale}/>
+                        <Footer />
                     </footer>
                 </NextIntlClientProvider>
             </body>

@@ -23,12 +23,12 @@
 }
 
 .main {
-    display: block;
     --min-height-main: calc(100vh - var(--height-header) - 2 * var(--v-padding-global));
+    display: block;
     min-height: var(--min-height-main);
     height: auto;
     width: 100%;
-    padding: var(--v-padding-global) max( calc(50% - var(--max-width-global) / 2 - var(--h-padding-global)), var(--h-padding-global));
+    padding: var(--v-padding-global) max(calc(50% - var(--max-width-global) / 2 - var(--h-padding-global)), var(--h-padding-global));
     background-color: var(--primary-color-200);
     background-image: radial-gradient(circle, rgba(0, 0, 0, 0.2) 1px, rgba(0, 0, 0, 0) 1px);
     background-size: 20px 20px;
@@ -43,5 +43,5 @@
 .footer {
     background-color: var(--primary-color-50);
     width: 100%;
-    padding: var(--v-padding-global) max( calc(50% - var(--max-width-global) / 2 - var(--h-padding-global)), var(--h-padding-global));
+    padding: var(--v-padding-global) max(calc(50% - var(--max-width-global) / 2 - var(--h-padding-global)), var(--h-padding-global));
 }

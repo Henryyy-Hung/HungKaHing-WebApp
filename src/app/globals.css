@@ -55,7 +55,6 @@ body {
     font-weight: 500;
     line-height: 1.4;
     color: black;
-    background: linear-gradient(to bottom right, #7DB0D2, #F2DEF4);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -70,7 +69,7 @@ html[lang^="zh"] h3,
 html[lang^="zh"] h4,
 html[lang^="zh"] h5,
 html[lang^="zh"] h6 {
-    font-weight: 600;
+    font-weight: 550;
 }
 
 h1 {

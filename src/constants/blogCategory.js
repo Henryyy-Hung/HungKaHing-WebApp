@@ -5,6 +5,7 @@ const BlogCategory = {
     AI: 'ai',
     PRODUCTIVITY: 'productivity',
     LIFE: 'life',
+    PROJECT: 'project',
 }
 
 export default BlogCategory;

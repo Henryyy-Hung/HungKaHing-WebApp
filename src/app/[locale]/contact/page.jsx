@@ -1,5 +1,5 @@
 import styles from './page.module.css';
-import {unstable_setRequestLocale} from "next-intl/server";
+import {getTranslations, unstable_setRequestLocale} from "next-intl/server";
 import PageTitleCard from "src/components/card/PageTitleCard";
 import starryNight from "@/assets/images/background/night.png";
 import CardGallery from "src/components/layouts/CardGallery";
@@ -13,8 +13,9 @@ import IconGithub from "@/assets/vectors/IconGithub";
 import {useTranslations} from "next-intl";
 
 export const generateMetadata = async ({params: {locale}}) => {
+    const t = await getTranslations({locale, namespace: 'contact'});
     return {
-        title: 'Contact',
+        title: t('title'),
     };
 }
 
@@ -78,7 +79,6 @@ const ContactPage = ({ params: { locale } }) => {
             case 'wechat': {
                 break;
             }
-
         }
         contact.label = label;
         contact.value = value;

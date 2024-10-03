@@ -14,5 +14,20 @@
     "productivity": "生產力",
     "life": "生活",
     "all": "全部"
+  },
+
+  "post": {
+    "title": "博客文章",
+    "fields": {
+      "author": "洪嘉慶",
+      "published": "發布於",
+      "updated": "更新於",
+      "readTime": "分鐘閱讀",
+      "toc": "目錄",
+      "related": "相關文章"
+    },
+    "warnings": {
+      "languageNotSupported": "這篇文章沒有你的語言版本。請切換到另一種語言。"
+    }
   }
 }

@@ -14,5 +14,20 @@
     "productivity": "生产力",
     "life": "生活",
     "all": "全部"
+  },
+
+  "post": {
+    "title": "博客文章",
+    "fields": {
+      "author": "洪嘉庆",
+      "published": "发布于",
+      "updated": "更新于",
+      "readTime": "分钟阅读",
+      "toc": "目录",
+      "related": "相关文章"
+    },
+    "warnings": {
+      "languageNotSupported": "这篇文章没有你的语言版本。请切换到另一种语言。"
+    }
   }
 }

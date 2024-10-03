@@ -4,8 +4,9 @@ import PageTitleCard from "src/components/card/PageTitleCard";
 import terminal from "@/assets/images/background/terminal.png";
 
 export const generateMetadata = async ({params: {locale}}) => {
+    const t = await getTranslations({locale, namespace: 'projects'});
     return {
-        title: 'Projects',
+        title: t('title'),
     };
 }
 
@@ -23,7 +24,7 @@ const ProjectsPage = async ({ params: { locale } }) => {
                 title={t('title')}
                 description={t('description')}
             />
-            <h1>In Progress......</h1>
+            <h1>Building in Progress......</h1>
         </div>
     );
 }

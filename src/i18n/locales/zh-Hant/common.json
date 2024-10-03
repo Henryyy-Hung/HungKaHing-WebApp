@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "title": "嘉慶的個人網站"
+    "title": "洪嘉慶"
   },
   "header": {
     "title": "嘉慶的個人網站",
-    "nav": {
+    "labels": {
       "home": "主頁",
       "about": "關於",
       "resume": "簡曆",
@@ -14,27 +14,32 @@
     }
   },
   "footer": {
-    "contacts": {
+    "fields": {
       "email": {
-        "title": "電子郵件",
-        "value": "henry.k.h.hung@gmail.com"
+        "label": "電子郵件",
+        "value": "henry.k.h.hung@outlook.com"
       },
       "location": {
-        "title": "常住地",
+        "label": "常住地",
         "value": "香港 / 上海"
-      }
-    },
-    "social": {
-      "title": "社交媒體",
-      "linkedin": {
-        "title": "領英",
-        "url": "https://linkedin.com/in/hungkahing"
       },
-      "github": {
-        "title": "GitHub",
-        "url": "https://github.com/Henryyy-Hung"
+      "social": {
+        "label": "社交媒體",
+        "linkedin": {
+          "label": "領英",
+          "value": "https://linkedin.com/in/hungkahing"
+        },
+        "github": {
+          "label": "GitHub",
+          "value": "https://github.com/Henryyy-Hung"
+        }
       }
     },
-    "copyRight": "© 2024 - 版權所有"
+    "labels": {
+      "sitemap": "網站地圖",
+      "disclaimer": "免責聲明",
+      "copyright": "版權聲明",
+      "copyrightNotice": "© 2024 洪嘉慶 - 版權所有"
+    }
   }
 }

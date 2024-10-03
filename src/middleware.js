@@ -11,8 +11,7 @@ export const middleware = async (request) => {
     requestHeaders.set('x-url', request.url);
     requestHeaders.set('x-origin', origin);
     requestHeaders.set('x-pathname', pathname);
-    const response = handleI18nRouting(request);
-    return response;
+    return handleI18nRouting(request);
 }
 
 export const config = {

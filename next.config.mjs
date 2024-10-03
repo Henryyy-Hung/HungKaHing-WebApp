@@ -8,10 +8,10 @@ const withNextIntl = createNextIntlPlugin();
 const withMDX = createMDX({
     options: {
         remarkPlugins: [
-            remarkGfm,
+            remarkGfm,    // 支持 GitHub Flavored Markdown
         ],
         rehypePlugins: [
-            rehypeSlug,
+            rehypeSlug,   // 为标题元素添加 id 属性
         ],
     },
 });

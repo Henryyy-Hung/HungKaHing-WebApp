@@ -22,46 +22,54 @@ const HomePage = ({ params: { locale } }) => {
                         width={176}
                         height={176}
                     />
-                    <h4 className={styles.name}>
-                        Hung Ka Hing
+                    <h3 className={styles.name}>
+                        {"Hung Ka Hing"}
                         <br/>
-                        Henry
-                    </h4>
+                        {"Henry"}
+                    </h3>
 
                     <hr className={styles.hr}/>
 
-                    <h5>Software Engineer</h5>
+                    <h5>{"Software Engineer"}</h5>
 
                     <div className={styles.social}>
-                        <Link href="https://linkedin.com/in/hungkahing" target={"_blank"}>LinkedIn</Link>
+                        <Link href="https://linkedin.com/in/hungkahing" target={"_blank"}>
+                            {"LinkedIn"}
+                        </Link>
                         &nbsp;|&nbsp;
-                        <Link href="https://github.com/Henryyy-Hung" target={"_blank"}>GitHub</Link>
+                        <Link href="https://github.com/Henryyy-Hung" target={"_blank"}>
+                            {"GitHub"}
+                        </Link>
                     </div>
 
                 </div>
 
                 <div className={styles.right}>
 
-                    <h3>Hello</h3>
+                    <h3>{"Hello"}</h3>
 
-                    <h4>Here is who I am & what I do</h4>
+                    <h4>{"Here is who I am & what I do"}</h4>
 
                     <div className={styles.about}>
                         <Link href={"/resume"} locale={locale} prefetch={false}>
-                            Resume
+                            {"Resume"}
                         </Link>
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         <Link href={"/projects"} locale={locale} prefetch={false}>
-                            Projects
+                            {"Projects"}
                         </Link>
                     </div>
 
                     <p className={styles.description}>
-                        Hello! I&apos;m Henry.<br/>
-                        <br/>
-                        Passionate about creating impactful projects, I&apos;ve dedicated myself to software development.
-                        As a software engineer and full-stack developer, I specialize in React.js, Next.js, Express.js,
-                        Quart.py. My goal is to consistently produce high-quality work that benefits the community.<br/>
+                        {"Hello! I'm Henry."}
+                    </p>
+
+                    <p className={styles.description}>
+                        {
+                            "Passionate about creating impactful projects, I've dedicated myself to software development.\
+                            As a software engineer and full-stack developer, I specialize in React.js, Next.js, Express.js,\
+                            Quart.py. My goal is to consistently produce high-quality work that benefits the community."
+                        }
                     </p>
 
                 </div>

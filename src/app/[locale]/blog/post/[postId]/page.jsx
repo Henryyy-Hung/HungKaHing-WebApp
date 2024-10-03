@@ -1,17 +1,19 @@
 import {notFound} from "next/navigation";
 import styles from "./page.module.css"
 import {Link} from "@/i18n/routing";
-import {unstable_setRequestLocale} from "next-intl/server";
+import {getTranslations, unstable_setRequestLocale} from "next-intl/server";
 import BlogPostService from "@/services/blogPostService";
 import TableOfContent from "src/app/[locale]/blog/post/[postId]/components/TableOfContent";
 import Breadcrumb from "src/app/[locale]/blog/post/[postId]/components/Breadcrumb";
 import PostHeader from "src/app/[locale]/blog/post/[postId]/components/PostHeader";
 import PostFooter from "src/app/[locale]/blog/post/[postId]/components/PostFooter";
 import FixedSidebarLayout from "@/components/layouts/FixedSidebarLayout";
+import {localeNames} from "@/i18n/configs";
 
 export const generateMetadata = async ({params: {locale}}) => {
+    const t = await getTranslations({locale, namespace: 'blog.post'});
     return {
-        title: 'Blog Post',
+        title: t('title'),
     };
 }
 
@@ -23,6 +25,7 @@ const generateStaticParams = async ({ params: { locale } }) => {
 const BlogPostPage = async ({params: {locale, postId} }) => {
 
     unstable_setRequestLocale(locale);
+    const t = await getTranslations({locale, namespace: 'blog.post'});
 
     const BlogComponent = await BlogPostService.getComponent({postId, locale});
 
@@ -36,16 +39,13 @@ const BlogPostPage = async ({params: {locale, postId} }) => {
             <FixedSidebarLayout
                 sidebarSections={[
                     <section key={0}>
-                        <h3>目录</h3>
+                        <h3>{t('fields.toc')}</h3>
                         <hr/>
                         <TableOfContent toc={toc}/>
                     </section>,
                     <section key={1}>
-                        <h3>相关文章</h3>
+                        <h3>{t('fields.related')}</h3>
                         <hr/>
-                        <Link href={`/blog`} locale={locale}>
-                            <h4>更多文章</h4>
-                        </Link>
                     </section>
                 ]}
             >
@@ -53,7 +53,7 @@ const BlogPostPage = async ({params: {locale, postId} }) => {
                     <Breadcrumb/>
                     <PostHeader
                         title={metadata.title || 'Blog Post'}
-                        author={'Henry Hung'}
+                        author={t('fields.author')}
                         tags={metadata.tags || []}
                         publishDate={metadata.publishDate || String(new Date())}
                         lastEditDate={metadata.lastEditDate || String(new Date())}
@@ -72,14 +72,16 @@ const BlogPostPage = async ({params: {locale, postId} }) => {
             return (
                 <div className={styles.container}>
                     <div className={styles.dialogue}>
-                        <h2>Current Locale is not supported, select another one:</h2>
-                        {
-                            supportedLocales.map((locale, index) => (
-                                <Link key={index} href={`/blog/post/${postId}`} locale={locale} scroll={false}>
-                                    {locale}
-                                </Link>
-                            ))
-                        }
+                        <h2>{t('warnings.languageNotSupported')}</h2>
+                        <p>
+                            {
+                                supportedLocales.map((locale, index) => (
+                                    <Link key={index} href={`/blog/post/${postId}`} locale={locale} scroll={false}>
+                                        {localeNames[locale]}
+                                    </Link>
+                                ))
+                            }
+                        </p>
                     </div>
                 </div>
             )

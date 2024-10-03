@@ -1,8 +1,12 @@
 import styles from './index.module.css';
 import avatar from '@/assets/images/avatar/cat.jpg'
 import Image from 'next/image'
+import {useTranslations} from "next-intl";
+import timeUtil from "@/utils/timeUtil";
 
 const PostHeader = ({title, author, tags, publishDate, lastEditDate, readingTime}) => {
+
+    const t = useTranslations('blog.post');
 
     return (
         <header className={styles.container}>
@@ -25,10 +29,14 @@ const PostHeader = ({title, author, tags, publishDate, lastEditDate, readingTime
 
                 <div className={styles.right}>
                     <div>
-                        <span>{author}</span>
+                        <h4>{author}</h4>
                     </div>
                     <div>
-                        Published: {publishDate}&nbsp;&nbsp;•&nbsp;&nbsp;Updated: {lastEditDate}&nbsp;&nbsp;•&nbsp;&nbsp;{readingTime} mins read
+                        {`${t('fields.published')} ${timeUtil.convertToDateOnly(publishDate)}`}
+                        &nbsp;&nbsp;•&nbsp;&nbsp;
+                        {`${t('fields.updated')} ${timeUtil.convertToDateOnly(lastEditDate)}`}
+                        &nbsp;&nbsp;•&nbsp;&nbsp;
+                        {`${readingTime} ${t('fields.readTime')}`}
                     </div>
                 </div>
 

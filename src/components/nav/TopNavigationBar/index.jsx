@@ -4,14 +4,14 @@ import styles from "./index.module.css";
 import {Link} from "@/i18n/routing"
 import LanguageSwitcher from "src/components/nav/LanguageSwitcher";
 import React from "react";
-import {useTranslations} from "next-intl";
+import {useLocale, useTranslations} from "next-intl";
 import {usePathname} from "@/i18n/routing";
 import PathUtil from "@/utils/pathUtil";
 
-const TopNavigationBar = ({ locale }) => {
+const TopNavigationBar = () => {
 
-    const t = useTranslations('common');
-
+    const t = useTranslations('common.header');
+    const locale = useLocale();
     const pathname = usePathname();
 
     const navItems = [
@@ -38,7 +38,7 @@ const TopNavigationBar = ({ locale }) => {
     ];
 
     navItems.forEach(item => {
-        item.title = t(`header.nav.${item.id}`);
+        item.title = t(`labels.${item.id}`);
     });
 
     const onLinkClick = (e) => {
@@ -51,7 +51,7 @@ const TopNavigationBar = ({ locale }) => {
         <div className={styles.container}>
 
             <Link className={styles.logo} href={`/`} locale={locale} onClick={onLinkClick} prefetch={false}>
-                <h1>{t('header.title')}</h1>
+                <h1>{t('title')}</h1>
             </Link>
 
             <nav className={styles.nav}>

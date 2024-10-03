@@ -12,12 +12,12 @@ export default function sitemap() {
 }
 
 function getUrl(pathname, locale) {
-    return `${host}/${locale}${pathname === '/' ? '' : pathname}`;
+    return `${host}${locale? `/${locale}` : ''}${pathname === '/' ? '' : pathname}`;
 }
 
 function getEntry(pathname) {
     return {
-        url: getUrl(pathname, fallbackLocale),
+        url: getUrl(pathname, null),
         lastModified: new Date(),
         changeFrequency: 'daily',
         priority: 0.7,

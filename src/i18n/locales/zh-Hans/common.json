@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "title": "嘉庆的个人网站"
+    "title": "洪嘉庆"
   },
   "header": {
     "title": "嘉庆的个人网站",
-    "nav": {
+    "labels": {
       "home": "主页",
       "about": "关于",
       "resume": "简历",
@@ -14,27 +14,32 @@
     }
   },
   "footer": {
-    "contacts": {
+    "fields": {
       "email": {
-        "title": "电子邮件",
-        "value": "henry.k.h.hung@gmail.com"
+        "label": "电子邮件",
+        "value": "henry.k.h.hung@outlook.com"
       },
       "location": {
-        "title": "常住地",
+        "label": "常住地",
         "value": "香港 / 上海"
-      }
-    },
-    "social": {
-      "title": "社交媒体",
-      "linkedin": {
-        "title": "领英",
-        "url": "https://linkedin.com/in/hungkahing"
       },
-      "github": {
-        "title": "GitHub",
-        "url": "https://github.com/Henryyy-Hung"
+      "social": {
+        "label": "社交媒体",
+        "linkedin": {
+          "label": "领英",
+          "value": "https://linkedin.com/in/hungkahing"
+        },
+        "github": {
+          "label": "GitHub",
+          "value": "https://github.com/Henryyy-Hung"
+        }
       }
     },
-    "copyRight": "© 2024 - 版权所有"
+    "labels": {
+      "sitemap": "网站地图",
+      "disclaimer": "免责声明",
+      "copyright": "版权声明",
+      "copyrightNotice": "© 2024 洪嘉庆 - 版权所有"
+    }
   }
 }

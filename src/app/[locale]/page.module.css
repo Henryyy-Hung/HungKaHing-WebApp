@@ -5,7 +5,6 @@
     justify-content: center;
 }
 
-
 .card {
     display: flex;
     flex-direction: row;
@@ -29,7 +28,7 @@
 .card > .left {
     flex: 0 0 auto;
     gap: 1.5rem;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: var(--primary-color-50);
 }
 
 .avatar {
@@ -56,16 +55,18 @@
 .card > .right {
     flex: 1 1 auto;
     align-items: flex-start;
-    background-color: rgba(255, 255, 255, 0.6);
+    gap: 1rem;
+    background-color: var(--primary-color-100);
 }
 
 .right > h3 {
     font-size: 4rem;
     font-weight: 600;
+    line-height: 1;
 }
 
 .right > .about {
-    margin: 1rem 0;
+    margin: 0 0 1rem 0;
     display: inline-block;
 }
 
@@ -92,17 +93,7 @@
     margin: 0;
 }
 
-    /* Enable hover only on non-touch devices */
+/* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
-
-}
-
-/* Mobile */
-@media (max-width: 700px) {
-
-}
-
-/* Tablet and Smaller Desktop */
-@media (min-width: 701px) and (max-width: 1120px) {
 
 }

@@ -1,12 +1,13 @@
 import style from './page.module.css';
-import {unstable_setRequestLocale} from "next-intl/server";
+import {getTranslations, unstable_setRequestLocale} from "next-intl/server";
 import PageTitleCard from "src/components/card/PageTitleCard";
 import forest from "@/assets/images/background/forest.png";
 import {useTranslations} from "next-intl";
 
 export const generateMetadata = async ({params: {locale}}) => {
+    const t = await getTranslations({locale, namespace: 'about'});
     return {
-        title: 'About',
+        title: t('title'),
     };
 }
 
@@ -24,7 +25,7 @@ const AboutPage = ({ params: { locale } }) => {
                 title={t('title')}
                 description={t('description')}
             />
-            <h1>In Progress......</h1>
+            <h1>Building in Progress......</h1>
         </div>
     );
 }
