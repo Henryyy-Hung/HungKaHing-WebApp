@@ -37,7 +37,6 @@ const Pagination = ({numberOfPages, currentPage, siblingCount = 1, boundaryCount
             .from(pagesSet)
             .filter(page => page > 0 && page <= numberOfPages)
             .sort((a, b) => a - b);
-
         // Insert '...' between non-continuous numbers
         let result = [];
         for (let i = 0; i < filteredPages.length; i++) {

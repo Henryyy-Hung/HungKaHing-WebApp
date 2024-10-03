@@ -33,7 +33,7 @@
     gap: 0.25rem;
 }
 
-.container > .contact > .item > .value {
+.container > .contact > .item > .content {
     text-decoration: none;
     font-style: normal;
     margin: 0;

@@ -1,0 +1,29 @@
+{
+  "title": "Disclaimer",
+  "fields": {
+    "accuracyAndCompleteness": {
+      "title": "Accuracy and Completeness",
+      "content": "I make every effort to ensure the accuracy, completeness, and timeliness of the information, content, and materials provided on this site, but I cannot guarantee that they are entirely correct, complete, or up-to-date. I cannot guarantee the accuracy, reliability, or applicability of all information and content, so any consequences and losses resulting from the use of information provided on this site are borne by the user."
+    },
+    "intellectualProperty": {
+      "title": "Intellectual Property",
+      "content": "All information, content, and materials I publish, including text, images, graphics, logos, icons, charts, and programming code, are protected by relevant intellectual property laws. Any use, reproduction, distribution, modification, or sale of my information and content without my explicit authorization is prohibited."
+    },
+    "disclaimer": {
+      "title": "Disclaimer",
+      "content": "I am not responsible for any direct, indirect, incidental, special, or consequential damages resulting from the misleading or inaccurate content and services of this site, and I am not responsible for the content, advertisements, products, or other materials of any links to other websites or external resources on this site."
+    },
+    "legality": {
+      "title": "Legality",
+      "content": "I guarantee that all content is legal and does not infringe upon the intellectual property or other legal rights of others. I am not responsible for any infringement actions or violations of privacy and security and reserve the right to pursue legal liability."
+    },
+    "changesAndUpdates": {
+      "title": "Changes and Updates",
+      "content": "I reserve the right to change, update, and modify this disclaimer at any time. I recommend that you regularly review this disclaimer and stay informed of the latest updates when visiting and using my blog."
+    },
+    "contact": {
+      "title": "Contact",
+      "content": "If you have any questions or suggestions about this statement, please contact me using the relevant contact information on the blog page."
+    }
+  }
+}

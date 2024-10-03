@@ -4,9 +4,9 @@ import {supportedLocales, fallbackLocale} from "@/i18n/configs";
 
 // 定义路由
 const routing = defineRouting({
-    locales: supportedLocales,
-    defaultLocale: fallbackLocale,
-    localePrefix: 'as-needed'    // 在默认语言下，不显示语言前缀
+    locales: supportedLocales,      // 支持的语言列表
+    defaultLocale: fallbackLocale,  // 默认语言
+    localePrefix: 'as-needed'       // 在默认语言下，不显示语言前缀
 });
 
 // 本地化的路由导航

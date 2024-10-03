@@ -39,12 +39,12 @@ const BlogPostPage = async ({params: {locale, postId} }) => {
             <FixedSidebarLayout
                 sidebarSections={[
                     <section key={0}>
-                        <h3>{t('fields.toc')}</h3>
+                        <h3>{t('labels.toc')}</h3>
                         <hr/>
                         <TableOfContent toc={toc}/>
                     </section>,
                     <section key={1}>
-                        <h3>{t('fields.related')}</h3>
+                        <h3>{t('labels.related')}</h3>
                         <hr/>
                     </section>
                 ]}
@@ -53,7 +53,7 @@ const BlogPostPage = async ({params: {locale, postId} }) => {
                     <Breadcrumb/>
                     <PostHeader
                         title={metadata.title || 'Blog Post'}
-                        author={t('fields.author')}
+                        author={t('labels.author')}
                         tags={metadata.tags || []}
                         publishDate={metadata.publishDate || String(new Date())}
                         lastEditDate={metadata.lastEditDate || String(new Date())}

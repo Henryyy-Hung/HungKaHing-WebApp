@@ -3,28 +3,28 @@
   "description": "歡迎隨時與我聯絡。",
   "fields": {
     "email": {
-      "label": "電子郵件",
-      "value": "henry.k.h.hung@gmail.com"
+      "title": "電子郵件",
+      "content": "henry.k.h.hung@gmail.com"
     },
     "tel": {
-      "label": "電話",
-      "value": "+852 6598 XXXX"
+      "title": "電話",
+      "content": "+852 6598 XXXX"
     },
     "location": {
-      "label": "所在地",
-      "value": "香港 / 上海，中國"
+      "title": "所在地",
+      "content": "香港 / 上海，中國"
     },
     "wechat": {
-      "label": "微信",
-      "value": "HenryyyHung"
+      "title": "微信",
+      "content": "HenryyyHung"
     },
     "linkedin": {
-      "label": "領英",
-      "value": "https://linkedin.com/in/hungkahing"
+      "title": "領英",
+      "content": "https://linkedin.com/in/hungkahing"
     },
     "github": {
-      "label": "GitHub",
-      "value": "https://github.com/Henryyy-Hung"
+      "title": "GitHub",
+      "content": "https://github.com/Henryyy-Hung"
     }
   }
 }

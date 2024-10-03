@@ -1,10 +1,11 @@
 import styles from "./index.module.css";
-import Link from "next/link";
 import React from "react";
-import {useTranslations} from "next-intl";
+import {Link} from '@/i18n/routing'
+import {useLocale, useTranslations} from "next-intl";
 
 const Footer = () => {
 
+    const locale = useLocale();
     const t = useTranslations('common.footer');
 
     return (
@@ -12,59 +13,59 @@ const Footer = () => {
             <div className={styles.contact}>
                 <div className={styles.item}>
                     <h3>
-                        {t('fields.email.label')}
+                        {t('fields.email.title')}
                     </h3>
                     <Link
-                        href={`mailto:${t('fields.email.value')}`}
-                        className={styles.value}
+                        href={`mailto:${t('fields.email.content')}`}
+                        className={styles.content}
                     >
-                        {t('fields.email.value')}
+                        {t('fields.email.content')}
                     </Link>
                 </div>
                 <div className={styles.item}>
                     <h3>
-                        {t('fields.location.label')}
+                        {t('fields.location.title')}
                     </h3>
                     <span
-                        className={styles.value}
+                        className={styles.content}
                     >
-                        {t('fields.location.value')}
+                        {t('fields.location.content')}
                     </span>
                 </div>
                 <div className={styles.item}>
                     <h3>
-                        {t('fields.social.label')}
+                        {t('fields.social.title')}
                     </h3>
                     <span
-                        className={styles.value}
+                        className={styles.content}
                     >
                         <Link
-                            href={t('fields.social.linkedin.value')}
+                            href={t('fields.social.linkedin.content')}
                             target={"_blank"}
                         >
-                            {t('fields.social.linkedin.label')}
+                            {t('fields.social.linkedin.title')}
                         </Link>
                             &nbsp;|&nbsp;
                         <Link
-                            href={t('fields.social.github.value')}
+                            href={t('fields.social.github.content')}
                             target={"_blank"}
                         >
-                            {t('fields.social.github.label')}
+                            {t('fields.social.github.title')}
                         </Link>
                     </span>
                 </div>
             </div>
 
             <div className={styles.links}>
-                <Link href={'/sitemap.xml'}>
+                <a href={'/sitemap.xml'}>
                     {t('labels.sitemap')}
-                </Link>
+                </a>
                 •
-                <Link href={'/copyright'}>
+                <Link href={'/copyright'} locale={locale}>
                     {t('labels.copyright')}
                 </Link>
                 •
-                <Link href={'/disclaimer'}>
+                <Link href={'/disclaimer'} locale={locale}>
                     {t('labels.disclaimer')}
                 </Link>
             </div>

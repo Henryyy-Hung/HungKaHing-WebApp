@@ -1,0 +1,29 @@
+{
+  "title": "版權聲明",
+  "fields": {
+    "copyrightStatement": {
+      "title": "版權聲明",
+      "content": "本博客的所有內容（包括但不限於文字、圖片、音頻、視頻等），除特別注明外，其餘均由本站創作或原創，版權歸本博客所有。"
+    },
+    "authorization": {
+      "title": "授權使用",
+      "content": "未經本站授權，任何人或機構不得複製、轉載、摘編或以任何其他形式使用本站內容。如需轉載，請在摘要或正文部分注明出處。本博客允許授權使用部分文案，需注明原作者及網址。如用於商業用途，需與原作者確認。"
+    },
+    "infringement": {
+      "title": "侵權聲明",
+      "content": "任何未授權使用內容的行為都將被視為侵權行為，本博客保留追究法律責任的權利。"
+    },
+    "liability": {
+      "title": "責任聲明",
+      "content": "本站不承擔用戶因使用本站所提供的服務而產生的任何直接、間接或者連帶的責任和賠償。"
+    },
+    "modification": {
+      "title": "修改權",
+      "content": "本聲明的解釋權及修改權歸本博客所有，並保留隨時更新網站內容和服務的權利，在不做事先通知的情況下，修改本聲明產生效力。"
+    },
+    "contact": {
+      "title": "Contact Information",
+      "content": "If you have any questions about this statement, please contact me at <Email>{{email}}</Email>."
+    }
+  }
+}

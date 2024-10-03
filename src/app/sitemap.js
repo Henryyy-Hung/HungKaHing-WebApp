@@ -1,4 +1,4 @@
-import {fallbackLocale, supportedLocales} from "@/i18n/configs";
+import {supportedLocales} from "@/i18n/configs";
 
 const host = 'https://hungkahing.com';
 

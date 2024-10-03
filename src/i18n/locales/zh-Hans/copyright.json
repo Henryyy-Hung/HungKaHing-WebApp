@@ -1,0 +1,29 @@
+{
+  "title": "版权声明",
+  "fields": {
+    "copyrightStatement": {
+      "title": "版权声明",
+      "content": "本博客的所有内容（包括但不限于文字、图片、音频、视频等），除特别注明外，其余均由本站创作或原创，版权归本博客所有。"
+    },
+    "authorization": {
+      "title": "授权使用",
+      "content": "未经本站授权，任何人或机构不得复制、转载、摘编或以任何其他形式使用本站内容。如需转载，请在摘要或正文部分注明出处。本博客允许授权使用部分文案，需注明原作者及网址。如用于商业用途，需与原作者确认。"
+    },
+    "infringement": {
+      "title": "侵权声明",
+      "content": "任何未授权使用内容的行为都将被视为侵权行为，本博客保留追究法律责任的权利。"
+    },
+    "liability": {
+      "title": "责任声明",
+      "content": "本站不承担用户因使用本站所提供的服务而产生的任何直接、间接或者连带的责任和赔偿。"
+    },
+    "modification": {
+      "title": "修改权",
+      "content": "本声明的解释权及修改权归本博客所有，并保留随时更新网站内容和服务的权利，在不做事先通知的情况下，修改本声明产生效力。"
+    },
+    "contact": {
+      "title": "Contact Information",
+      "content": "If you have any questions about this statement, please contact me at <Email>{email}</Email>."
+    }
+  }
+}

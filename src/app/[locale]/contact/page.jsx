@@ -54,8 +54,8 @@ const ContactPage = ({ params: { locale } }) => {
 
     contactList.forEach((contact) => {
         const props = contact.props || {};
-        const label = t(`fields.${contact.id}.label`);
-        const value = t(`fields.${contact.id}.value`);
+        const label = t(`fields.${contact.id}.title`);
+        const value = t(`fields.${contact.id}.content`);
 
         switch (contact.id) {
             case 'email': {

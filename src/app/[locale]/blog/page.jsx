@@ -66,7 +66,7 @@ const BlogPage = async ({ params: { locale } }) => {
                 description={t('description')}
             />
 
-            <h1>{t('sections.categories')}</h1>
+            <h1>{t('labels.categories')}</h1>
 
             <CardGallery>
                 {
@@ -75,14 +75,14 @@ const BlogPage = async ({ params: { locale } }) => {
                             key={index}
                             categoryId={category.id}
                             imgSrc={category.icon}
-                            title={t(`categories.${category.id}`)}
+                            title={t(`labels.${category.id}`)}
                             locale={locale}
                         />
                     ))
                 }
             </CardGallery>
 
-            <h1>{t('sections.recent')}</h1>
+            <h1>{t('labels.recent')}</h1>
 
             <CardGallery>
                 {

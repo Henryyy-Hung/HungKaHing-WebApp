@@ -8,7 +8,7 @@ import {useLocale, useTranslations} from "next-intl";
 import {usePathname} from "@/i18n/routing";
 import PathUtil from "@/utils/pathUtil";
 
-const TopNavigationBar = () => {
+const Header = () => {
 
     const t = useTranslations('common.header');
     const locale = useLocale();
@@ -78,4 +78,4 @@ const TopNavigationBar = () => {
     )
 }
 
-export default TopNavigationBar;
+export default Header;

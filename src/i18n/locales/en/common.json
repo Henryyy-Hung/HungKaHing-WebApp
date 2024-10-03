@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "title": "Hung Ka Hing"
+    "title": "Henry's Space"
   },
 
   "header": {
@@ -18,22 +18,22 @@
   "footer": {
     "fields": {
       "email": {
-        "label": "Email",
-        "value": "henry.k.h.hung@gmail.com"
+        "title": "Email",
+        "content": "henry.k.h.hung@gmail.com"
       },
       "location": {
-        "label": "Location",
-        "value": "Hong Kong / Shanghai"
+        "title": "Location",
+        "content": "Hong Kong / Shanghai"
       },
       "social": {
-        "label": "Social",
+        "title": "Social",
         "linkedin": {
-          "label": "LinkedIn",
-          "value": "https://linkedin.com/in/hungkahing"
+          "title": "LinkedIn",
+          "content": "https://linkedin.com/in/hungkahing"
         },
         "github": {
-          "label": "GitHub",
-          "value": "https://github.com/Henryyy-Hung"
+          "title": "GitHub",
+          "content": "https://github.com/Henryyy-Hung"
         }
       }
     },

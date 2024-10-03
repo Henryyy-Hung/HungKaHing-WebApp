@@ -15,6 +15,21 @@ const supportedLocales  = [
 // 默认语言
 const fallbackLocale = supportedLocales[0];
 
+// 本地化资源的命名空间
+const namespaces = [
+    'common',       // 公共资源（通用组件或元数据）
+    'home',         // 首页
+    'about',        // 关于
+    'projects',     // 项目
+    'blog',         // 博客
+    'contact',      // 联系
+    'disclaimer',   // 免责声明
+    'copyright',    // 版权声明
+];
+
+// 默认的命名空间
+const fallbackNamespace = namespaces[0];
+
 // 语言映射 （在找不到对应的语言资源时，会尝试使用映射的语言资源）
 const localeMapping = {
     'zh': 'zh-Hans',
@@ -40,26 +55,13 @@ const localeNames = {
     'zh-MO': '中文(澳门)',
 };
 
-// 本地化资源的命名空间
-const namespaces = [
-    'common',
-    'home',
-    'about',
-    'projects',
-    'blog',
-    'contact'
-];
-
-// 默认的命名空间
-const fallbackNamespace = namespaces[0];
-
 // 获取本地化资源
 const getI18nResource = async (language, namespace) => {
     return (await (import(`@/i18n/locales/${localeMapping[language] || language}/${namespace}.json`))).default
 }
 
 // 获取合并的本地化资源（将所有命名空间的资源合并）
-const getMergedI18nResource = async (language) => {
+const getI18nResources = async (language) => {
     const mergedResources = {};
     for (const namespace of namespaces) {
         mergedResources[namespace] = await getI18nResource(language, namespace)
@@ -70,9 +72,6 @@ const getMergedI18nResource = async (language) => {
 export {
     supportedLocales,
     fallbackLocale,
-    localeMapping,
-    namespaces,
-    fallbackNamespace,
     localeNames,
-    getMergedI18nResource
+    getI18nResources
 }

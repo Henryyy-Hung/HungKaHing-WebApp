@@ -1,0 +1,29 @@
+{
+  "title": "Copyright Statement",
+  "fields": {
+    "copyrightStatement": {
+      "title": "Copyright Statement",
+      "content": "All content on this blog (including but not limited to text, images, audio, video, etc.), unless otherwise noted, is created or originally authored by this site, and all copyrights are owned by this blog."
+    },
+    "authorization": {
+      "title": "Authorization for Use",
+      "content": "Without the authorization of this site, no person or organization may copy, reprint, excerpt, or use the content of this site in any other form. If you wish to reprint, please indicate the source in the summary or main text. This blog allows authorized use of some content, which requires acknowledgment of the original author and URL. For commercial use, confirmation with the original author is required."
+    },
+    "infringement": {
+      "title": "Infringement Statement",
+      "content": "Any unauthorized use of content will be regarded as infringement, and this blog reserves the right to pursue legal responsibility."
+    },
+    "liability": {
+      "title": "Liability Statement",
+      "content": "This site does not assume any direct, indirect, or joint liability or compensation for users due to the use of the services provided by this site."
+    },
+    "modification": {
+      "title": "Right to Modify",
+      "content": "The right to interpret and modify this statement belongs to this blog, and it reserves the right to update website content and services at any time. Modifications to this statement become effective without prior notice."
+    },
+    "contact": {
+      "title": "Contact Information",
+      "content": "If you have any questions about this statement, please contact me at <Email>{email}</Email>."
+    }
+  }
+}

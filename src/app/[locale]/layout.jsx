@@ -6,7 +6,7 @@ import {getMessages, getTranslations, unstable_setRequestLocale} from 'next-intl
 import {getLangDir} from 'rtl-detect';
 import {supportedLocales} from "@/i18n/configs";
 import StyleSheetService from "@/services/styleSheetService";
-import TopNavigationBar from "src/components/nav/TopNavigationBar";
+import Header from "src/components/nav/Header";
 import Footer from "src/components/nav/Footer";
 
 const satoshiVariable = localFont({ src: '../../assets/fonts/Satoshi/Satoshi-Variable.woff2' });
@@ -132,7 +132,7 @@ const Layout = async ({ children, params: {locale} }) => {
             <body className={`${satoshiVariable.className} ${styles.container}`}>
                 <NextIntlClientProvider messages={messages}>
                     <header className={styles.header}>
-                        <TopNavigationBar locale={locale}/>
+                        <Header locale={locale}/>
                     </header>
                     <main className={styles.main}>
                         {children}

@@ -13,13 +13,18 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    gap: 1rem;
+    gap: 1.5rem;
     padding: 3rem;
     border-radius: 1rem;
     background-color: var(--primary-color-50);
     min-height: var(--min-height-main);
+    box-shadow: var(--box-shadow-card);
     width: 100%;
     max-width: 50rem;
+}
+
+.article > * {
+    margin: 0;
 }
 
 .contact {

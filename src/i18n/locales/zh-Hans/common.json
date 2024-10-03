@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "title": "洪嘉庆"
+    "title": "洪嘉庆的个人网站"
   },
   "header": {
     "title": "嘉庆的个人网站",
@@ -16,22 +16,22 @@
   "footer": {
     "fields": {
       "email": {
-        "label": "电子邮件",
-        "value": "henry.k.h.hung@outlook.com"
+        "title": "电子邮件",
+        "content": "henry.k.h.hung@outlook.com"
       },
       "location": {
-        "label": "常住地",
-        "value": "香港 / 上海"
+        "title": "常住地",
+        "content": "香港 / 上海"
       },
       "social": {
-        "label": "社交媒体",
+        "title": "社交媒体",
         "linkedin": {
-          "label": "领英",
-          "value": "https://linkedin.com/in/hungkahing"
+          "title": "领英",
+          "content": "https://linkedin.com/in/hungkahing"
         },
         "github": {
-          "label": "GitHub",
-          "value": "https://github.com/Henryyy-Hung"
+          "title": "GitHub",
+          "content": "https://github.com/Henryyy-Hung"
         }
       }
     },

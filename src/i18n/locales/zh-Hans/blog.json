@@ -1,13 +1,9 @@
 {
   "title": "博客",
   "description": "我的一些想法和经历。",
-
-  "sections": {
+  "labels": {
     "categories": "类别",
-    "recent": "最近的文章"
-  },
-
-  "categories": {
+    "recent": "最近的文章",
     "frontend": "前端",
     "backend": "后端",
     "ai": "人工智能",
@@ -18,7 +14,7 @@
 
   "post": {
     "title": "博客文章",
-    "fields": {
+    "labels": {
       "author": "洪嘉庆",
       "published": "发布于",
       "updated": "更新于",

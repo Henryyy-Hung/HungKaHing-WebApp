@@ -32,11 +32,11 @@ const PostHeader = ({title, author, tags, publishDate, lastEditDate, readingTime
                         <h4>{author}</h4>
                     </div>
                     <div>
-                        {`${t('fields.published')} ${timeUtil.convertToDateOnly(publishDate)}`}
+                        {`${t('labels.published')} ${timeUtil.convertToDateOnly(publishDate)}`}
                         &nbsp;&nbsp;•&nbsp;&nbsp;
-                        {`${t('fields.updated')} ${timeUtil.convertToDateOnly(lastEditDate)}`}
+                        {`${t('labels.updated')} ${timeUtil.convertToDateOnly(lastEditDate)}`}
                         &nbsp;&nbsp;•&nbsp;&nbsp;
-                        {`${readingTime} ${t('fields.readTime')}`}
+                        {`${readingTime} ${t('labels.readTime')}`}
                     </div>
                 </div>
 
