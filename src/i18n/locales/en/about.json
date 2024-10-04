@@ -1,4 +1,78 @@
 {
   "title": "About",
-  "description": "My resume and experiences."
+  "description": "My resume and experiences.",
+
+  "sections": {
+
+    "1": {
+      "title": "Education",
+      "sections": {
+        "2": {
+          "time": "2020-09 - 2024-06",
+          "title": "University of Hong Kong",
+          "logo": "hku",
+          "subtitle": "Bachelor of Engineering in Computer Science",
+          "location": "Hong Kong - on site",
+          "line1": "Second Class Honours (Division One), with focus on System and Networking, Minor in Finance",
+          "line2": "Extra-curricular Activities: Peer Mentor in CSSA-HKU, Student Representative in Staff-Student Consultive Committee",
+          "line3": "Relavent Coursework: Computer Organization / Principle of Operating System / Computer and Communication Network / Database Management System / Cyber Security / Software Engineering"
+        },
+        "1": {
+          "time": "2014-09 - 2020-06",
+          "title": "TWGHs Wong Fut Nam College",
+          "logo": "wfn",
+          "subtitle": "Hong Kong Diploma of Secondary Education",
+          "location": "Hong Kong - on site",
+          "line1": "Scored 26 in best 6 subjects, with level 5 in Chinese, Physics and Biology. Ranked 30th in the school.",
+          "line2": "Extra-curricular Activities: Committee Member in Science Society."
+        }
+      }
+    },
+
+    "2": {
+      "title": "Work Experience",
+      "sections": {
+        "4": {
+          "time": "2024-06 - 2024-08",
+          "title": "Research Assistant I (Full Time)",
+          "logo": "hku",
+          "subtitle": "University of Hong Kong",
+          "location": "Hong Kong - on site",
+          "line1": "Independently developed Corpus Chat, an AI platform that enables lecturers to custom discipline-specific chatbots. This app supports the establishment of proprietary corpora for the chatbot and enables the chatbot to perform meta-analysis of the language use in its corpus, bridging the gap between AI technology and linguistic research.",
+          "line2": "Managed the entire software development lifecycle: requirement analysis, project planning, UI/UX design, software architecture, front-end & back-end development, refactoring, testing, deployment, documentation, and maintenance.",
+          "line3": "Successfully launched version 1.0 for public use. Utilizing a distributed architecture, the system efficiently handles high concurrency at low cost, and successfully supported 120 students concurrently during lectures."
+        },
+        "3": {
+          "time": "2023-07 - 2023-08",
+          "title": "Software Development Engineer (Intern)",
+          "logo": "huawei",
+          "subtitle": "Huawei Technologies Co. Ltd.",
+          "location": "Songshan Lake Research Center",
+          "line1": "Spearheaded the enhancement of error localization efficiency by orchestrating a Quality Control Cycle, which included a thorough situational analysis and the successful implementation of solutions.",
+          "line2": "Actively participated in unit testing and merge review for the Core Deployment Tools, boosting test coverage of the DCN Network Boundary Gateway Checker root package by 76% and securing over 70% of line coverage for all tested modules.",
+          "line3": "Authored and disseminated 7 documents encapsulating knowledge and experiences on Android unit testing, error handling, and network communication technology."
+        },
+        "2": {
+          "time": "2023-05 - 2023-06",
+          "title": "Full Stack Development Engineer (Intern)",
+          "logo": "docpro",
+          "subtitle": "DocPro Ltd.",
+          "location": "Hong Kong - on site",
+          "line1": "Led an Agile team to develop a specialized legal Web application leveraging ChatGPT and a proprietary knowledge base, aimed at producing premium, tailored legal documents.",
+          "line2": "Individually designed application architecture, including project structure, client-server interactions, and data modelling. Configured CI/CD processes and deployed the application on Microsoft Azure.",
+          "line3": "Leveraged prompt engineering and ChatGPT to establish a meta-description production line. Executed SEO strategies for approximately 3000 legal document templates, effectively reversing a significant traffic decline (-125%) and subsequently boosting it by 17%."
+        },
+        "1": {
+          "time": "2021-09 - 2021-12",
+          "title": "Student Teaching Assistant (Part Time)",
+          "logo": "hku",
+          "subtitle": "University of Hong Kong",
+          "location": "Hong Kong - on site",
+          "line1": "Provided weekly tutorials for the compulsory university course ENGG1330 Computer Programming I.",
+          "line2": "Prepared comprehensive teaching materials for the course, including knowledge summaries, sample codes, and algorithm strategies.",
+          "line3": "Engaged proactively with students, fostering critical thinking through active discussions and resolving queries to help students develop programming skills."
+        }
+      }
+    }
+  }
 }

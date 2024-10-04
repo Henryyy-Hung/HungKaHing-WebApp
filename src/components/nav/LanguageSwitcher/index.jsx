@@ -27,7 +27,9 @@ const LanguageSwitcher = ({className, ...props}) => {
                 <span className={styles.label}>{localeNames[currentLanguage]}</span>
                 <span className={styles.arrow}></span>
             </div>
+
             <div className={styles.overlay} tabIndex="1"></div>
+
             <div className={styles.dropdown}>
                 <ul className={styles.menu}>
                     {
@@ -48,6 +50,7 @@ const LanguageSwitcher = ({className, ...props}) => {
                     }
                 </ul>
             </div>
+
         </div>
     )
 }

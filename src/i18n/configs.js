@@ -41,6 +41,25 @@ const localeMapping = {
     'zh-MO': 'zh-Hant',
 };
 
+const localeRelationship = {
+    'zh': ['zh-Hans', 'zh-Hant'],
+    'zh-Hans': ['zh-CN', 'zh-SG', 'zh-MY'],
+    'zh-Hant': ['zh-TW', 'zh-HK', 'zh-MO'],
+}
+
+const getNearestLocale = (locale) => {
+    let resultLocale = locale;
+    while (!supportedLocales.includes(resultLocale)) {
+        for (const key in localeRelationship) {
+            if (localeRelationship[key].includes(resultLocale)) {
+                resultLocale = key;
+                break;
+            }
+        }
+    }
+    return resultLocale;
+}
+
 // 本地化的语言名称
 const localeNames = {
     'en': 'English',

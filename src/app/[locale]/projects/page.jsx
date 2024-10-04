@@ -19,7 +19,6 @@ const ProjectsPage = async ({ params: { locale } }) => {
     return (
         <div className={style.container}>
             <PageTitleCard
-                locale={locale}
                 image={terminal}
                 title={t('title')}
                 description={t('description')}

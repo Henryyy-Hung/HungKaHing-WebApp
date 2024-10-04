@@ -48,13 +48,13 @@ const Header = () => {
     }
 
     return (
-        <div className={styles.container}>
+        <div className={styles.container} tabIndex={1}>
 
             <Link className={styles.logo} href={`/`} locale={locale} onClick={onLinkClick} prefetch={false}>
                 <h1>{t('title')}</h1>
             </Link>
 
-            <nav className={styles.nav}>
+            <nav className={styles.nav} tabIndex={1}>
                 {
                     navItems.map((item, index) => (
                         <Link

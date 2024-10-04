@@ -3,12 +3,12 @@ import styles from "./page.module.css"
 import {Link} from "@/i18n/routing";
 import {getTranslations, unstable_setRequestLocale} from "next-intl/server";
 import BlogPostService from "@/services/blogPostService";
-import TableOfContent from "src/app/[locale]/blog/post/[postId]/components/TableOfContent";
-import Breadcrumb from "src/app/[locale]/blog/post/[postId]/components/Breadcrumb";
-import PostHeader from "src/app/[locale]/blog/post/[postId]/components/PostHeader";
-import PostFooter from "src/app/[locale]/blog/post/[postId]/components/PostFooter";
 import FixedSidebarLayout from "@/components/layouts/FixedSidebarLayout";
 import {localeNames} from "@/i18n/configs";
+import TableOfContent from "./_components/TableOfContent";
+import Breadcrumb from "./_components/Breadcrumb";
+import PostHeader from "./_components/PostHeader";
+import PostFooter from "./_components/PostFooter";
 
 export const generateMetadata = async ({params: {locale}}) => {
     const t = await getTranslations({locale, namespace: 'blog.post'});

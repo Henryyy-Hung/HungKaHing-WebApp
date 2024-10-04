@@ -88,7 +88,6 @@ const ContactPage = ({ params: { locale } }) => {
     return (
         <div className={styles.container}>
             <PageTitleCard
-                locale={locale}
                 image={starryNight}
                 title={t('title')}
                 description={t('description')}

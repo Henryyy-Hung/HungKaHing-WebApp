@@ -1,0 +1,133 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 2rem;
+    background-color: rgba(255, 255, 255, 0.75);
+    padding: 3rem;
+    border-radius: 2rem;
+    box-shadow: var(--box-shadow-card);
+}
+
+.container > .title {
+    display: inline;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.container > .content {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 2rem;
+
+    --diameter: 1.25rem;
+    --color-timeline: var(--primary-color-300);
+}
+
+.container > .content > .timeline {
+    --width: calc(var(--diameter) / 3);
+    --padding-v: calc(var(--diameter) / 2);
+    --padding-h: calc(var(--diameter) / 3);
+    display: flex;
+    border: none;
+    width: var(--width);
+    min-width: var(--width);
+    margin: var(--padding-v) var(--padding-h) 0 var(--padding-h);
+    border-radius: calc(var(--width) / 2);
+    background-color: var(--color-timeline);
+}
+
+.container > .content > .sections {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 2rem;
+}
+
+.container > .content > .sections > .section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1.25rem;
+    position: relative;
+}
+
+.container > .content > .sections > .section > .row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 2rem;
+}
+
+.container > .content > .sections > .section > .row > .circle {
+    display: block;
+    width: var(--diameter);
+    min-width: var(--diameter);
+    height: var(--diameter);
+    min-height: var(--diameter);
+    border-radius: 50%;
+    background-color: var(--color-timeline);
+    position: absolute;
+    top: 0;
+    left: calc(-2rem - var(--diameter));
+}
+
+.container > .content > .sections > .section > .row > .time {
+    line-height: var(--diameter);
+    font-size: var(--diameter);
+    font-weight: 700;
+    color: var(--primary-color-600);
+}
+
+.container > .content > .sections > .section > .row > .logo {
+    width: 5rem;
+    min-width: 5rem;
+    padding: 0.5rem 0;
+}
+
+.container > .content > .sections > .section > .row > .logo > img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+
+}
+
+.container > .content > .sections > .section > .row > .details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.25rem;
+}
+
+.container > .content > .sections > .section > .row > .details > .title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary-color-900);
+}
+
+.container > .content > .sections > .section > .row > .details > .subtitle {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--primary-color-700);
+}
+
+.container > .content > .sections > .section > .row > .details > .location {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-color-600);
+}
+
+.container > .content > .sections > .section > .row > .details > .list {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+    padding-left: 1.5rem;
+}

@@ -2,17 +2,17 @@ import styles from './page.module.css';
 import BlogPostService from "@/services/blogPostService";
 import {getTranslations, unstable_setRequestLocale} from "next-intl/server";
 import PageTitleCard from "src/components/card/PageTitleCard";
-import pinkCloud from "@/assets/images/background/cloud.webp";
 import CardGallery from "src/components/layouts/CardGallery";
 import BlogCategory from "@/constants/blogCategory";
+import pinkCloud from "@/assets/images/background/cloud.webp";
 import IconFrontend from "@/assets/images/icon/front-end.png";
 import IconBackend from "@/assets/images/icon/back-end.png";
 import IconAI from "@/assets/images/icon/chatbot.png";
 import IconProductivity from "@/assets/images/icon/time-analysis.png";
 import IconLife from "@/assets/images/icon/daily-tasks.png";
 import IconAll from "@/assets/images/icon/documents.png";
-import CategoryNavCard from "@/app/[locale]/blog/post/components/CategoryNavCard";
-import BlogPostNavCard from "@/app/[locale]/blog/post/components/BlogPostNavCard";
+import CategoryNavCard from "./_components/CategoryNavCard";
+import BlogPostNavCard from "./_components/BlogPostNavCard";
 
 export const generateMetadata = async ({params: {locale}}) => {
     const t = await getTranslations({locale, namespace: 'blog'});
@@ -60,7 +60,6 @@ const BlogPage = async ({ params: { locale } }) => {
         <div className={styles.container}>
 
             <PageTitleCard
-                locale={locale}
                 image={pinkCloud}
                 title={t('title')}
                 description={t('description')}

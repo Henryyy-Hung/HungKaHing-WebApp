@@ -15,7 +15,7 @@ const StyleSheetService = {
     },
 
     loadAllCssUnderComponentsDirectory: async () => {
-        const pathPrefix = 'src/components/';
+        const pathPrefix = 'src/_components/';
         const pathSuffix = '.module.css';
         // 获取所有的 CSS 模块路径
         const paths = await globby(`${pathPrefix}**/*${pathSuffix}`);

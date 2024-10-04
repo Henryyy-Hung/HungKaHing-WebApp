@@ -2,6 +2,7 @@ import {notFound} from 'next/navigation';
 import {getRequestConfig} from 'next-intl/server';
 import {routing} from '@/i18n/routing';
 import {getI18nResources} from '@/i18n/configs';
+import {IntlErrorCode} from "next-intl";
 
 // 获取请求配置
 const routingConfig = getRequestConfig(async ({locale}) => {
@@ -16,7 +17,15 @@ const routingConfig = getRequestConfig(async ({locale}) => {
         messages: messages,
         defaultTranslationValues: {
             Email: (chunks) => <a href={`mailto:${chunks}`}>{chunks}</a>,
-        }
+        },
+        onError(error) {
+            if (error.code === IntlErrorCode.MISSING_MESSAGE) {
+                // Missing translations are expected and should only log an error
+            } else {
+                // Other errors indicate a bug in the app and should be reported
+                console.error(error);
+            }
+        },
     };
 });
 

@@ -1,0 +1,8 @@
+.container {
+    display: block;
+    margin: 2rem 0 0 0;
+    padding: 1rem 0 0 0;
+    border-style: solid none none none;
+    border-width: 1px;
+    border-color: var(--primary-color-500);
+}

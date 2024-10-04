@@ -4,7 +4,7 @@ import styles from "./index.module.css";
 import React from "react";
 import Image from "next/image";
 
-const PageTitleCard = ({locale, image, title, description}) => {
+const PageTitleCard = ({image, title, description}) => {
 
     return (
         <div className={styles.container}>
