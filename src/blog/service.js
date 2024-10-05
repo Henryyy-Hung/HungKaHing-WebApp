@@ -49,7 +49,6 @@ const getBlogPostModule = async ({postId, locale}) => {
     return await import(`src/blog/posts${partialPath}`);
 }
 
-
 const getBlogPostText = async ({postId, locale}) => {
     const path = await getBlogPostPath({postId, locale});
     if (!path) { return null }
@@ -59,6 +58,8 @@ const getBlogPostText = async ({postId, locale}) => {
 const getBlogPostComponent = async ({postId, locale}) => {
     return (await getBlogPostModule({postId, locale}))?.default;
 }
+
+// Blog Post Utility Services
 
 const getSupportedLocalesByBlogPostId = async ({postId}) => {
     const paths = await getBlogPostPathsByPostId({postId});
@@ -128,6 +129,7 @@ const getBlogPostTableOfContents = async ({postId, locale}) => {
     return nestHeadings(headings);
 }
 
+// Blog Post Metadata Services
 
 const getBlogPostMetadata = async ({postId, locale}) => {
     const metadata = (await getBlogPostModule({postId, locale}))?.metadata;

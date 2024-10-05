@@ -5,6 +5,7 @@ import {Link} from "@/i18n/routing";
 import IconArrowToLeft from "@/assets/vectors/IconArrowToLeft";
 import Pagination from "@/components/nav/Pagination";
 import {getBlogPostMetadataByLocaleAndCategory} from "@/blog/service";
+import TimeUtil from "@/utils/timeUtil";
 
 const itemPerPage = 10;
 
@@ -63,7 +64,7 @@ const BlogCategoryPage = async ({params: {locale, categoryId, pageNumber} }) => 
                             const postTitle = metadata.title;
                             const postDescription = metadata.description;
                             const postTags = metadata.tags;
-                            const postPublishDate = metadata.publishDate;
+                            const postPublishDate = metadata.publishDate || String(new Date());
                             return (
                                 <article key={index} className={styles.post}>
                                     <Link href={`/blog/post/${postId}`} locale={locale} className={styles.title}>
@@ -83,7 +84,7 @@ const BlogCategoryPage = async ({params: {locale, categoryId, pageNumber} }) => 
                                             }
                                         </div>
                                         <span className={styles.publishDate}>
-                                            {postPublishDate}
+                                            {TimeUtil.convertToDateOnly(postPublishDate)}
                                         </span>
                                     </div>
                                 </article>

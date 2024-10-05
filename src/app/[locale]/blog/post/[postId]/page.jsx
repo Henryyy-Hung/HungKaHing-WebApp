@@ -51,7 +51,7 @@ const BlogPostPage = async ({params: {locale, postId} }) => {
                 ]}
             >
                 <div className={styles.container}>
-                    <Breadcrumb/>
+                    {/*<Breadcrumb/>*/}
                     <PostHeader
                         title={metadata.title || 'Blog Post'}
                         author={t('labels.author')}

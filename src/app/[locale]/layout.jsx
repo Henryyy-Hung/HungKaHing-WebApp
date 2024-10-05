@@ -1,6 +1,5 @@
 import "../globals.css";
 import styles from "./layout.module.css";
-import localFont from 'next/font/local';
 import {NextIntlClientProvider} from 'next-intl';
 import {getMessages, getTranslations, unstable_setRequestLocale} from 'next-intl/server';
 import {getLangDir} from 'rtl-detect';
@@ -8,8 +7,7 @@ import {supportedLocales} from "@/i18n/configs";
 import StyleSheetService from "@/services/styleSheetService";
 import Header from "src/components/nav/Header";
 import Footer from "src/components/nav/Footer";
-
-const satoshiVariable = localFont({ src: '../../assets/fonts/Satoshi/Satoshi-Variable.woff2' });
+import {satoshiVariable, consolas} from "@/assets/styles/font";
 
 const generateViewport = async ({params: {locale}}) => {
     return {
@@ -129,7 +127,7 @@ const Layout = async ({ children, params: {locale} }) => {
 
     return (
         <html lang={locale} dir={direction}>
-            <body className={`${satoshiVariable.className} ${styles.container}`}>
+            <body className={`${satoshiVariable.variable} ${consolas.variable} ${styles.container}`}>
                 <NextIntlClientProvider messages={messages}>
                     <header className={styles.header}>
                         <Header locale={locale}/>

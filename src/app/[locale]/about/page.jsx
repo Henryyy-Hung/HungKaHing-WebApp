@@ -9,6 +9,7 @@ import logoHuawei from '@/assets/images/logo/huawei.png';
 import logoWongFutNam from '@/assets/images/logo/wongfutnam.png';
 import logoDocPro from '@/assets/images/logo/docpro.png';
 
+
 export const generateMetadata = async ({params: {locale}}) => {
     const t = await getTranslations({locale, namespace: 'about'});
     return {
@@ -74,10 +75,10 @@ const AboutPage = ({ params: { locale } }) => {
 
             <div className={styles.card} style={{gap: 16}}>
                 <h2 className={styles.title}>
-                    Introduction
+                    {t('sections.introduction.title')}
                 </h2>
-                <span>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.
+                <span style={{fontSize: 18}}>
+                    {t('sections.introduction.content')}
                 </span>
             </div>
 

@@ -1,8 +1,13 @@
 {
   "title": "About",
-  "description": "My resume and experiences.",
+  "description": "My Unique Journey",
 
   "sections": {
+
+    "introduction": {
+      "title": "Introduction",
+      "content": "I am a Computer Science graduate from the University of Hong Kong, with a focus on System and Networking. I am passionate about software development and have experience in full-stack development, AI, and software engineering. I am a quick learner and a team player, with a strong sense of responsibility and a proactive attitude. I am looking for opportunities to further develop my skills and contribute to the tech industry."
+    },
 
     "1": {
       "title": "Education",

@@ -4,6 +4,7 @@
     --v-padding-global: 3rem;
     --h-padding-global: 3rem;
     --box-shadow-card: 0.25rem 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.25);
+    font-family: var(--font-satoshi-variable);
 }
 
 .header {
@@ -35,15 +36,6 @@
     background-attachment: fixed;
 }
 
-@keyframes fade-in {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
 .main > * {
     min-height: var(--min-height-main);
     height: auto;
@@ -54,4 +46,10 @@
     background-color: var(--primary-color-50);
     width: 100%;
     padding: var(--v-padding-global) max(calc(50% - var(--max-width-global) / 2 - var(--h-padding-global)), var(--h-padding-global));
+}
+
+@media print {
+    .header {
+        position: relative;
+    }
 }
