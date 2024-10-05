@@ -1,7 +1,7 @@
 import styles from './index.module.css';
 import Image from 'next/image';
 
-const TimeLineCard = ({title, sections}) => {
+const TimeLineView = ({sections}) => {
 
     const TimeLineItem = ({time, logo, title, subtitle, location, list}) => {
         return (
@@ -44,33 +44,27 @@ const TimeLineCard = ({title, sections}) => {
     }
 
     return (
-        <div className={styles.container}>
-            <h2 className={styles.title}>
-                {title}
-            </h2>
-            <article className={styles.content}>
-                <hr className={styles.timeline} />
-                <div className={styles.sections}>
-                    {
-                        sections.map((section, index) => {
-                            return (
-                                <TimeLineItem
-                                    key={index}
-                                    time={section.time}
-                                    logo={section.logo}
-                                    title={section.title}
-                                    subtitle={section.subtitle}
-                                    location={section.location}
-                                    list={section.lines}
-                                />
-                            )
-                        })
-                    }
-                    <div style={{height: '1rem'}}></div>
-                </div>
-            </article>
-        </div>
-)
+        <section className={styles.container}>
+            <hr className={styles.timeline} />
+            <div className={styles.sections}>
+                {
+                    sections.map((section, index) => {
+                        return (
+                            <TimeLineItem
+                                key={index}
+                                time={section.time}
+                                logo={section.logo}
+                                title={section.title}
+                                subtitle={section.subtitle}
+                                location={section.location}
+                                list={section.lines}
+                            />
+                        )
+                    })
+                }
+            </div>
+        </section>
+    )
 }
 
-export default TimeLineCard;
+export default TimeLineView;

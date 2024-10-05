@@ -1,9 +1,8 @@
 import styles from './page.module.css';
-import BlogPostService from "@/services/blogPostService";
 import {getTranslations, unstable_setRequestLocale} from "next-intl/server";
 import PageTitleCard from "src/components/card/PageTitleCard";
 import CardGallery from "src/components/layouts/CardGallery";
-import BlogCategory from "@/constants/blogCategory";
+import {BlogCategory} from "@/blog/configs";
 import pinkCloud from "@/assets/images/background/cloud.webp";
 import IconFrontend from "@/assets/images/icon/front-end.png";
 import IconBackend from "@/assets/images/icon/back-end.png";
@@ -13,6 +12,7 @@ import IconLife from "@/assets/images/icon/daily-tasks.png";
 import IconAll from "@/assets/images/icon/documents.png";
 import CategoryNavCard from "./_components/CategoryNavCard";
 import BlogPostNavCard from "./_components/BlogPostNavCard";
+import {getBlogPostMetadataByLocale} from "@/blog/service";
 
 export const generateMetadata = async ({params: {locale}}) => {
     const t = await getTranslations({locale, namespace: 'blog'});
@@ -27,7 +27,7 @@ const BlogPage = async ({ params: { locale } }) => {
 
     const t = await getTranslations('blog', locale);
 
-    const metadataList = await BlogPostService.getAllLocalizedMetadata({ locale });
+    const metadataList = await getBlogPostMetadataByLocale({ locale });
 
     const blogCategories = [
         {

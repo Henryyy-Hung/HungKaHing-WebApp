@@ -1,9 +1,9 @@
-import style from './page.module.css';
+import styles from './page.module.css';
 import {getTranslations, unstable_setRequestLocale} from "next-intl/server";
 import PageTitleCard from "src/components/card/PageTitleCard";
 import forest from "@/assets/images/background/forest.png";
 import {useTranslations} from "next-intl";
-import TimeLineCard from "@/app/[locale]/about/_components/TimeLineCard";
+import TimeLineView from "./_components/TimeLineView";
 import logoHKU from '@/assets/images/logo/hku.png';
 import logoHuawei from '@/assets/images/logo/huawei.png';
 import logoWongFutNam from '@/assets/images/logo/wongfutnam.png';
@@ -19,6 +19,7 @@ export const generateMetadata = async ({params: {locale}}) => {
 const AboutPage = ({ params: { locale } }) => {
 
     unstable_setRequestLocale(locale);
+
     const t = useTranslations('about');
 
     const logos = {
@@ -31,15 +32,11 @@ const AboutPage = ({ params: { locale } }) => {
     const content = Array.from({length: 10}, (v, i) => {
         const sectionId = i+1;
         const sectionKeyPrefix = `sections.${sectionId}`;
-
         const sectionTitle = t(`${sectionKeyPrefix}.title`);
-
         if (sectionTitle.includes(sectionKeyPrefix)) { return null }
-
         const subSections = Array.from({length: 10}, (v, i) => {
             const subSectionId = 10-i;
             const subSectionKeyPrefix = `${sectionKeyPrefix}.sections.${subSectionId}`;
-
             const subSectionTitle = t(`${subSectionKeyPrefix}.title`);
             if (subSectionTitle.includes(subSectionKeyPrefix)) { return null }
             const subSectionSubtitle = t(`${subSectionKeyPrefix}.subtitle`);
@@ -51,7 +48,6 @@ const AboutPage = ({ params: { locale } }) => {
                 const line = t(key);
                 return line.includes(key) ? null : line;
             }).filter((v) => v)
-
             return {
                 logo: logos[subSectionLogoId],
                 time: subSectionTime,
@@ -68,17 +64,32 @@ const AboutPage = ({ params: { locale } }) => {
     }).filter((v) => v);
 
     return (
-        <div className={style.container}>
+        <div className={styles.container}>
 
             <PageTitleCard
                 image={forest}
                 title={t('title')}
                 description={t('description')}
             />
+
+            <div className={styles.card} style={{gap: 16}}>
+                <h2 className={styles.title}>
+                    Introduction
+                </h2>
+                <span>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.
+                </span>
+            </div>
+
             {
                 content.map((section, index) => {
                     return (
-                        <TimeLineCard key={index} title={section.title} sections={section.subSections} />
+                        <div className={styles.card} key={index}>
+                            <h2 className={styles.title}>
+                                {section.title}
+                            </h2>
+                            <TimeLineView sections={section.subSections} />
+                        </div>
                     )
                 })
             }

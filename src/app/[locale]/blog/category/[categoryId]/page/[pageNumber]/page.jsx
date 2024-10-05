@@ -4,17 +4,28 @@ import FixedSidebarLayout from "@/components/layouts/FixedSidebarLayout";
 import {Link} from "@/i18n/routing";
 import IconArrowToLeft from "@/assets/vectors/IconArrowToLeft";
 import Pagination from "@/components/nav/Pagination";
+import {getBlogPostMetadataByLocaleAndCategory} from "@/blog/service";
 
+const itemPerPage = 10;
 
 const generateStaticParams = async ({ params: { locale, categoryId } }) => {
-    return [{pageNumber: '1'}]
+    const blogPostMetadataList = await getBlogPostMetadataByLocaleAndCategory({locale, categoryId});
+    const numberOfPages = Math.ceil(blogPostMetadataList.length / itemPerPage) || 1;
+    return (
+        Array.from({length: numberOfPages}, (v, i) => {
+            return {
+                pageNumber: (i + 1).toString(),
+            }
+        })
+    )
 }
 
-const BlogCategoryPage = ({params: {locale, categoryId, pageNumber} }) => {
+const BlogCategoryPage = async ({params: {locale, categoryId, pageNumber} }) => {
+
+    const blogPostMetadataList = await getBlogPostMetadataByLocaleAndCategory({locale, categoryId});
+    const numberOfPages = Math.ceil(blogPostMetadataList.length / itemPerPage) || 1;
 
     unstable_setRequestLocale(locale);
-
-    const numberOfPages = 32;
 
     return (
         <FixedSidebarLayout
@@ -40,10 +51,45 @@ const BlogCategoryPage = ({params: {locale, categoryId, pageNumber} }) => {
                         <IconArrowToLeft />
                         返回
                     </Link>
-                    <h1>博客文章</h1>
+                    <h1 className={styles.title}>
+                        博客文章
+                    </h1>
                 </div>
 
                 <div className={styles.content}>
+                    {
+                        blogPostMetadataList.slice((pageNumber - 1) * itemPerPage, pageNumber * itemPerPage).map((metadata, index) => {
+                            const postId = metadata.id;
+                            const postTitle = metadata.title;
+                            const postDescription = metadata.description;
+                            const postTags = metadata.tags;
+                            const postPublishDate = metadata.publishDate;
+                            return (
+                                <article key={index} className={styles.post}>
+                                    <Link href={`/blog/post/${postId}`} locale={locale} className={styles.title}>
+                                        {postTitle}
+                                    </Link>
+                                    <p className={styles.description}>
+                                        {postDescription}
+                                    </p>
+                                    <div className={styles.misc}>
+                                        <div className={styles.tags}>
+                                            {
+                                                Array.isArray(postTags) && postTags.map((tag, index) => (
+                                                    <span key={index} className={styles.tag}>
+                                                        {tag}
+                                                    </span>
+                                                ))
+                                            }
+                                        </div>
+                                        <span className={styles.publishDate}>
+                                            {postPublishDate}
+                                        </span>
+                                    </div>
+                                </article>
+                            )
+                        })
+                    }
                 </div>
 
                 <div className={styles.footer}>

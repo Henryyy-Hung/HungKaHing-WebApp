@@ -1,24 +1,5 @@
 .container {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: 100%;
-    gap: 2rem;
-    background-color: rgba(255, 255, 255, 0.75);
-    padding: 3rem;
-    border-radius: 2rem;
-    box-shadow: var(--box-shadow-card);
-}
-
-.container > .title {
-    display: inline;
-    font-size: 2rem;
-    font-weight: 700;
-}
-
-.container > .content {
-    display: flex;
     flex-direction: row;
     align-items: stretch;
     justify-content: flex-start;
@@ -28,7 +9,7 @@
     --color-timeline: var(--primary-color-300);
 }
 
-.container > .content > .timeline {
+.container > .timeline {
     --width: calc(var(--diameter) / 3);
     --padding-v: calc(var(--diameter) / 2);
     --padding-h: calc(var(--diameter) / 3);
@@ -41,15 +22,15 @@
     background-color: var(--color-timeline);
 }
 
-.container > .content > .sections {
+.container > .sections {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
-.container > .content > .sections > .section {
+.container > .sections > .section {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -58,7 +39,7 @@
     position: relative;
 }
 
-.container > .content > .sections > .section > .row {
+.container > .sections > .section > .row {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -66,7 +47,7 @@
     gap: 2rem;
 }
 
-.container > .content > .sections > .section > .row > .circle {
+.container > .sections > .section > .row > .circle {
     display: block;
     width: var(--diameter);
     min-width: var(--diameter);
@@ -79,27 +60,27 @@
     left: calc(-2rem - var(--diameter));
 }
 
-.container > .content > .sections > .section > .row > .time {
+.container > .sections > .section > .row > .time {
     line-height: var(--diameter);
     font-size: var(--diameter);
-    font-weight: 700;
+    font-weight: 800;
     color: var(--primary-color-600);
 }
 
-.container > .content > .sections > .section > .row > .logo {
+.container > .sections > .section > .row > .logo {
     width: 5rem;
     min-width: 5rem;
     padding: 0.5rem 0;
 }
 
-.container > .content > .sections > .section > .row > .logo > img {
+.container > .sections > .section > .row > .logo > img {
     width: 100%;
     height: auto;
     object-fit: contain;
 
 }
 
-.container > .content > .sections > .section > .row > .details {
+.container > .sections > .section > .row > .details {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -107,25 +88,25 @@
     gap: 0.25rem;
 }
 
-.container > .content > .sections > .section > .row > .details > .title {
+.container > .sections > .section > .row > .details > .title {
     font-size: 1.25rem;
     font-weight: 600;
     color: var(--primary-color-900);
 }
 
-.container > .content > .sections > .section > .row > .details > .subtitle {
+.container > .sections > .section > .row > .details > .subtitle {
     font-size: 1.15rem;
     font-weight: 600;
     color: var(--primary-color-700);
 }
 
-.container > .content > .sections > .section > .row > .details > .location {
+.container > .sections > .section > .row > .details > .location {
     font-size: 1rem;
     font-weight: 600;
     color: var(--primary-color-600);
 }
 
-.container > .content > .sections > .section > .row > .details > .list {
+.container > .sections > .section > .row > .details > .list {
     font-size: 1rem;
     font-weight: 500;
     margin: 0;

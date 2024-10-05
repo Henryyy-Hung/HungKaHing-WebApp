@@ -1,4 +1,4 @@
-import BlogCategory from "@/constants/blogCategory";
+import {BlogCategory} from "@/blog/configs";
 
 const generateStaticParams = async ({ params: { locale } }) => {
     const categories = Object.values(BlogCategory);

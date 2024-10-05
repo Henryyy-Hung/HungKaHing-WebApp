@@ -8,4 +8,6 @@ const BlogCategory = {
     PROJECT: 'project',
 }
 
-export default BlogCategory;
+export {
+    BlogCategory
+}
