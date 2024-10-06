@@ -85,7 +85,7 @@ const BlogPage = async ({ params: { locale } }) => {
 
             <CardGallery>
                 {
-                    metadataList.map((metadata, index) => (
+                    metadataList.slice(0,9).map((metadata, index) => (
                         <BlogPostNavCard
                             key={index}
                             postId={metadata.id}

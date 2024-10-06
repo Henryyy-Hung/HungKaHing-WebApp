@@ -9,7 +9,6 @@ import logoHuawei from '@/assets/images/logo/huawei.png';
 import logoWongFutNam from '@/assets/images/logo/wongfutnam.png';
 import logoDocPro from '@/assets/images/logo/docpro.png';
 
-
 export const generateMetadata = async ({params: {locale}}) => {
     const t = await getTranslations({locale, namespace: 'about'});
     return {

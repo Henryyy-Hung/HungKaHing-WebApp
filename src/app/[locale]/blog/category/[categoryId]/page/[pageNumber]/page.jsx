@@ -1,48 +1,28 @@
 import styles from './page.module.css';
-import {unstable_setRequestLocale} from "next-intl/server";
+import {getTranslations, unstable_setRequestLocale} from "next-intl/server";
 import FixedSidebarLayout from "@/components/layouts/FixedSidebarLayout";
 import {Link} from "@/i18n/routing";
 import IconArrowToLeft from "@/assets/vectors/IconArrowToLeft";
 import Pagination from "@/components/nav/Pagination";
 import {getBlogPostMetadataByLocaleAndCategory} from "@/blog/service";
 import TimeUtil from "@/utils/timeUtil";
+import {ITEMS_PER_PAGE} from "@/blog/configs";
+import CategorySideBar from "@/app/[locale]/blog/category/[categoryId]/page/[pageNumber]/_components/CategorySideBar";
 
-const itemPerPage = 10;
-
-const generateStaticParams = async ({ params: { locale, categoryId } }) => {
-    const blogPostMetadataList = await getBlogPostMetadataByLocaleAndCategory({locale, categoryId});
-    const numberOfPages = Math.ceil(blogPostMetadataList.length / itemPerPage) || 1;
-    return (
-        Array.from({length: numberOfPages}, (v, i) => {
-            return {
-                pageNumber: (i + 1).toString(),
-            }
-        })
-    )
-}
-
-const BlogCategoryPage = async ({params: {locale, categoryId, pageNumber} }) => {
-
-    const blogPostMetadataList = await getBlogPostMetadataByLocaleAndCategory({locale, categoryId});
-    const numberOfPages = Math.ceil(blogPostMetadataList.length / itemPerPage) || 1;
+const BlogGalleryPage = async ({params: {locale, categoryId, pageNumber} }) => {
 
     unstable_setRequestLocale(locale);
+
+    const t = await getTranslations('blog', locale);
+
+    const blogPostMetadataList = await getBlogPostMetadataByLocaleAndCategory({locale, categoryId});
+    const displayedBlogPostMetadataList = blogPostMetadataList.slice((pageNumber - 1) * ITEMS_PER_PAGE, pageNumber * ITEMS_PER_PAGE);
+    const numberOfPages = Math.ceil(blogPostMetadataList.length / ITEMS_PER_PAGE) || 1;
 
     return (
         <FixedSidebarLayout
             sidebarSections={[
-                (
-                    <section key={0}>
-                        <h3>Categories</h3>
-                        <hr/>
-                    </section>
-                ),
-                (
-                    <section key={1}>
-                        <h3>Popular tags</h3>
-                        <hr/>
-                    </section>
-                )
+                <CategorySideBar locale={locale} categoryId={categoryId} key={0} />,
             ]}
         >
             <div className={styles.container}>
@@ -59,37 +39,43 @@ const BlogCategoryPage = async ({params: {locale, categoryId, pageNumber} }) => 
 
                 <div className={styles.content}>
                     {
-                        blogPostMetadataList.slice((pageNumber - 1) * itemPerPage, pageNumber * itemPerPage).map((metadata, index) => {
-                            const postId = metadata.id;
-                            const postTitle = metadata.title;
-                            const postDescription = metadata.description;
-                            const postTags = metadata.tags;
-                            const postPublishDate = metadata.publishDate || String(new Date());
-                            return (
-                                <article key={index} className={styles.post}>
-                                    <Link href={`/blog/post/${postId}`} locale={locale} className={styles.title}>
-                                        {postTitle}
-                                    </Link>
-                                    <p className={styles.description}>
-                                        {postDescription}
-                                    </p>
-                                    <div className={styles.misc}>
-                                        <div className={styles.tags}>
-                                            {
-                                                Array.isArray(postTags) && postTags.map((tag, index) => (
-                                                    <span key={index} className={styles.tag}>
+                        (displayedBlogPostMetadataList.length > 0) ? (
+                            displayedBlogPostMetadataList.map((metadata, index) => {
+                                const postId = metadata.id;
+                                const postTitle = metadata.title;
+                                const postDescription = metadata.description;
+                                const postTags = metadata.tags;
+                                const postPublishDate = metadata.publishDate || String(new Date());
+                                return (
+                                    <article key={index} className={styles.post}>
+                                        <Link href={`/blog/post/${postId}`} locale={locale} className={styles.title}>
+                                            {postTitle}
+                                        </Link>
+                                        <p className={styles.description}>
+                                            {postDescription}
+                                        </p>
+                                        <div className={styles.misc}>
+                                            <div className={styles.tags}>
+                                                {
+                                                    Array.isArray(postTags) && postTags.map((tag, index) => (
+                                                        <span key={index} className={styles.tag}>
                                                         {tag}
                                                     </span>
-                                                ))
-                                            }
-                                        </div>
-                                        <span className={styles.publishDate}>
+                                                    ))
+                                                }
+                                            </div>
+                                            <span className={styles.publishDate}>
                                             {TimeUtil.convertToDateOnly(postPublishDate)}
                                         </span>
-                                    </div>
-                                </article>
-                            )
-                        })
+                                        </div>
+                                    </article>
+                                )
+                            })
+                        ) : (
+                            <p className={styles.warning}>
+                                没有文章
+                            </p>
+                        )
                     }
                 </div>
 
@@ -102,7 +88,6 @@ const BlogCategoryPage = async ({params: {locale, categoryId, pageNumber} }) => 
                         PageLink={({page, children, ...props}) => (
                             <Link
                                 href={`/blog/category/${categoryId}/page/${page}`}
-                                scroll={false}
                                 {...props}
                             >
                                 {children}
@@ -116,6 +101,5 @@ const BlogCategoryPage = async ({params: {locale, categoryId, pageNumber} }) => 
     );
 }
 
-export default BlogCategoryPage;
+export default BlogGalleryPage;
 
-export {generateStaticParams};

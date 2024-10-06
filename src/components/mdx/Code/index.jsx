@@ -3,13 +3,15 @@
 import styles from './index.module.css'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { coldarkDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import {consolas} from "@/assets/styles/font";
 
 const Code = ({ className, children, isBlock=false, ...props }) => {
 
     if (! isBlock) {
         return (
-            <code {...props} className={`${styles.inlineCode} ${consolas.className}`}>
+            <code
+                className={styles.inlineCode}
+                {...props}
+            >
                 {children}
             </code>
         )

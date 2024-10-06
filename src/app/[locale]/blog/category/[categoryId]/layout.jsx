@@ -8,9 +8,7 @@ const generateStaticParams = async ({ params: { locale } }) => {
 const Layout = ({children, params: {locale, categoryId} }) => {
 
     return (
-        <div>
-            {children}
-        </div>
+        <>{children}</>
     );
 }
 

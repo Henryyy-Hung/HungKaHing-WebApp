@@ -4,7 +4,7 @@
     --v-padding-global: 3rem;
     --h-padding-global: 3rem;
     --box-shadow-card: 0.25rem 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.25);
-    font-family: var(--font-satoshi-variable);
+    font-family: var(--font-satoshi-variable), sans-serif;
 }
 
 .header {
@@ -34,6 +34,9 @@
     background-image: radial-gradient(circle, rgba(0, 0, 0, 0.2) 1px, rgba(0, 0, 0, 0) 1px);
     background-size: 1.25rem 1.25rem;
     background-attachment: fixed;
+
+    --gap-main-content: 2rem;
+    --min-height-main-content: calc(100vh - var(--height-header) - var(--v-padding-global) * 2);
 }
 
 .main > * {

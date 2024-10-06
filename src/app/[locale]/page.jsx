@@ -52,7 +52,7 @@ const HomePage = ({ params: { locale } }) => {
                     <h4>{t("labels.description")}</h4>
 
                     <div className={styles.about}>
-                        <Link href={"/resume"} locale={locale} prefetch={false}>
+                        <Link href={"/about"} locale={locale} prefetch={false}>
                             {t("labels.resume")}
                         </Link>
                         &nbsp;&nbsp;&nbsp;&nbsp;

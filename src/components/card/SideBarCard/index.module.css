@@ -1,0 +1,40 @@
+.container {
+    width: 100%;
+    min-height: 20rem;
+    height: calc((var(--min-height-main-content) - var(--gap-main-content)) / 2);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0.25rem 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.25);
+    --v-padding-sidebar-card: 1.5rem;
+    --h-padding-sidebar-card: 1.5rem;
+    padding: var(--v-padding-sidebar-card) 0;
+    overflow: hidden;
+}
+
+.container.fullSize {
+    height: var(--min-height-main-content);
+}
+
+.container > .title {
+    display: block;
+    width: calc(100% - 2 * var(--h-padding-sidebar-card));
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-style: none none solid none;
+    border-width: 1px;
+    border-color: var(--primary-color-500);
+    margin: 0 1.5rem 0.75rem 1.5rem;
+    padding-bottom: 0.25rem;
+}
+
+.container > .content {
+    width: 100%;
+    display: block;
+    padding: 0 1.5rem;
+    overflow: auto;
+    scrollbar-gutter: auto;
+}

@@ -1,8 +1,13 @@
 import styles from './index.module.css'
 
-const H6 = ({children}) => {
+const H6 = ({children, ...props}) => {
     return (
-        <h1 className={styles.container}>{children}</h1>
+        <h6
+            className={styles.container}
+            {...props}
+        >
+            {children}
+        </h6>
     )
 }
 

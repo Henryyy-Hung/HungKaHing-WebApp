@@ -15,6 +15,22 @@ const supportedLocales  = [
 // 默认语言
 const fallbackLocale = supportedLocales[0];
 
+const I18nSupportedLocales = Object.freeze({
+    EN: 'en',
+    ZH_HANS: 'zh-Hans',
+    ZH_HANT: 'zh-Hant'
+});
+
+const I18nNamespace = Object.freeze({
+    COMMON: 'common',
+    HOME: 'home',
+    ABOUT: 'about',
+    PROJECTS: 'projects',
+    BLOG: 'blog',
+    CONTACT: 'contact',
+    DISCLAIMER: 'disclaimer',
+});
+
 // 本地化资源的命名空间
 const namespaces = [
     'common',       // 公共资源（通用组件或元数据）

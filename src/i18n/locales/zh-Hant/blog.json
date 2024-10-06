@@ -1,6 +1,7 @@
 {
   "title": "部落格",
   "description": "我的一些想法和經歷。",
+
   "labels": {
     "categories": "分類",
     "recent": "最近的文章",
@@ -9,6 +10,7 @@
     "ai": "人工智能",
     "productivity": "生產力",
     "life": "生活",
+    "project": "項目",
     "all": "全部"
   },
 

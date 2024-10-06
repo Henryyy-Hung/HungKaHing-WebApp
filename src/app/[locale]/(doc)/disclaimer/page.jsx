@@ -1,6 +1,13 @@
 import styles from './page.module.css';
-import {unstable_setRequestLocale} from "next-intl/server";
+import {getTranslations, unstable_setRequestLocale} from "next-intl/server";
 import {useTranslations} from "next-intl";
+
+export const generateMetadata = async ({params: {locale}}) => {
+    const t = await getTranslations({locale, namespace: 'disclaimer'});
+    return {
+        title: t('title'),
+    };
+}
 
 const CopyrightPage = ({ params: { locale } }) => {
 

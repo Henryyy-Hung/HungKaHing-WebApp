@@ -14,6 +14,7 @@ import {
     getBlogPostMetadataByLocale,
     getSupportedLocalesByBlogPostId
 } from "@/blog/service";
+import SideBarCard from "@/components/card/SideBarCard";
 
 export const generateMetadata = async ({params: {locale}}) => {
     const t = await getTranslations({locale, namespace: 'blog.post'});
@@ -36,22 +37,24 @@ const BlogPostPage = async ({params: {locale, postId} }) => {
 
     if (BlogComponent) {
         const metadata = await getBlogPostMetadata({postId, locale})
+
         return (
             <FixedSidebarLayout
                 sidebarSections={[
-                    <section key={0}>
-                        <h3>{t('labels.toc')}</h3>
-                        <hr/>
+                    <SideBarCard
+                        title={t('labels.toc')}
+                        key={0}
+                    >
                         <TableOfContent toc={metadata.tableOfContents}/>
-                    </section>,
-                    <section key={1}>
-                        <h3>{t('labels.related')}</h3>
-                        <hr/>
-                    </section>
+                    </SideBarCard>,
+                    <SideBarCard
+                        title={t('labels.related')}
+                        key={1}
+                    >
+                    </SideBarCard>
                 ]}
             >
                 <div className={styles.container}>
-                    {/*<Breadcrumb/>*/}
                     <PostHeader
                         title={metadata.title || 'Blog Post'}
                         author={t('labels.author')}
