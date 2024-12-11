@@ -1,3 +1,48 @@
+// const supportedLocales = {};
+//
+// Object.assign(supportedLocales, {
+//     EN: Object.freeze({
+//         isoCode: 'en',
+//         nameInEnglish: 'English',
+//         nameInLocal: 'English',
+//         isSubsetOf: null
+//     })
+// })
+//
+// Object.assign(supportedLocales, {
+//     ZH: Object.freeze({
+//         isoCode: 'zh',
+//         nameInEnglish: 'Chinese',
+//         nameInLocal: '中文',
+//         isSubsetOf: null
+//     }),
+// })
+//
+// Object.assign(supportedLocales, {
+//     ZH_HANS: Object.freeze({
+//         isoCode: 'zh-Hans',
+//         nameInEnglish: 'Chinese (Simplified)',
+//         nameInLocal: '简体中文',
+//         isSubsetOf: supportedLocales.ZH
+//     }),
+// })
+//
+// Object.assign(supportedLocales, {
+//     ZH_HANT: Object.freeze({
+//         isoCode: 'zh-Hant',
+//         nameInEnglish: 'Chinese (Traditional)',
+//         nameInLocal: '繁體中文',
+//         isSubsetOf: supportedLocales.ZH
+//     }),
+// })
+//
+//
+//
+// const getIsoCodeOfSupportedLocales = () => Object.values(supportedLocales).map(locale => locale.isoCode);
+//
+// const getIsoCodeOfFallbackLocale = () => supportedLocales.EN.isoCode;
+
+
 // 支持的语言列表
 const supportedLocales  = [
     'en',

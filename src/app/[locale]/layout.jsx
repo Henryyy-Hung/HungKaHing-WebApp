@@ -127,7 +127,7 @@ const Layout = async ({ children, params: {locale} }) => {
 
     return (
         <html lang={locale} dir={direction}>
-            <body className={`${satoshiVariable.variable} ${consolas.variable} ${styles.container}`}>
+            <body className={`${styles.container} ${satoshiVariable.variable} ${consolas.variable}`}>
                 <NextIntlClientProvider messages={messages}>
                     <header className={styles.header}>
                         <Header locale={locale}/>

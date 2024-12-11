@@ -1,6 +1,5 @@
 import localFont from "next/font/local";
 
-
 const satoshiVariable = localFont({
     name: 'Satoshi-Variable',
     src: '../fonts/Satoshi/Satoshi-Variable.woff2',
@@ -13,4 +12,7 @@ const consolas = localFont({
     variable: '--font-consolas',
 });
 
-export {satoshiVariable, consolas};
+export {
+    satoshiVariable,
+    consolas
+};

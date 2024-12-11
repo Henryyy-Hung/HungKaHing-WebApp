@@ -13,8 +13,11 @@ const PageTitleCard = ({image, title, description}) => {
             <Image
                 className={styles.background}
                 src={image}
-                alt="page title"
+                fill={true}
+                alt={title}
+                priority={true}
                 placeholder={"blur"}
+                decoding={"async"}
                 onLoad={(e) => {
                     e.target.classList.add(styles.onload);
                 }}

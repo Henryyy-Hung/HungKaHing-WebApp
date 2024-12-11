@@ -105,8 +105,8 @@ const ContactPage = ({ params: { locale } }) => {
                                 prefetch={false}
                                 scroll={false}
                             >
-                                <Icon className={styles.icon} key={index}/>
-                                <div className={styles.content} key={index}>
+                                <Icon className={styles.icon} />
+                                <div className={styles.content} >
                                     <h2 className={styles.title}>{contact.label}</h2>
                                     <p>{contact.value}</p>
                                 </div>

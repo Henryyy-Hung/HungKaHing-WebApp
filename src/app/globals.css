@@ -1,8 +1,4 @@
 :root {
-    --foreground-rgb: 0, 0, 0;
-    --background-start-rgb: 214, 219, 220;
-    --background-end-rgb: 255, 255, 255;
-
     --grey50: #fafafa;
     --grey100: #f5f5f5;
     --grey200: #eeeeee;
@@ -24,14 +20,6 @@
     --primary-color-700: var(--grey700);
     --primary-color-800: var(--grey800);
     --primary-color-900: var(--grey900);
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --foreground-rgb: 255, 255, 255;
-        --background-start-rgb: 0, 0, 0;
-        --background-end-rgb: 0, 0, 0;
-    }
 }
 
 * {

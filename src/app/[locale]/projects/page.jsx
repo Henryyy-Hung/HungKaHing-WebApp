@@ -23,7 +23,9 @@ const ProjectsPage = async ({ params: { locale } }) => {
                 title={t('title')}
                 description={t('description')}
             />
-            <h1>Building in Progress......</h1>
+            <h1>
+                Building in Progress......
+            </h1>
         </div>
     );
 }

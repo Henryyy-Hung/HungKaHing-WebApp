@@ -7,7 +7,6 @@ import H6 from "@/components/mdx/H6";
 import Code from "@/components/mdx/Code";
 import Pre from "@/components/mdx/Pre";
 import Table from "@/components/mdx/Table";
-import Img from "@/components/mdx/Img";
 
 export function useMDXComponents(components) {
     return {
@@ -20,7 +19,6 @@ export function useMDXComponents(components) {
         pre: Pre,
         code: Code,
         table: Table,
-        img: Img,
         ...components,
     }
 }

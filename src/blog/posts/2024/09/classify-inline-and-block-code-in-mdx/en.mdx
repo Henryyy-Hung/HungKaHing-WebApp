@@ -3,71 +3,141 @@ export const metadata = {
     description: "This is a short description of my second MDX blog post.",
 };
 
-Simple overview of use/purpose.
 
-## Table of Features
+- [⚠️ Table](#️-table)
+- [Checklist](#checklist)
+- [Features](#features)
+- [Code](#code)
+- [Hyperlinks](#hyperlinks)
+- [Anchor](#anchor)
+* [link with parentheses()](#link-with-parentheses)
+- [Blockquotes](#blockquotes)
+- [Image](#image)
 
-| Feature   | Description              |
-|-----------|--------------------------|
-| Feature 1 | Description of feature 1 |
-| Feature 2 | Description of feature 2 |
-| Feature 3 | Description of feature 3 |
+---
 
-## Description
+## ⚠️ Table
 
-An in-depth paragraph about your project and overview of use.
+| Name   | Type               | Default          | Description |
+|--------|--------------------|------------------|-------------|
+| `Text` | boolean            | Text             | Text        |
+| `Text` | string \| function | Text <br /> test | Text        |
 
-## Getting Started
 
-### Dependencies
+## Checklist
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
+- [ ] a task list item
+- [ ] list syntax required
+- [ ] normal **formatting**, @mentions, #1234 refs
+- [ ] incomplete
+- [x] completed
 
-### Installing
+## Features
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+- 📼 **text** - description
+- 💪 **Accessible** - description
+- 🔧 **[Customizable](#html)** - description
 
-### Executing program
 
-* How to run the program
-* Step-by-step bullets
+## Code
+
+```html
+<video id="player" playsinline controls data-poster="/path/to/poster.jpg">
+  <source src="/path/to/video.mp4" type="video/mp4" />
+  <source src="/path/to/video.webm" type="video/webm" />
+</video>
 ```
-code blocks for commands
-```
 
-## Help
+## Hyperlinks
 
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
+[jQuery](https://jquery.com)
 
-## Authors
+## Anchor
 
-Contributors names and contact info
+[link with parentheses()](#link-with-parentheses)
 
-ex. Dominique Pizzie
-ex. [@DomPizzie](https://twitter.com/dompizzie)
+### link with parentheses()
 
-## Version History
 
-* 0.2
-  * Various bug fixes and optimizations
-  * See [commit change]() or See [release history]()
-* 0.1
-  * Initial Release
+## Blockquotes
 
-## License
+To create a blockquote, add a > in front of a paragraph.
 
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
+> Dorothy followed her through many of the beautiful rooms in her castle.
+>
+> ```yaml
+>     ...
+>     socket_address:
+>         address: docker.for.mac.localhost
+> ```
 
-## Acknowledgments
 
-Inspiration, code snippets, etc.
-* [awesome-readme](https://github.com/matiassingers/awesome-readme)
-* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-* [dbader](https://github.com/dbader/readme-template)
-* [zenorocha](https://gist.github.com/zenorocha/4526327)
-* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
+<blockquote>
+    <h3>Note:</h3>
+
+    **a) ERROR: npm update check failed.**
+
+    Solution:
+
+    ```sh
+    $ sudo chown -R $USER:$(id -gn $USER) /Users/{username}/.config
+    ```
+
+    **b) ERROR: Node sass version 6.x.x is not compatible with ^ 4.x.x.**
+
+    Solution:
+
+    ```sh
+    $ npm install node-sass@4.14.1
+    ```
+
+
+    **c) If you upgrade the version of Node, please execute the following code:**
+
+    ```sh
+    $ sudo npm install
+    $ sudo npm rebuild node-sass
+    ```
+</blockquote>
+
+
+
+> [!NOTE]
+> If you intend to use Feather with a CDN, you can skip this installation step.
+
+
+> [!WARNING]
+> If you intend to use Feather with a CDN, you can skip this installation step.
+
+
+
+## Toggle
+
+<details>
+    <summary>Click me</summary>
+
+    ### Heading
+    1. Foo
+    2. Bar
+    * Baz
+    * Qux
+
+    ### Some Javascript
+    ```js
+    function logSomething(something) {
+    console.log('Something', something);
+}
+    ```
+</details>
+
+
+## Image
+
+[![Image of Gist](https://gist.github.com/fluidicon.png)](https://gist.github.com/xizon)
+
+![Image of Gist](https://gist.github.com/fluidicon.png)
+
+---
+
+<img src="https://gist.github.com/fluidicon.png" width="48" />
+
