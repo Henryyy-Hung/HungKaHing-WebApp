@@ -17,7 +17,7 @@ const PageTitleCard = ({image, title, description}) => {
                 alt={title}
                 priority={false}
                 placeholder={"blur"}
-                decoding={"async"}
+                decoding={"sync"}
                 onLoad={(e) => {
                     e.target.classList.add(styles.onload);
                 }}
