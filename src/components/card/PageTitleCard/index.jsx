@@ -13,7 +13,6 @@ const PageTitleCard = ({image, title, description}) => {
             <Image
                 className={styles.background}
                 src={image}
-                fill={true}
                 alt={title}
                 placeholder={"blur"}
                 onLoad={(e) => {
