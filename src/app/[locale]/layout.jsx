@@ -1,9 +1,9 @@
 import "../globals.css";
 import styles from "./layout.module.css";
 import {NextIntlClientProvider} from 'next-intl';
-import {getMessages, getTranslations, unstable_setRequestLocale} from 'next-intl/server';
+import {getMessages, getTranslations, setRequestLocale} from 'next-intl/server';
 import {getLangDir} from 'rtl-detect';
-import {supportedLocales} from "@/i18n/configs";
+import {i18nService} from "@/i18n/service";
 import StyleSheetService from "@/services/styleSheetService";
 import Header from "src/components/nav/Header";
 import Footer from "src/components/nav/Footer";
@@ -48,7 +48,7 @@ const generateMetadata = async ({params: {locale}}) => {
         metadataBase: new URL('https://hungkahing.com'),
         alternates: {
             canonical: '/',
-            languages: Object.fromEntries(supportedLocales.map(locale => [locale, `/${locale}`])),
+            languages: Object.fromEntries(i18nService.isoCodeOfSupportedLocales.map(locale => [locale, `/${locale}`])),
         },
         icons: {
             shortcut: ['/assets/favicon.ico'],
@@ -111,7 +111,7 @@ const generateMetadata = async ({params: {locale}}) => {
 }
 
 const generateStaticParams = async () => {
-    return supportedLocales.map(locale => ({locale}));
+    return i18nService.isoCodeOfSupportedLocales.map(locale => ({locale}));
 }
 
 const Layout = async ({ children, params: {locale} }) => {
@@ -119,7 +119,7 @@ const Layout = async ({ children, params: {locale} }) => {
     // 加载所有的 CSS 模块
     await StyleSheetService.loadAllCss();
     // 确保在服务端渲染时，locale 与请求的 locale 一致
-    unstable_setRequestLocale(locale);
+    setRequestLocale(locale);
     // 获取当前 locale 的翻译资源
     const messages = await getMessages();
     // 获取当前 locale 的文本方向

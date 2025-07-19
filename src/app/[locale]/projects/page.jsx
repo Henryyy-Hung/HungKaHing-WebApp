@@ -1,5 +1,5 @@
 import style from './page.module.css';
-import {getTranslations, unstable_setRequestLocale} from "next-intl/server";
+import {getTranslations, setRequestLocale} from "next-intl/server";
 import PageTitleCard from "src/components/card/PageTitleCard";
 import terminal from "@/assets/images/background/terminal.png";
 
@@ -12,7 +12,7 @@ export const generateMetadata = async ({params: {locale}}) => {
 
 const ProjectsPage = async ({ params: { locale } }) => {
 
-    unstable_setRequestLocale(locale);
+    setRequestLocale(locale);
 
     const t = await getTranslations('projects', locale);
 

@@ -8,7 +8,7 @@
 }
 
 .header {
-    position: sticky;
+    position: fixed;
     top: 0;
     left: 0;
     display: flex;
@@ -26,15 +26,17 @@
 .main {
     --min-height-main: calc(100vh - var(--height-header) - 2 * var(--v-padding-global));
     display: block;
+    position: relative;
+    top: calc(0 - var(--height-header));
+    left: 0;
     min-height: var(--min-height-main);
     height: auto;
     width: 100%;
-    padding: var(--v-padding-global) max(calc(50% - var(--max-width-global) / 2 - var(--h-padding-global)), var(--h-padding-global));
+    padding: calc(var(--v-padding-global) + var(--height-header)) max(calc(50% - var(--max-width-global) / 2 - var(--h-padding-global)), var(--h-padding-global));
     background-color: var(--primary-color-200);
     background-image: radial-gradient(circle, rgba(0, 0, 0, 0.2) 1px, rgba(0, 0, 0, 0) 1px);
     background-size: 1.25rem 1.25rem;
     background-attachment: fixed;
-
     --gap-main-content: 2rem;
     --min-height-main-content: calc(100vh - var(--height-header) - var(--v-padding-global) * 2);
 }

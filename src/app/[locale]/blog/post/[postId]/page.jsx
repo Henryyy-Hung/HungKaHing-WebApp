@@ -1,11 +1,9 @@
 import {notFound} from "next/navigation";
 import styles from "./page.module.css"
 import {Link} from "@/i18n/routing";
-import {getTranslations, unstable_setRequestLocale} from "next-intl/server";
+import {getTranslations, setRequestLocale} from "next-intl/server";
 import FixedSidebarLayout from "@/components/layouts/FixedSidebarLayout";
-import {localeNames} from "@/i18n/configs";
 import TableOfContent from "./_components/TableOfContent";
-import Breadcrumb from "./_components/Breadcrumb";
 import PostHeader from "./_components/PostHeader";
 import PostFooter from "./_components/PostFooter";
 import {
@@ -15,6 +13,7 @@ import {
     getSupportedLocalesByBlogPostId
 } from "@/blog/service";
 import SideBarCard from "@/components/card/SideBarCard";
+import {I18nLocale} from "@/constants/i18nLocale";
 
 export const generateMetadata = async ({params: {locale}}) => {
     const t = await getTranslations({locale, namespace: 'blog.post'});
@@ -30,7 +29,7 @@ const generateStaticParams = async ({ params: { locale } }) => {
 
 const BlogPostPage = async ({params: {locale, postId} }) => {
 
-    unstable_setRequestLocale(locale);
+    setRequestLocale(locale);
     const t = await getTranslations({locale, namespace: 'blog.post'});
 
     const BlogComponent = await getBlogPostComponent({postId, locale});
@@ -71,17 +70,17 @@ const BlogPostPage = async ({params: {locale, postId} }) => {
             </FixedSidebarLayout>
         );
     } else {
-        const supportedLocales = await getSupportedLocalesByBlogPostId({postId});
-        if (supportedLocales.length > 0) {
+        const supportedLocaleIsoCodes = await getSupportedLocalesByBlogPostId({postId});
+        if (supportedLocaleIsoCodes.length > 0) {
             return (
                 <div className={styles.container}>
                     <div className={styles.dialogue}>
                         <h2>{t('warnings.languageNotSupported')}</h2>
                         <p>
                             {
-                                supportedLocales.map((locale, index) => (
-                                    <Link key={index} href={`/blog/post/${postId}`} locale={locale} scroll={false}>
-                                        {localeNames[locale]}
+                                supportedLocaleIsoCodes.map((localeIsoCode, index) => (
+                                    <Link key={index} href={`/blog/post/${postId}`} locale={localeIsoCode} scroll={false}>
+                                        {I18nLocale.getLocaleByIsoCode(localeIsoCode).nameInLocal}
                                     </Link>
                                 ))
                             }

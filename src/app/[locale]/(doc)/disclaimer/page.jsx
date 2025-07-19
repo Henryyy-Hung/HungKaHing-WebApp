@@ -1,5 +1,4 @@
-import styles from './page.module.css';
-import {getTranslations, unstable_setRequestLocale} from "next-intl/server";
+import {getTranslations, setRequestLocale} from "next-intl/server";
 import {useTranslations} from "next-intl";
 
 export const generateMetadata = async ({params: {locale}}) => {
@@ -11,7 +10,7 @@ export const generateMetadata = async ({params: {locale}}) => {
 
 const CopyrightPage = ({ params: { locale } }) => {
 
-    unstable_setRequestLocale(locale);
+    setRequestLocale(locale);
 
     const t = useTranslations('disclaimer');
 

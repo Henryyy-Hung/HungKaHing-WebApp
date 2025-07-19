@@ -23,14 +23,12 @@
     height: 100%;
     z-index: 0;
     object-fit: cover;
-    transform: scale(1.1);
-    filter: blur(1.5rem);
+    filter: brightness(85%);
     transition: all 0.5s linear;
 }
 
 .container > .background.onload {
-    transform: scale(1);
-    filter: blur(0);
+    filter: brightness(100%);
 }
 
 .container > *:not(.background) {

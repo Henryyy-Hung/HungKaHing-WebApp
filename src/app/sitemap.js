@@ -1,4 +1,4 @@
-import {supportedLocales} from "@/i18n/configs";
+import {i18nService} from "@/i18n/service";
 
 const host = 'https://hungkahing.com';
 
@@ -23,7 +23,7 @@ function getEntry(pathname) {
         priority: 0.7,
         alternates: {
             languages: Object.fromEntries(
-                supportedLocales.map((locale) => [locale, getUrl(pathname, locale)])
+                i18nService.isoCodeOfSupportedLocales.map((locale) => [locale, getUrl(pathname, locale)])
             )
         }
     };

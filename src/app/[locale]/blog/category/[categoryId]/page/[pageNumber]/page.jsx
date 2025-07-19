@@ -1,5 +1,5 @@
 import styles from './page.module.css';
-import {getTranslations, unstable_setRequestLocale} from "next-intl/server";
+import {getTranslations, setRequestLocale} from "next-intl/server";
 import FixedSidebarLayout from "@/components/layouts/FixedSidebarLayout";
 import {Link} from "@/i18n/routing";
 import IconArrowToLeft from "@/assets/vectors/IconArrowToLeft";
@@ -11,7 +11,7 @@ import CategorySideBar from "@/app/[locale]/blog/category/[categoryId]/page/[pag
 
 const BlogGalleryPage = async ({params: {locale, categoryId, pageNumber} }) => {
 
-    unstable_setRequestLocale(locale);
+    setRequestLocale(locale);
 
     const t = await getTranslations('blog', locale);
 

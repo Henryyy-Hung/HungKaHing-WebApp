@@ -1,5 +1,5 @@
 import styles from './page.module.css';
-import {getTranslations, unstable_setRequestLocale} from "next-intl/server";
+import {getTranslations, setRequestLocale} from "next-intl/server";
 import PageTitleCard from "src/components/card/PageTitleCard";
 import CardGallery from "src/components/layouts/CardGallery";
 import {BlogCategory} from "@/blog/configs";
@@ -23,7 +23,7 @@ export const generateMetadata = async ({params: {locale}}) => {
 
 const BlogPage = async ({ params: { locale } }) => {
 
-    unstable_setRequestLocale(locale);
+    setRequestLocale(locale);
 
     const t = await getTranslations('blog', locale);
 

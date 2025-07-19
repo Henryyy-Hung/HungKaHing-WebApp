@@ -1,5 +1,5 @@
 import styles from './index.module.css'
-import {useLocale, useTranslations} from "next-intl";
+import {useTranslations} from "next-intl";
 
 
 const PostFooter = () => {

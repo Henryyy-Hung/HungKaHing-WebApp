@@ -1,9 +1,9 @@
 import styles from './page.module.css';
-import {getTranslations, unstable_setRequestLocale} from "next-intl/server";
-import PageTitleCard from "src/components/card/PageTitleCard";
-import forest from "@/assets/images/background/forest.png";
+import {getTranslations, setRequestLocale} from "next-intl/server";
 import {useTranslations} from "next-intl";
+import PageTitleCard from "src/components/card/PageTitleCard";
 import TimeLineView from "./_components/TimeLineView";
+import forest from "@/assets/images/background/forest.png";
 import logoHKU from '@/assets/images/logo/hku.png';
 import logoHuawei from '@/assets/images/logo/huawei.png';
 import logoWongFutNam from '@/assets/images/logo/wongfutnam.png';
@@ -18,7 +18,7 @@ export const generateMetadata = async ({params: {locale}}) => {
 
 const AboutPage = ({ params: { locale } }) => {
 
-    unstable_setRequestLocale(locale);
+    setRequestLocale(locale);
 
     const t = useTranslations('about');
 

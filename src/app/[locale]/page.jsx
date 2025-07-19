@@ -2,12 +2,12 @@ import styles from "./page.module.css";
 import Image from "next/image";
 import henry from "@/assets/images/avatar/henry.jpeg";
 import {Link} from '@/i18n/routing';
-import {unstable_setRequestLocale} from "next-intl/server";
+import {setRequestLocale} from "next-intl/server";
 import {useTranslations} from "next-intl";
 
 const HomePage = ({ params: { locale } }) => {
 
-    unstable_setRequestLocale(locale);
+    setRequestLocale(locale);
 
     const t = useTranslations('home');
 

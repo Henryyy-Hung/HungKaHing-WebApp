@@ -15,6 +15,7 @@ const PageTitleCard = ({image, title, description}) => {
                 src={image}
                 alt={title}
                 placeholder={"blur"}
+                priority={true}
                 onLoad={(e) => {
                     e.target.classList.add(styles.onload);
                 }}
